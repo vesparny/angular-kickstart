@@ -1,6 +1,23 @@
-*.class
+# general
+.idea
+.DS_Store
+*~
+.sass-cache
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# package control
+node_modules
+webapp/vendor
+
+# logs
+npm-debug.log
+
+# build artifacts
+bin
+
+# os artifacts
+.DS_Store
+
+# build
+build/tmp
+build/dist
+

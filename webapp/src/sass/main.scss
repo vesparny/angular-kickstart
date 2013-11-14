@@ -1,0 +1,88 @@
+@import "../../vendor/sass-bootstrap/lib/variables";
+@import "../../vendor/bootswatch-scss/flatly/variables";
+@import "../../vendor/sass-bootstrap/lib/bootstrap";
+@import "../../vendor/bootswatch-scss/flatly/bootswatch";
+@import "../../vendor/font-awesome/scss/font-awesome";
+
+
+.jumbotron {
+    margin: 40px 0 80px 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 55px;
+    line-height: 1;
+}
+
+.menu {
+    margin-top: 10px
+}
+
+
+.lead {
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.footer {
+    margin-top: 80px;
+}
+
+.footer-inner {
+    padding: 40px 0;
+    border-top: 1px solid #DDD;
+}
+
+.social {
+    float: right;
+    margin: 0;
+    list-style: none;
+}
+
+.social li {
+    float: left;
+    margin-left: 20px;
+}
+
+.social li a {
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.social li a:hover {
+    color:#a9a9a9;
+
+}
+
+.panel.ng-enter {
+    -webkit-transition: .5s linear all; /* Safari/Chrome */
+    -moz-transition: .5s linear all; /* Firefox */
+    -o-transition: .5s linear all; /* Opera */
+    transition: .5s linear all; /* IE10+ and Future Browsers */
+transition-delay: .5s;
+    opacity: 0;
+}
+
+.panel.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.center{
+    text-align:center
+}
+
+.addNote{
+    margin-top: 20px;
+    padding: 35px;
+    font-size: 30px;
+}
+
+.notes i {
+    cursor:pointer;
+    vertical-align:middle;
+}
+
+.notes .nList .form-group {
+    width:80%;
+}

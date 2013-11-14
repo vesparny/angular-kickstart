@@ -1,0 +1,44 @@
+<div class="jumbotron center">
+    <h1>silex + angular.js</h1>
+        <a href="https://github.com/vesparny/silex-angularjs/archive/master.zip" class="btn btn-primary btn-lg">
+            <i class="icon-download"></i>&nbsp;&nbsp;Download
+        </a>
+        <a href="https://github.com/vesparny/silex-angularjs" class="btn btn-info btn-lg">
+            <i class="icon-share"></i>&nbsp;&nbsp;View on GitHub
+        </a>
+    </p>
+</div>
+
+
+<div class="description">
+    <h3>What is this?</h3>
+
+    <p>An example of a single page web application (a note app) entirely built on top of <code>angular.js</code></p>
+
+    <p>The backend is written in php with the awesome <code>Silex micro-framework</code>, notes are stored in a local <code>SQLite</code> database.</p>
+
+</div>
+
+<div class="usage">
+    <h3>How do I run it?</h3>
+    <p>From the root of the project run the following commands to install the php and bower dependencies, import some data, and run a local php server (you need at least php 5.4.*).</p>
+      <pre>
+$ composer install
+$ bower install
+$ sqlite3 app.db < resources/sql/schema.sql
+$ php -S 0:8000 -t web/
+       </pre>
+</div>
+
+<div>
+    <h3>TODO</h3>
+    <ul>
+        <li>
+            write a build for optimize assets using Grunt.js
+        </li>
+        <li>
+            write tests and run them with Karma
+        </li>
+
+    </ul>
+</div>
