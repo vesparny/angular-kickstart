@@ -13,7 +13,7 @@ function filterForCSS(files) {
 }
 module.exports = function(grunt) {
 	grunt.registerMultiTask('tpl', 'Process index.tpl.html template', function() {
-		var dirRE = new RegExp('^(' + grunt.config('config.build_dir') + '|' + grunt.config('config.compile_dir') + ')\/', 'g');
+		var dirRE = new RegExp('^(' + grunt.config('config.build_dir') + '|' + grunt.config('config.dist_dir') + ')\/', 'g');
 		var jsFiles = filterForJS(this.filesSrc).map(function(file) {
 			return file.replace(dirRE, '');
 		});

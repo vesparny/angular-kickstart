@@ -6,4 +6,4 @@ angular.module('app.home', [
 		templateUrl: 'app/home/home.tpl.html'
 	});
 }).
-controller('HomeCtrl', function HomeCtrl($scope) {});
+controller('HomeCtrl', function() {});

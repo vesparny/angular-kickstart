@@ -3,7 +3,7 @@ module.exports = {
 	dist_dir: 'build/dist',
 	webapp_files: {
 		js: ['webapp/src/app/**/*.js', 'webapp/src/common/**/*.js'],
-		tests: ['webapp/src/test/**/*.spec.js'],
+		test: ['test/**/*.spec.js'],
 		assets: ['assets/**'],
 		templates_app: ['webapp/src/app/**/*.tpl.html'],
 		templates_common: ['webapp/src/common/**/*.tpl.html'],

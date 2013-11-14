@@ -36,11 +36,6 @@ module.exports = function(grunt) {
 	grunt.loadTasks('./build/tasks');
 	grunt.initConfig(_.merge.apply({}, _.values(config)));
 
-	function createTask(name, tasks) {
-		grunt.registerTask(name, tasks.split(' '));
-	}
-
-	// build tasks
 	grunt.registerTask('serve', [
 		'build',
 		'connect:livereload',
@@ -55,7 +50,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('dist', [
-		//'jshint',
+		'jshint',
 		'build',
 		'copy:dist_assets',
 		'ngmin',
@@ -65,7 +60,9 @@ module.exports = function(grunt) {
 		'rev',
 		'imagemin',
 		'svgmin',
-		'tpl:dist'
+		'tpl:dist',
+		'htmlmin',
+		'connect:dist:keepalive'
 	]);
 
 	grunt.registerTask('default', 'serve');

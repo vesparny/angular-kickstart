@@ -16,10 +16,10 @@ var html5ModeMiddleware = require('../../utils/grunt-connect-html5Mode'),
 module.exports = {
 	jshint: {
 		src: '<%= config.webapp_files.js %>',
-		test: '<%= app_files.jsunit %>',
-		gruntfile: [
+		test: '<%= config.webapp_files.test %>',
+		gruntfile:
 			'Gruntfile.js'
-		],
+		,
 		options: {
 			jshintrc: '.jshintrc',
 			reporter: require('jshint-stylish')
@@ -28,7 +28,7 @@ module.exports = {
 	sass: {
 		dev: {
 			src: ['<%= config.webapp_files.sass %>'],
-			dest: '<%= config.build_dir %>/assets/css/style.css'
+			dest: '<%= config.build_dir %>/assets/css/<%= pkg.version %>.style.css'
 		}
 	},
 	karma: {
@@ -127,8 +127,9 @@ module.exports = {
 		dist: {
 			options: {
 				open: true,
-				base: ['<%= config.dist_dir %>'],
-				livereload: false
+				base: '<%= config.dist_dir %>',
+				livereload: false,
+				middleware: middleware
 			}
 		}
 	},
@@ -171,10 +172,16 @@ module.exports = {
 			base: 'webapp/src'
 		},
 		app: {
+			options: {
+				module: "templates.app"
+			},
 			src: ['<%= config.webapp_files.templates_app %>'],
 			dest: '<%= config.build_dir %>/templates-app.js'
 		},
 		common: {
+			options: {
+				module: "templates.common"
+			},
 			src: ['<%= config.webapp_files.templates_common %>'],
 			dest: '<%= config.build_dir %>/templates-common.js'
 		}
@@ -194,9 +201,9 @@ module.exports = {
 		dist: {
 			dir: '<%= config.dist_dir %>',
 			src: [
-				'<%= cssmin.dist.dest %>',
-				'<%= uglify.vendor.dest %>',
-				'<%= uglify.app.dest %>'
+				'<%= config.dist_dir %>/assets/css/*.css',
+				'<%= config.dist_dir %>/assets/js/*vendor.js',
+				'<%= config.dist_dir %>/assets/js/*app.js'
 			]
 		}
 	},
@@ -290,8 +297,8 @@ module.exports = {
 			options: {
 				banner: '<%= config.banner %>'
 			},
-			src: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css',
-			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
+			src: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css',
+			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
 		}
 	},
 	concat: {
@@ -315,9 +322,9 @@ module.exports = {
 		build_css: {
 			src: [
 				'<%= config.vendor_files.css %>',
-				'<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
+				'<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
 			],
-			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
+			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
 		},
 	}
 
