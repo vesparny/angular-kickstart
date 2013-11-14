@@ -5,17 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title ng-bind="title"></title>
+    <!-- build:css assets/css/main.css -->
     <% css.forEach( function ( file ) { %>
     	<link rel="stylesheet" type="text/css" href="<%= file %>" />
     <% }); %>
+    <!-- endbuild -->
     </head>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
 <body >
 <div class="container menu">
     <div class="btn-group btn-group-justified">
@@ -52,8 +47,10 @@
         </div>
     </div>
 </footer>
+<!-- build:js assets/app.js -->
 <% js.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script>
 <% }); %>
+<!-- endbuild -->
 </body>
 </html>

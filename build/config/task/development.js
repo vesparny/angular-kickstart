@@ -1,6 +1,18 @@
 'use strict';
 
+var html5ModeMiddleware = require('../../utils/grunt-connect-html5Mode'),
+	middleware = function(connect, options) {
+		return [
+			// redirect all urls to index.html
+			html5ModeMiddleware('build/tmp/', 'index.html'),
 
+			// Serve static files.
+			connect.static(options.base),
+
+			// Make empty directories browsable.
+			connect.directory(options.base)
+		];
+	}
 module.exports = {
 	jshint: {
 		src: '<%= config.webapp_files.js %>',
@@ -13,15 +25,12 @@ module.exports = {
 			reporter: require('jshint-stylish')
 		},
 	},
-	sass: { // Task
-		dev: { // Target
-
+	sass: {
+		dev: {
 			src: ['<%= config.webapp_files.sass %>'],
-			dest: 	'<%= config.build_dir %>/assets/css/style.css'
-
+			dest: '<%= config.build_dir %>/assets/css/style.css'
 		}
 	},
-
 	karma: {
 		unit_once: {
 			singleRun: true,
@@ -106,65 +115,20 @@ module.exports = {
 		options: {
 			port: 9000,
 			livereload: 35729,
-			hostname: '0.0.0.0'
+			hostname: 'localhost'
 		},
 		livereload: {
 			options: {
 				open: true,
-				base: [
-					'<%= config.build_dir %>'
-				],
-
-				middleware: function(connect, options) {
-					var middlewares = [];
-					if (!Array.isArray(options.base)) {
-						options.base = [options.base];
-					}
-					middlewares.push(require('connect-modrewrite')([
-						//'!(\\..+)$ /index.html [L]'
-						//'^(.*) /index.html [NC,L]'
-						'^/api/.*$ http://www.google.com [P,L]',
-						'!\\.(js|css|.tpl.html|eot|svg|ttf|woff|otf|css|png|jpg|git|ico) /'
-
-					]));
-
-
-					options.base.forEach(function(base) {
-						// Serve static files.
-						middlewares.push(connect.static(base));
-					});
-					return middlewares;
-
-				}
+				base: '<%= config.build_dir %>',
+				middleware: middleware
 			}
-
 		},
 		dist: {
 			options: {
 				open: true,
 				base: ['<%= config.dist_dir %>'],
-				livereload: false,
-				middleware: function(connect, options) {
-					var middlewares = [];
-					if (!Array.isArray(options.base)) {
-						options.base = [options.base];
-					}
-					middlewares.push(require('connect-modrewrite')([
-						//'!(\\..+)$ /index.html [L]'
-						//'^(.*) /index.html [NC,L]'
-						'^/api/.*$ http://www.google.com [P,L]',
-						'!\\.(js|css|.tpl.html|eot|svg|ttf|woff|otf|css|png|jpg|git|ico) /'
-
-					]));
-
-
-					options.base.forEach(function(base) {
-						// Serve static files.
-						middlewares.push(connect.static(base));
-					});
-					return middlewares;
-
-				}
+				livereload: false
 			}
 		}
 	},
@@ -202,23 +166,6 @@ module.exports = {
 			}]
 		}
 	},
-
-
-	// Put files not handled in other tasks here
-
-	modernizr: {
-		devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-		outputFile: '<%= yeoman.dist %>/bower_components/modernizr/modernizr.js',
-		files: [
-			'<%= yeoman.dist %>/scripts/{,*/}*.js',
-			'<%= yeoman.dist %>/styles/{,*/}*.css',
-			'!<%= yeoman.dist %>/scripts/vendor/*'
-		],
-		uglify: true
-	},
-
-
-
 	html2js: {
 		options: {
 			base: 'webapp/src'
@@ -232,54 +179,27 @@ module.exports = {
 			dest: '<%= config.build_dir %>/templates-common.js'
 		}
 	},
-	        tpl: {
-
-            /**
-             * During development, we don't want to have wait for compilation,
-             * concatenation, minification, etc. So to avoid these steps, we simply
-             * add all script files directly to the `<head>` of `index.html`. The
-             * `src` property contains the list of included files.
-             */
-            build: {
-                dir: '<%= config.build_dir %>',
-                src: [
-                    '<%= config.vendor_files.js %>',
-                    '<%= config.build_dir %>/webapp/src/**/*.js',
-                    '<%= html2js.common.dest %>',
-                    '<%= html2js.app.dest %>',
-                    '<%= config.vendor_files.css %>',
-                    '<%= sass.dev.dest %>'
-                ]
-            }
-        },
-
-	concat: {
-		js_app: {
-			options: {
-				banner: '<%= config.banner %>'
-			},
+	tpl: {
+		build: {
+			dir: '<%= config.build_dir %>',
 			src: [
-				'build/module.prefix',
+				'<%= config.vendor_files.js %>',
 				'<%= config.build_dir %>/webapp/src/**/*.js',
-				'<%= html2js.app.dest %>',
 				'<%= html2js.common.dest %>',
-				'build/module.suffix'
-			],
-			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.name %>-<%= pkg.version %>.app.js'
-		},
-		js_vendor: {
-			src: '<%= config.vendor_files.js %>',
-			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.name %>-<%= pkg.version %>.vendor.js'
-		},
-		build_css: {
-			src: [
+				'<%= html2js.app.dest %>',
 				'<%= config.vendor_files.css %>',
-				'<%= config.dist_dir %>/assets/css/<%= pkg.name %>-<%= pkg.version %>.css'
-			],
-			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.name %>-<%= pkg.version %>.css'
+				'<%= sass.dev.dest %>'
+			]
 		},
+		dist: {
+			dir: '<%= config.dist_dir %>',
+			src: [
+				'<%= cssmin.dist.dest %>',
+				'<%= uglify.vendor.dest %>',
+				'<%= uglify.app.dest %>'
+			]
+		}
 	},
-
 	copy: {
 		webapp_js: {
 			files: [{
@@ -322,52 +242,8 @@ module.exports = {
 			}]
 		}
 	},
-
-
-
-	'template': {
-		'index_build': {
-			'options': {
-				'data': function() {
-					return {
-						js: getJs(),
-						css: getCss()
-					}
-				}
-			},
-			'files': {
-				'<%= config.build_dir %>/index.html': ['webapp/index.html.tpl']
-			}
-		},
-		'index_dist': {
-			'options': {
-				'data': function() {
-					return {
-						js: getJsDist(),
-						css: getCssDist()
-					}
-				}
-			},
-			'files': {
-				'<%= config.dist_dir %>/index.html': ['webapp/index.html.tpl']
-			}
-		}
-	},
-
-	cssmin: {
-		dist: {
-			options: {
-				banner: '<%= config.banner %>'
-			},
-
-			files: {
-				'<%= config.dist_dir %>/assets/css/<%= pkg.name %>-<%= pkg.version %>.css': ['<%= config.dist_dir %>/assets/css/<%= pkg.name %>-<%= pkg.version %>.css']
-			}
-
-		}
-	},
 	ngmin: {
-		compile: {
+		dist: {
 			files: [{
 				src: ['<%= config.webapp_files.js %>'],
 				cwd: '<%= config.build_dir %>',
@@ -376,30 +252,73 @@ module.exports = {
 			}]
 		}
 	},
+	htmlmin: {
+		dist: {
+			options: {
+				collapseWhitespace: true
+			},
+			files: {
+				'<%= config.dist_dir %>/index.html': '<%= config.dist_dir %>/index.html'
+			}
+		}
+	},
+	concurrent: {
+		build: [
+			'sass',
+			'copy:webapp_assets',
+			'copy:webapp_js',
+			'copy:vendor_js',
+			'copy:vendor_css'
+		]
+	},
 	uglify: {
 		options: {
 			banner: '<%= config.banner %>',
 			mangle: false
 		},
-		dist: {
-			files: [{
-				expand: true,
-				cwd: '<%= config.dist_dir %>/assets/js/',
-				src: '**/*.js',
-				dest: '<%= config.dist_dir %>/assets/js/'
-			}]
+		app: {
+			src: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js',
+			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js'
+		},
+		vendor: {
+			src: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js',
+			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js'
 		}
 	},
-
-	htmlmin: { // Task
-		dist: { // Target
-			options: { // Target options
-
-				collapseWhitespace: true
+	cssmin: {
+		dist: {
+			options: {
+				banner: '<%= config.banner %>'
 			},
-			files: { // Dictionary of files
-				'<%= config.dist_dir %>/index.html': '<%= config.dist_dir %>/index.html'
-			}
+			src: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css',
+			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
 		}
+	},
+	concat: {
+		js_app: {
+			options: {
+				banner: '<%= config.banner %>'
+			},
+			src: [
+				'build/module.prefix',
+				'<%= config.build_dir %>/webapp/src/**/*.js',
+				'<%= html2js.app.dest %>',
+				'<%= html2js.common.dest %>',
+				'build/module.suffix'
+			],
+			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js'
+		},
+		js_vendor: {
+			src: '<%= config.vendor_files.js %>',
+			dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js'
+		},
+		build_css: {
+			src: [
+				'<%= config.vendor_files.css %>',
+				'<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
+			],
+			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.css'
+		},
 	}
+
 };

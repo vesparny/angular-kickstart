@@ -1,29 +1,17 @@
-/**
- * This file/module contains all configuration for the build process.
- */
 module.exports = {
-	/**
-	 * The `build_dir` folder is where our projects are compiled during
-	 * development and the `compile_dir` folder is where our app resides once it's
-	 * completely built.
-	 */
 	build_dir: 'build/tmp',
 	dist_dir: 'build/dist',
-
 	webapp_files: {
 		js: ['webapp/src/app/**/*.js', 'webapp/src/common/**/*.js'],
 		tests: ['webapp/src/test/**/*.spec.js'],
 		assets: ['assets/**'],
 		templates_app: ['webapp/src/app/**/*.tpl.html'],
 		templates_common: ['webapp/src/common/**/*.tpl.html'],
-		html: ['webapp/index.html.tpl'],
 		sass: 'webapp/src/sass/main.scss'
 	},
 
 	test_files: {
-		js: [
-			'vendor/angular-mocks/angular-mocks.js'
-		]
+		js: ['vendor/angular-mocks/angular-mocks.js']
 	},
 
 	vendor_files: {

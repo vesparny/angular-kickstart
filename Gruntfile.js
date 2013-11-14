@@ -41,53 +41,33 @@ module.exports = function(grunt) {
 	}
 
 	// build tasks
-	createTask('images:debug', 'clean:images copy:images sprite');
-	createTask('images:release', 'images:debug imagemin:all rev:images');
+	grunt.registerTask('serve', [
+		'build',
+		'connect:livereload',
+		'watch'
+	]);
 
-	createTask('css:debug', 'clean:css stylus:all csslint');
-	createTask('css:release', 'clean:css stylus:all cssmin:release rev:css');
-
-	createTask('js:debug', 'clean:js copy:js_sources copy:js_bower_debug jshint');
-	createTask('js:release', 'clean:js copy:js_sources uglify:js clean:after_uglify copy:js_bower_release rev:js');
-
-	createTask('views:debug', 'clean:views jade:debug');
-	createTask('views:release', 'clean:views jade:release');
-
-
-
-	createTask('build:debug', 'clean html2js sass copy:webapp_assets copy:webapp_js copy:vendor_js copy:vendor_css tpl:build connect:livereload watch');
-	createTask('build:release', 'clean copy:other images:release css:release js:release views:release usemin bump-only:build');
-
-	// testing tasks
-	createTask('test', 'jshint csslint mochaTest:unit karma:unit_once');
-
-	// development and debugging tasks
-	createTask('dev_setup', 'pem_decrypt:dev');
-	createTask('dev', 'build:debug');
-
-	// continuous integration and deployment tasks
-	createTask('ci', 'build:release test');
-
-	createTask('default', 'dev');
-
+	grunt.registerTask('build', [
+		'clean',
+		'html2js',
+		'concurrent:build',
+		'tpl:build'
+	]);
 
 	grunt.registerTask('dist', [
 		//'jshint',
-		'clean:dist',
+		'build',
 		'copy:dist_assets',
-		'concat:build_css',
-		'cssmin',
 		'ngmin',
-		'concat:js_app',
-		'concat:js_vendor',
+		'concat',
+		'cssmin',
 		'uglify',
 		'rev',
 		'imagemin',
 		'svgmin',
-		'template:index_dist',
-		'htmlmin'
-
-
+		'tpl:dist'
 	]);
+
+	grunt.registerTask('default', 'serve');
 
 };
