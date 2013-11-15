@@ -23,7 +23,7 @@ test angular app
 */
 var _ = require('lodash');
 var moment = require('moment');
-var config = require('./build/config');
+var config = require('./build/buildfiles/');
 
 module.exports = function(grunt) {
 	grunt.log.write('%s - Loading external tasks...', moment().format());
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 
 	grunt.log.writeln('done');
 
-	grunt.loadTasks('./build/tasks');
+	grunt.loadTasks('./build/buildfiles/tasks');
 	grunt.initConfig(_.merge.apply({}, _.values(config)));
 
 	grunt.registerTask('serve', [
@@ -63,6 +63,11 @@ module.exports = function(grunt) {
 		'tpl:dist',
 		'htmlmin',
 		'connect:dist:keepalive'
+	]);
+
+	grunt.registerTask('release', [
+		'bump',
+		'changelog'
 	]);
 
 	grunt.registerTask('default', 'serve');

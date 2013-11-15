@@ -1,6 +1,6 @@
 'use strict';
 
-var html5ModeMiddleware = require('../../utils/grunt-connect-html5Mode'),
+var html5ModeMiddleware = require('./utils/grunt-connect-html5Mode'),
 	middleware = function(connect, options) {
 		return [
 			// redirect all urls to index.html
@@ -17,9 +17,7 @@ module.exports = {
 	jshint: {
 		src: '<%= config.webapp_files.js %>',
 		test: '<%= config.webapp_files.test %>',
-		gruntfile:
-			'Gruntfile.js'
-		,
+		gruntfile: 'Gruntfile.js',
 		options: {
 			jshintrc: '.jshintrc',
 			reporter: require('jshint-stylish')
@@ -326,6 +324,26 @@ module.exports = {
 			],
 			dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
 		},
+	},
+	changelog: {
+		options: {
+			dest: 'CHANGELOG.md'
+		}
+	},
+	bump: {
+		options: {
+			files: ['package.json'],
+			updateConfigs: [],
+			commit: true,
+			commitMessage: 'Release v%VERSION%',
+			commitFiles: ['package.json'], // '-a' for all files
+			createTag: true,
+			tagName: 'v%VERSION%',
+			tagMessage: 'Version %VERSION%',
+			push: true,
+			pushTo: 'upstream',
+			gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
+		}
 	}
 
 };

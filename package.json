@@ -1,6 +1,17 @@
 {
-  "name": "ngkit",
+  "author": "Alessandro Arnodo",
+  "name": "ng-kickstart",
   "version": "0.0.1",
+  "homepage": "https://github.com/vesparny/ng-kickstart",
+  "licenses": {
+    "type": "MIT",
+    "url": "https://raw.github.com/vesparny/ng-kickstart/master/LICENSE"
+  },
+  "bugs": "https://github.com/vesparny/ng-kickstart/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vesparny/ng-kickstart.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -16,7 +27,6 @@
     "grunt-contrib-imagemin": "~0.2.0",
     "grunt-contrib-watch": "~0.5.2",
     "grunt-rev": "~0.1.0",
-    "grunt-usemin": "~2.0.0",
     "grunt-svgmin": "~0.2.0",
     "grunt-concurrent": "~0.4.1",
     "load-grunt-tasks": "~0.1.0",
@@ -25,7 +35,9 @@
     "grunt-html2js": "~0.1.9",
     "grunt-ngmin": "0.0.3",
     "lodash": "~2.3.0",
-    "moment": "~2.4.0"
+    "moment": "~2.4.0",
+    "grunt-conventional-changelog": "~1.0.0",
+    "grunt-bump": "0.0.11"
   },
   "engines": {
     "node": ">=0.8.0"

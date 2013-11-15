@@ -9,7 +9,5 @@ module.exports = {
 	configuration: {
 		config: require('./config')
 	},
-	development: require('./task/development'),
-	build: require('./task/build'),
-	release: require('./task/release')
+	external: require('./external-tasks')
 };
