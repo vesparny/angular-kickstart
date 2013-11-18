@@ -1,6 +1,8 @@
 {
   "author": "Alessandro Arnodo",
   "name": "ng-kickstart",
+  "email": "alessandro@arnodo.net",
+  "url": "http://alessandro.arnodo.net",
   "version": "0.0.1",
   "homepage": "https://github.com/vesparny/ng-kickstart",
   "licenses": {
@@ -37,7 +39,7 @@
     "lodash": "~2.3.0",
     "moment": "~2.4.0",
     "grunt-conventional-changelog": "~1.0.0",
-    "grunt-bump": "0.0.11"
+    "grunt-connect-proxy": "~0.1.6"
   },
   "engines": {
     "node": ">=0.8.0"

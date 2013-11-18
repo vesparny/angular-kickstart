@@ -14,5 +14,8 @@
     "alertify": "~0.3.10",
     "lodash": "~2.2.1",
     "bootswatch-scss": "~3.0.0"
+  },
+  "resolutions": {
+    "angular": "1.2.1"
   }
 }

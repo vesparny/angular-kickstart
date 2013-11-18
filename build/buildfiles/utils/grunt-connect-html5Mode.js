@@ -1,28 +1,28 @@
 var fs = require('fs'),
-  url = require('url');
+	url = require('url');
 
-module.exports = function(rootDir, indexFile) {
-  indexFile = indexFile || "index.html";
+module.exports = function(grunt) {
+	var indexFile = "index.html",
+		rootDir = grunt.config('config.build_dir');
 
-  return function(req, res, next) {
-    var path = url.parse(req.url).pathname;
+	return function(req, res, next) {
+		var path = url.parse(req.url).pathname;
 
-    fs.readFile('./' + rootDir + path, function(err, buf) {
-      if (!err) return next();
+		fs.readFile('./' + rootDir + path, function(err, buf) {
+			if (!err) return next();
 
-      fs.readFile('./' + rootDir + '/' + indexFile, function(err, buffer) {
-        if (err) return next(err);
+			fs.readFile('./' + rootDir + '/' + indexFile, function(err, buffer) {
+				if (err) return next(err);
 
-        resp = {
-          headers: {
-            'Content-Type': 'text/html',
-            'Content-Length': buffer.length
-          },
-          body: buffer
-        };
-        res.writeHead(200, resp.headers);
-        res.end(resp.body);
-      });
-    });
-  }
+				resp = {
+					headers: {
+						'Content-Type': 'text/html'
+					},
+					body: buffer
+				};
+				res.writeHead(200, resp.headers);
+				res.end(resp.body);
+			});
+		});
+	}
 };

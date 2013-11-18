@@ -7,7 +7,8 @@ module.exports = {
 		assets: ['assets/**'],
 		templates_app: ['webapp/src/app/**/*.tpl.html'],
 		templates_common: ['webapp/src/common/**/*.tpl.html'],
-		sass: 'webapp/src/sass/main.scss'
+		sass: 'webapp/src/sass/main.scss',
+		html: 'webapp/index.tpl.html'
 	},
 
 	test_files: {

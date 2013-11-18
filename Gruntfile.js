@@ -21,9 +21,11 @@ http://blog.diniscruz.com/2013/06/a-small-angularjs-jasmine-test-executed.html
 
 test angular app
 */
-var _ = require('lodash');
-var moment = require('moment');
-var config = require('./build/buildfiles/');
+var _ = require('lodash'),
+	moment = require('moment'),
+	config = require('./build/config'),
+	externalTasks = require('./build/buildfiles/external-tasks');
+
 
 module.exports = function(grunt) {
 	grunt.log.write('%s - Loading external tasks...', moment().format());
@@ -34,12 +36,21 @@ module.exports = function(grunt) {
 	grunt.log.writeln('done');
 
 	grunt.loadTasks('./build/buildfiles/tasks');
-	grunt.initConfig(_.merge.apply({}, _.values(config)));
+	grunt.initConfig(_.extend({
+		config: config,
+		pkg: grunt.file.readJSON('package.json')
+	}, externalTasks(grunt)));
 
 	grunt.registerTask('serve', [
 		'build',
+		'configureProxies',
 		'connect:livereload',
 		'watch'
+	]);
+
+	grunt.registerTask('p', [
+		'configureProxies',
+		'connect:livereload'
 	]);
 
 	grunt.registerTask('build', [
@@ -63,11 +74,6 @@ module.exports = function(grunt) {
 		'tpl:dist',
 		'htmlmin',
 		'connect:dist:keepalive'
-	]);
-
-	grunt.registerTask('release', [
-		'bump',
-		'changelog'
 	]);
 
 	grunt.registerTask('default', 'serve');
