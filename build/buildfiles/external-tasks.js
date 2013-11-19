@@ -1,7 +1,18 @@
 'use strict';
-
+var _ = require("lodash");
 var html5ModeMiddleware = require('./utils/grunt-connect-html5Mode');
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+var karmaConfig = function(configFile, customOptions) {
+	var options = {
+		configFile: configFile,
+		keepalive: true
+	};
+	var travisOptions = process.env.TRAVIS && {
+		browsers: ['Firefox'],
+		reporters: 'dots'
+	};
+	return _.extend(options, customOptions, travisOptions);
+};
 
 module.exports = function(grunt) {
 	return {
@@ -21,23 +32,14 @@ module.exports = function(grunt) {
 			}
 		},
 		karma: {
-			unit_once: {
-				singleRun: true,
-				reporters: ['progress'],
-				frameworks: ['mocha'],
-				browsers: ['PhantomJS'],
-				options: {
-					files: ['test/client/unit/**/*.js']
-				}
+			unit: {
+				options: karmaConfig('build/karma.config.unit.js')
 			},
-			unit_background: {
-				background: true,
-				reporters: ['progress'],
-				frameworks: ['mocha'],
-				browsers: ['PhantomJS'],
-				options: {
-					files: ['test/client/unit/**/*.js']
-				}
+			watch: {
+				options: karmaConfig('build/karma.config.unit.js', {
+					singleRun: false,
+					autoWatch: true
+				})
 			}
 		},
 		watch: {
@@ -77,7 +79,7 @@ module.exports = function(grunt) {
 		},
 		connect: {
 			options: {
-				port: 9001,
+				port: 9000,
 				livereload: 35729,
 				hostname: 'localhost'
 			},
@@ -89,7 +91,7 @@ module.exports = function(grunt) {
 					middleware: function(connect, options) {
 						return [
 							proxySnippet,
-							html5ModeMiddleware(grunt),
+							html5ModeMiddleware(grunt.config('config.build_dir')),
 							connect.static(options.base),
 							connect.directory(options.base)
 						];
@@ -110,7 +112,7 @@ module.exports = function(grunt) {
 					livereload: false,
 					middleware: function(connect, options) {
 						return [
-							html5ModeMiddleware(grunt),
+							html5ModeMiddleware(grunt.config('config.dist_dir')),
 							connect.static(options.base),
 							connect.directory(options.base)
 						];
@@ -280,7 +282,8 @@ module.exports = function(grunt) {
 		cssmin: {
 			dist: {
 				options: {
-					banner: '<%= config.banner %>'
+					banner: '<%= config.banner %>',
+					keepSpecialComments: 0
 				},
 				src: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css',
 				dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'

@@ -3,7 +3,6 @@ module.exports = {
 	dist_dir: 'build/dist',
 	webapp_files: {
 		js: ['webapp/src/app/**/*.js', 'webapp/src/common/**/*.js'],
-		test: ['test/**/*.spec.js'],
 		assets: ['assets/**'],
 		templates_app: ['webapp/src/app/**/*.tpl.html'],
 		templates_common: ['webapp/src/common/**/*.tpl.html'],
@@ -30,5 +29,5 @@ module.exports = {
 			'webapp/vendor/alertify/themes/alertify.default.css'
 		]
 	},
-	banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd")  %>*/'
+	banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd")  %> */\n'
 };

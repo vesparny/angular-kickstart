@@ -48,11 +48,6 @@ module.exports = function(grunt) {
 		'watch'
 	]);
 
-	grunt.registerTask('p', [
-		'configureProxies',
-		'connect:livereload'
-	]);
-
 	grunt.registerTask('build', [
 		'clean',
 		'html2js',
@@ -63,6 +58,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('dist', [
 		'jshint',
 		'build',
+		'karma:unit',
 		'copy:dist_assets',
 		'ngmin',
 		'concat',
@@ -73,9 +69,12 @@ module.exports = function(grunt) {
 		'svgmin',
 		'tpl:dist',
 		'htmlmin',
+		'configureProxies',
 		'connect:dist:keepalive'
 	]);
 
 	grunt.registerTask('default', 'serve');
+
+	grunt.registerTask('test-watch', ['karma:watch']);
 
 };

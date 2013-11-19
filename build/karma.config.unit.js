@@ -1,6 +1,6 @@
-module.exports = function ( karma ) {
+module.exports = function(karma) {
   karma.configure({
-    /** 
+    /**
      * From where to look for files, starting with the location of this file.
      */
     basePath: '../',
@@ -9,19 +9,23 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      <% scripts.forEach( function ( file ) { %>'<%= file %>',
-      <% }); %>
-      'src/**/*.js',
-      'src/**/*.coffee',
+      'webapp/vendor/angular/angular.js',
+      'webapp/vendor/angular-mocks/angular-mocks.js',
+      'webapp/vendor/angular-route/angular-route.js',
+      'webapp/vendor/angular-resource/angular-resource.js',
+      'webapp/vendor/angular-animate/angular-animate.js',
+      'webapp/vendor/angular-loading-bar/build/loading-bar.js',
+      'webapp/vendor/alertify/alertify.js',
+      'webapp/src/**/*.js',
+      'build/tmp/templates*.js',
+      'webapp/test/**/*.spec.js'
     ],
     exclude: [
-      'src/assets/**/*.js'
+      'webapp/src/assets/**/*.js'
     ],
-    frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-firefox-launcher', 'karma-chrome-launcher', 'karma-phantomjs-launcher', 'karma-coffee-preprocessor' ],
-    preprocessors: {
-      '**/*.coffee': 'coffee',
-    },
+    frameworks: ['jasmine'],
+    plugins: ['karma-jasmine', 'karma-firefox-launcher', 'karma-chrome-launcher', 'karma-phantomjs-launcher'],
+
 
     /**
      * How to report, by default.
@@ -34,9 +38,9 @@ module.exports = function ( karma ) {
      */
     port: 9018,
     runnerPort: 9100,
-    urlRoot: '/',
+    urlRoot: '/__test/',
 
-    /** 
+    /**
      * Disable file watching by default.
      */
     autoWatch: false,
@@ -54,8 +58,10 @@ module.exports = function ( karma ) {
      * open and the tests will automatically occur there during the build. This has
      * the aesthetic advantage of not launching a browser every time you save.
      */
-    browsers: [
-      'Firefox'
-    ]
+    browsers: ['Chrome'],
+
+    // Continuous Integration mode
+    // if true, it capture browsers, run tests and exit
+    singleRun: true
   });
 };

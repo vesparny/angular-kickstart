@@ -1,10 +1,8 @@
 var fs = require('fs'),
 	url = require('url');
 
-module.exports = function(grunt) {
-	var indexFile = "index.html",
-		rootDir = grunt.config('config.build_dir');
-
+module.exports = function(rootDir) {
+	var indexFile = "index.html"
 	return function(req, res, next) {
 		var path = url.parse(req.url).pathname;
 
