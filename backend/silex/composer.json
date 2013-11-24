@@ -3,7 +3,8 @@
         "silex/silex": "~1.1",
         "monolog/monolog": "~1.6",
         "twig/twig": "~1.14",
-        "doctrine/dbal": "~2.4"
+        "doctrine/dbal": "~2.4",
+        "nesbot/Carbon": "~1.6"
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7",

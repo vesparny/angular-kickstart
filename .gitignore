@@ -21,3 +21,6 @@ bin
 build/tmp
 build/dist
 
+#backend
+backend/**/vendor
+
