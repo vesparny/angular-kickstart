@@ -23,4 +23,5 @@ build/dist
 
 #backend
 backend/**/vendor
+backend/**/app.db
 

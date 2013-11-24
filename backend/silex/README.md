@@ -12,7 +12,7 @@ You need at least php **5.4.*** with **SQLite extension** enabled and **Composer
     sqlite3 app.db < resources/sql/schema.sql
     php -S 0:9001 -t web/
     
-Your api is now availbale at http://localhost:9001.
+Your api is now available at http://localhost:9001.
 
 The requests will be proxied to this url from the connect middleware.
 
