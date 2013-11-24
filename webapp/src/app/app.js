@@ -35,7 +35,7 @@ angular.module('app', [
 	});
 }).run(function run($rootScope) {
 	$rootScope.config = {
-		"apiUrl": 'api'
+		"apiUrl": 'api/v1'
 	};
 	$rootScope.version = "0.0.1";
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
