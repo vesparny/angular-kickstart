@@ -1,4 +1,4 @@
 angular-up
 ==========
 
-Angular.js starter kit
+Angular.js starter kit ...
