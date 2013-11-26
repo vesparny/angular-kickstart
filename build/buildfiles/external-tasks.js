@@ -73,7 +73,7 @@ module.exports = function(grunt) {
 				tasks: ['html2js']
 			},
 			sass: {
-				files: ['webapp/src/sass/**/*.sass'],
+				files: '<%= config.webapp_files.sass %>',
 				tasks: ['sass']
 			}
 		},
