@@ -1,17 +1,14 @@
 <div class="jumbotron ng-scope notes">
-    <h4 class="center">
-        Your notes are saved in a <code>SQLite</code> database file (app.db) in the root directory of the project.
-    </h4>
-    <form ng-submit="addNote()" novalidate name="addForm">
+    <form ng-submit="notesCtrl.addNote(notesCtrl.newNote)" novalidate name="addForm">
         <div class="form-group" ng-class="{'has-error': addForm.newNote.$invalid && !addForm.newNote.$pristine}">
-            <input type="text" ng-model="data.newNote" name="newNote" class="form-control addNote" required autofocus
+            <input type="text" ng-model="notesCtrl.newNote" name="newNote" class="form-control addNote" required autofocus
                    placeholder="Write a new note and press enter :)" maxlength="100">
         </div>
     </form>
-    <form ng-repeat="note in data.notes" class="form-inline nList" novalidate ng-submit="updateNote(note)">
+    <form ng-repeat="note in notesCtrl.notes" class="form-inline nList" novalidate ng-submit="notesCtrl.updateNote(note)">
         <div class="form-group">
            <input class="form-control" ng-model="note.note" ng-blur="showRemove = false" ng-focus="showRemove = true"/>
         </div>
-        <i class="icon-remove-sign" ng-show="showRemove" ng-mousedown="deleteNote($index, note.id)"></i>
+        <i class="icon-remove-sign" ng-show="showRemove" ng-mousedown="notesCtrl.deleteNote($index, note.id)"></i>
     </form>
 </div>

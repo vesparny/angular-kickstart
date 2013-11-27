@@ -1,5 +1,5 @@
 angular.module('app.service', ['ngResource']).
-factory('Notes', function($resource, $rootScope) {
+factory('NotesService', function($resource, $rootScope) {
 	return $resource($rootScope.config.apiUrl + '/notes/:id', {
 		id: '@id'
 	});
