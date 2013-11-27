@@ -14,7 +14,7 @@ angular.module('app', [
 	'templates.app',
 	'templates.common',
 	'app.home',
-	'app.example',
+	'app.notes',
 	'ngRoute',
 	'ngAnimate',
 	'chieffancypants.loadingBar',

@@ -1,4 +1,4 @@
-angular.module('app.example', [
+angular.module('app.notes', [
 	'ngRoute'
 ]).config(function config($routeProvider) {
 	$routeProvider.when('/notes', {
