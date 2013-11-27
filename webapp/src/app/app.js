@@ -39,7 +39,7 @@ angular.module('app', [
 	};
 	$rootScope.version = "0.0.1";
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
-	$scope.title = "silex + angularjs";
+	$scope.title = "ng-kickstart";
 	$scope.isActive = function(viewLocation) {
 		return (viewLocation === $location.path());
 	};
