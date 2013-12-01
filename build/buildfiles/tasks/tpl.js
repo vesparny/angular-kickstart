@@ -1,23 +1,23 @@
 'use strict';
 
-function filterForJS(files) {
+function findJs(files) {
 	return files.filter(function(file) {
 		return file.match(/\.js$/);
 	});
 }
 
-function filterForCSS(files) {
+function findCss(files) {
 	return files.filter(function(file) {
 		return file.match(/\.css$/);
 	});
 }
 module.exports = function(grunt) {
 	grunt.registerMultiTask('tpl', 'Process index.tpl.html template', function() {
-		var dirRE = new RegExp('^(' + grunt.config('config.build_dir') + '|' + grunt.config('config.dist_dir') + ')\/', 'g');
-		var jsFiles = filterForJS(this.filesSrc).map(function(file) {
+		var dirRE = new RegExp('^(' + grunt.config('config.buildDir') + '|' + grunt.config('config.distDir') + ')\/', 'g');
+		var jsFiles = findJs(this.filesSrc).map(function(file) {
 			return file.replace(dirRE, '');
 		});
-		var cssFiles = filterForCSS(this.filesSrc).map(function(file) {
+		var cssFiles = findCss(this.filesSrc).map(function(file) {
 			return file.replace(dirRE, '');
 		});
 
@@ -33,4 +33,4 @@ module.exports = function(grunt) {
 			}
 		});
 	});
-}
+};

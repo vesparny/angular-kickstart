@@ -1,5 +1,6 @@
 angular.module('app.notes', [
-	'ngRoute'
+	'ngRoute',
+	'notes.service'
 ]).config(function config($routeProvider) {
 	$routeProvider.when('/notes', {
 		controller: 'NotesCtrl as notesCtrl',

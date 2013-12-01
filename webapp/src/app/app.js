@@ -18,20 +18,12 @@ angular.module('app', [
 	'ngRoute',
 	'ngAnimate',
 	'chieffancypants.loadingBar',
-	'app.service',
-	'common.directive'
+	'common.directives.appVersion',
+	'common.interceptors.http'
 ]).config(function myAppConfig($provide, $routeProvider, $locationProvider, $httpProvider) {
 	$locationProvider.html5Mode(true);
 	$routeProvider.otherwise({
-		redirectTo: '/home'
-	});
-	$httpProvider.interceptors.push(function($q) {
-		return {
-			'responseError': function(rejection) {
-				alertify.error(rejection.data.message);
-				return $q.reject(rejection);
-			}
-		};
+		redirectTo: '/'
 	});
 }).run(function run($rootScope) {
 	$rootScope.config = {

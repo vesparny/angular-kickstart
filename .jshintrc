@@ -1,7 +1,6 @@
 {
-    "node": true,
+	"node": true,
     "browser": true,
-    "esnext": true,
     "bitwise": true,
     "camelcase": true,
     "curly": true,
@@ -9,13 +8,6 @@
     "immed": true,
     "latedef": true,
     "newcap": true,
-    "noarg": true,
-    "regexp": true,
-    "undef": true,
-    "unused": true,
     "trailing": true,
-    "globals": {
-    	"angular":true,
-    	"alertify":true
-    }
+    "globals": {}
 }

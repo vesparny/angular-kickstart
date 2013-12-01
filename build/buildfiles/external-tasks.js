@@ -1,25 +1,26 @@
 'use strict';
-var _ = require("lodash");
-var html5ModeMiddleware = require('./utils/grunt-connect-html5Mode');
-var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
-var karmaConfig = function(configFile, customOptions) {
-	var options = {
-		configFile: configFile,
-		keepalive: true
+
+var _ = require("lodash"),
+	html5ModeMiddleware = require('./utils/grunt-connect-html5Mode'),
+	proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest,
+	karmaConfig = function(configFile, customOptions) {
+		var options = {
+			configFile: configFile,
+			keepalive: true
+		}, travisOptions = process.env.TRAVIS && {
+				browsers: ['Firefox'],
+				reporters: 'dots'
+			};
+		return _.extend(options, customOptions, travisOptions);
 	};
-	var travisOptions = process.env.TRAVIS && {
-		browsers: ['Firefox'],
-		reporters: 'dots'
-	};
-	return _.extend(options, customOptions, travisOptions);
-};
 
 module.exports = function(grunt) {
 	return {
 		jshint: {
-			src: '<%= config.webapp_files.js %>',
-			test: '<%= config.webapp_files.test %>',
+			src: '<%= config.webappFiles.js %>',
+			tests: '<%= config.webappFiles.tests %>',
 			gruntfile: 'Gruntfile.js',
+			buildFiles: '<%= config.buildFiles %>',
 			options: {
 				jshintrc: '.jshintrc',
 				reporter: require('jshint-stylish')
@@ -27,71 +28,80 @@ module.exports = function(grunt) {
 		},
 		sass: {
 			dev: {
-				src: '<%= config.webapp_files.sass %>',
-				dest: '<%= config.build_dir %>/assets/css/<%= pkg.version %>.style.css'
+				src: '<%= config.webappFiles.sass %>',
+				dest: '<%= config.buildDir %>/assets/css/<%= pkg.version %>.style.css'
 			}
 		},
 		karma: {
 			unit: {
 				options: karmaConfig('build/karma.config.unit.js')
 			},
+			/* TODO
 			watch: {
 				options: karmaConfig('build/karma.config.unit.js', {
 					singleRun: false,
 					autoWatch: true
 				})
 			}
+			*/
 		},
 		watch: {
 			options: {
 				livereload: true
 			},
 			gruntfile: {
+				files: '<%= config.buildFiles %>',
+				tasks: ['newer:jshint:buildFiles'],
+				options: {
+					livereload: false
+				}
+			},
+			buildFiles: {
 				files: 'Gruntfile.js',
-				tasks: ['jshint:gruntfile'],
+				tasks: ['newer:jshint:gruntfile'],
 				options: {
 					livereload: false
 				}
 			},
 			jssrc: {
-				files: '<%= config.webapp_files.js %>',
-				tasks: ['jshint:src', 'copy:webapp_js']
+				files: '<%= config.webappFiles.js %>',
+				tasks: ['newer:jshint:src', 'newer:copy:webappJs']
 			},
 			assets: {
-				files: '<%= config.webapp_files.assets %>',
-				tasks: ['copy:webapp_assets']
+				files: '<%= config.webappFiles.assets %>',
+				tasks: ['newer:copy:webappAssets']
 			},
 			html: {
-				files: ['<%= config.webapp_files.html %>'],
-				tasks: ['tpl:build']
+				files: ['<%= config.webappFiles.html %>'],
+				tasks: ['newer:tpl:build']
 			},
 			templates: {
 				files: [
-					'<%= config.webapp_files.templates_app %>',
-					'<%= config.webapp_files.templates_common %>'
+					'<%= config.webappFiles.templatesApp %>',
+					'<%= config.webappFiles.templatesCommon %>'
 				],
 				tasks: ['html2js']
 			},
 			sass: {
-				files: '<%= config.webapp_files.sass %>',
+				files: '<%= config.webappFiles.sass %>',
 				tasks: ['sass']
 			}
 		},
 		connect: {
 			options: {
-				port: 9000,
-				livereload: 35729,
-				hostname: 'localhost'
+				port: '<%= config.connect.port %>',
+				livereload: '<%= config.connect.livereload %>',
+				hostname: '<%= config.connect.hostname %>'
 			},
 			livereload: {
 				options: {
 					open: true,
 					livereload: true,
-					base: '<%= config.build_dir %>',
+					base: '<%= config.buildDir %>',
 					middleware: function(connect, options) {
 						return [
 							proxySnippet,
-							html5ModeMiddleware(grunt.config('config.build_dir')),
+							html5ModeMiddleware(grunt.config('config.buildDir')),
 							connect.static(options.base),
 							connect.directory(options.base)
 						];
@@ -100,19 +110,19 @@ module.exports = function(grunt) {
 				}
 			},
 			proxies: [{
-				context: '/api',
-				host: 'localhost',
-				port: 9001,
+				context: '<%= config.proxy.context %>',
+				host: '<%= config.proxy.host %>',
+				port: '<%= config.proxy.port %>',
 				changeOrigin: true
 			}],
 			dist: {
 				options: {
 					open: true,
-					base: '<%= config.dist_dir %>',
+					base: '<%= config.distDir %>',
 					livereload: false,
 					middleware: function(connect, options) {
 						return [
-							html5ModeMiddleware(grunt.config('config.dist_dir')),
+							html5ModeMiddleware(grunt.config('config.distDir')),
 							connect.static(options.base),
 							connect.directory(options.base)
 						];
@@ -121,15 +131,15 @@ module.exports = function(grunt) {
 			}
 		},
 		clean: {
-			dist: '<%= config.dist_dir %>/*',
-			tmp: '<%= config.build_dir %>/*'
+			dist: '<%= config.distDir %>/*',
+			tmp: '<%= config.buildDir %>/*'
 		},
 		rev: {
 			dist: {
 				files: {
 					src: [
-						'<%= config.dist_dir %>/assets/js/{,*/}*.js',
-						'<%= config.dist_dir %>/assets/css/{,*/}*.css'
+						'<%= config.distDir %>/assets/js/{,*/}*.js',
+						'<%= config.distDir %>/assets/css/{,*/}*.css'
 					]
 				}
 			}
@@ -138,9 +148,9 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.dist_dir %>/assets/img',
+					cwd: '<%= config.distDir %>/assets/img',
 					src: '{,*/}*.{gif,jpeg,jpg,png}',
-					dest: '<%= config.dist_dir %>/assets/img'
+					dest: '<%= config.distDir %>/assets/img'
 				}]
 			}
 		},
@@ -148,9 +158,9 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.dist_dir %>/assets/img',
+					cwd: '<%= config.distDir %>/assets/img',
 					src: '{,*/}*.svg',
-					dest: '<%= config.dist_dir %>/assets/img'
+					dest: '<%= config.distDir %>/assets/img'
 				}]
 			}
 		},
@@ -162,76 +172,76 @@ module.exports = function(grunt) {
 				options: {
 					module: "templates.app"
 				},
-				src: ['<%= config.webapp_files.templates_app %>'],
-				dest: '<%= config.build_dir %>/templates-app.js'
+				src: ['<%= config.webappFiles.templatesApp %>'],
+				dest: '<%= config.buildDir %>/templates-app.js'
 			},
 			common: {
 				options: {
 					module: "templates.common"
 				},
-				src: ['<%= config.webapp_files.templates_common %>'],
-				dest: '<%= config.build_dir %>/templates-common.js'
+				src: ['<%= config.webappFiles.templatesCommon %>'],
+				dest: '<%= config.buildDir %>/templates-common.js'
 			}
 		},
 		tpl: {
 			build: {
-				dir: '<%= config.build_dir %>',
+				dir: '<%= config.buildDir %>',
 				src: [
-					'<%= config.vendor_files.js %>',
-					'<%= config.build_dir %>/webapp/src/**/*.js',
+					'<%= config.vendorFiles.js %>',
+					'<%= config.buildDir %>/webapp/src/**/*.js',
 					'<%= html2js.common.dest %>',
 					'<%= html2js.app.dest %>',
-					'<%= config.vendor_files.css %>',
+					'<%= config.vendorFiles.css %>',
 					'<%= sass.dev.dest %>'
 				]
 			},
 			dist: {
-				dir: '<%= config.dist_dir %>',
+				dir: '<%= config.distDir %>',
 				src: [
-					'<%= config.dist_dir %>/assets/css/*.css',
-					'<%= config.dist_dir %>/assets/js/*vendor.js',
-					'<%= config.dist_dir %>/assets/js/*app.js'
+					'<%= config.distDir %>/assets/css/*.css',
+					'<%= config.distDir %>/assets/js/*vendor.js',
+					'<%= config.distDir %>/assets/js/*app.js'
 				]
 			}
 		},
 		copy: {
-			webapp_js: {
+			webappJs: {
 				files: [{
-					src: ['<%= config.webapp_files.js %>'],
-					dest: '<%= config.build_dir %>/',
+					src: ['<%= config.webappFiles.js %>'],
+					dest: '<%= config.buildDir %>/',
 					cwd: '.',
 					expand: true
 				}]
 			},
-			webapp_assets: {
+			webappAssets: {
 				files: [{
-					src: ['<%= config.webapp_files.assets %>'],
-					dest: '<%= config.build_dir %>',
+					src: ['<%= config.webappFiles.assets %>'],
+					dest: '<%= config.buildDir %>',
 					cwd: 'webapp/src',
 					expand: true
 				}]
 			},
-			vendor_css: {
+			vendorCss: {
 				files: [{
-					src: ['<%= config.vendor_files.css %>'],
-					dest: '<%= config.build_dir %>',
+					src: ['<%= config.vendorFiles.css %>'],
+					dest: '<%= config.buildDir %>',
 					cwd: '.',
 					expand: true
 				}]
 			},
-			vendor_js: {
+			vendorJs: {
 				files: [{
-					src: ['<%= config.vendor_files.js %>'],
-					dest: '<%= config.build_dir %>',
+					src: ['<%= config.vendorFiles.js %>'],
+					dest: '<%= config.buildDir %>',
 					cwd: '.',
 					expand: true
 				}]
 			},
-			dist_assets: {
+			distAssets: {
 				files: [{
 					src: ['**'],
-					dest: '<%= config.dist_dir %>/assets',
-					cwd: '<%=config.build_dir %>/assets',
+					dest: '<%= config.distDir %>/assets',
+					cwd: '<%=config.buildDir %>/assets',
 					expand: true
 				}]
 			}
@@ -239,9 +249,9 @@ module.exports = function(grunt) {
 		ngmin: {
 			dist: {
 				files: [{
-					src: ['<%= config.webapp_files.js %>'],
-					cwd: '<%= config.build_dir %>',
-					dest: '<%= config.build_dir %>',
+					src: ['<%= config.webappFiles.js %>'],
+					cwd: '<%= config.buildDir %>',
+					dest: '<%= config.buildDir %>',
 					expand: true
 				}]
 			}
@@ -252,17 +262,16 @@ module.exports = function(grunt) {
 					collapseWhitespace: true
 				},
 				files: {
-					'<%= config.dist_dir %>/index.html': '<%= config.dist_dir %>/index.html'
+					'<%= config.distDir %>/index.html': '<%= config.distDir %>/index.html'
 				}
 			}
 		},
 		concurrent: {
 			build: [
 				'sass',
-				'copy:webapp_assets',
-				'copy:webapp_js',
-				'copy:vendor_js',
-				'copy:vendor_css'
+				'copy:webappJs',
+				'copy:vendorJs',
+				'copy:vendorCss'
 			]
 		},
 		uglify: {
@@ -271,12 +280,12 @@ module.exports = function(grunt) {
 				mangle: false
 			},
 			app: {
-				src: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js',
-				dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js'
+				src: '<%= config.distDir %>/assets/js/<%= pkg.version %>.app.js',
+				dest: '<%= config.distDir %>/assets/js/<%= pkg.version %>.app.js'
 			},
 			vendor: {
-				src: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js',
-				dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js'
+				src: '<%= config.distDir %>/assets/js/<%= pkg.version %>.vendor.js',
+				dest: '<%= config.distDir %>/assets/js/<%= pkg.version %>.vendor.js'
 			}
 		},
 		cssmin: {
@@ -285,34 +294,34 @@ module.exports = function(grunt) {
 					banner: '<%= config.banner %>',
 					keepSpecialComments: 0
 				},
-				src: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css',
-				dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
+				src: '<%= config.distDir %>/assets/css/<%= pkg.version %>.style.css',
+				dest: '<%= config.distDir %>/assets/css/<%= pkg.version %>.style.css'
 			}
 		},
 		concat: {
-			js_app: {
+			webappJs: {
 				options: {
 					banner: '<%= config.banner %>'
 				},
 				src: [
 					'build/module.prefix',
-					'<%= config.build_dir %>/webapp/src/**/*.js',
+					'<%= config.buildDir %>/webapp/src/**/*.js',
 					'<%= html2js.app.dest %>',
 					'<%= html2js.common.dest %>',
 					'build/module.suffix'
 				],
-				dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.app.js'
+				dest: '<%= config.distDir %>/assets/js/<%= pkg.version %>.app.js'
 			},
-			js_vendor: {
-				src: '<%= config.vendor_files.js %>',
-				dest: '<%= config.dist_dir %>/assets/js/<%= pkg.version %>.vendor.js'
+			vendorJS: {
+				src: '<%= config.vendorFiles.js %>',
+				dest: '<%= config.distDir %>/assets/js/<%= pkg.version %>.vendor.js'
 			},
-			build_css: {
+			buildCss: {
 				src: [
-					'<%= config.vendor_files.css %>',
-					'<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
+					'<%= config.vendorFiles.css %>',
+					'<%= config.distDir %>/assets/css/<%= pkg.version %>.style.css'
 				],
-				dest: '<%= config.dist_dir %>/assets/css/<%= pkg.version %>.style.css'
+				dest: '<%= config.distDir %>/assets/css/<%= pkg.version %>.style.css'
 			},
 		},
 		changelog: {
@@ -320,5 +329,5 @@ module.exports = function(grunt) {
 				dest: 'CHANGELOG.md'
 			}
 		}
-	}
+	};
 };

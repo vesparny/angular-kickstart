@@ -1,29 +1,8 @@
 'use strict';
-/*
-TODO
-vedere grunt changed onli file su slide addy osmani
-creare gist con tutti i grunt plughin interessanti
-usare gocardless
-fare tag git su goprod
-usare rev con la versione
-vedere angularfun
-vedere jshint prop
-watch e test
-https://github.com/bevacqua/unbox
 
-angularfun
-https://github.com/mgechev/angularjs-style-guide
-yearofmoo
-vedere bootstrap di mean io
-http://blog.diniscruz.com/2013/06/running-karmas-angularjs-example.html
-http://docs.angularjs.org/guide/dev_guide.e2e-testing
-http://blog.diniscruz.com/2013/06/a-small-angularjs-jasmine-test-executed.html
-
-test angular app
-*/
 var _ = require('lodash'),
 	moment = require('moment'),
-	config = require('./build/config'),
+	config = require('./build/build.config'),
 	externalTasks = require('./build/buildfiles/external-tasks');
 
 
@@ -52,6 +31,7 @@ module.exports = function(grunt) {
 		'clean',
 		'html2js',
 		'concurrent:build',
+		'copy:webappAssets',
 		'tpl:build'
 	]);
 
@@ -59,7 +39,7 @@ module.exports = function(grunt) {
 		'jshint',
 		'build',
 		'karma:unit',
-		'copy:dist_assets',
+		'copy:distAssets',
 		'ngmin',
 		'concat',
 		'cssmin',
@@ -74,7 +54,4 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('default', 'serve');
-
-	grunt.registerTask('test-watch', ['karma:watch']);
-
 };

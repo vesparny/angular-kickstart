@@ -1,20 +1,30 @@
+'use strict';
+
 module.exports = {
-	build_dir: 'build/tmp',
-	dist_dir: 'build/dist',
-	webapp_files: {
+	buildDir: 'build/tmp',
+	distDir: 'build/dist',
+	buildFiles: ['build/**/*.js', '!build/tmp/**', '!build/dist/**'],
+	banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd")  %> */\n',
+	proxy: {
+		context: '/api',
+		host: 'localhost',
+		port: 9001
+	},
+	connect: {
+		port: 9000,
+		livereload: 35729,
+		hostname: 'localhost'
+	},
+	webappFiles: {
 		js: ['webapp/src/app/**/*.js', 'webapp/src/common/**/*.js'],
 		assets: ['assets/**'],
-		templates_app: ['webapp/src/app/**/*.tpl.html'],
-		templates_common: ['webapp/src/common/**/*.tpl.html'],
+		tests: ['webapp/test/**/*.spec.js'],
+		templatesApp: ['webapp/src/app/**/*.tpl.html'],
+		templatesCommon: ['webapp/src/common/**/*.tpl.html'],
 		sass: 'webapp/src/sass/main.scss',
 		html: 'webapp/index.tpl.html'
 	},
-
-	test_files: {
-		js: ['vendor/angular-mocks/angular-mocks.js']
-	},
-
-	vendor_files: {
+	vendorFiles: {
 		js: [
 			'webapp/vendor/angular/angular.js',
 			'webapp/vendor/angular-route/angular-route.js',
@@ -28,6 +38,6 @@ module.exports = {
 			'webapp/vendor/alertify/themes/alertify.core.css',
 			'webapp/vendor/alertify/themes/alertify.default.css'
 		]
-	},
-	banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd")  %> */\n'
+	}
 };
+

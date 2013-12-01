@@ -1,7 +1,5 @@
-@import "../../vendor/sass-bootstrap/lib/variables";
-@import "../../vendor/bootswatch-scss/flatly/variables";
-@import "../../vendor/sass-bootstrap/lib/bootstrap";
-@import "../../vendor/bootswatch-scss/flatly/bootswatch";
+@import "app/foundation-custom-vars";
+@import "../../vendor/foundation/scss/foundation";
 @import "../../vendor/font-awesome/scss/font-awesome";
 
 
@@ -18,7 +16,6 @@ h1 {
 .menu {
     margin-top: 10px
 }
-
 
 .lead {
     font-size: 24px;

@@ -9,10 +9,10 @@
     "angular-route": "~1.2.0",
     "angular-animate": "~1.2.0",
     "angular-resource": "~1.2.0",
-    "font-awesome": "~3.2.1",
     "angular-loading-bar": "~0.0.5",
     "alertify": "~0.3.10",
     "lodash": "~2.2.1",
-    "bootswatch-scss": "~3.0.0"
+    "foundation": "~5.0.2",
+    "font-awesome": "~4.0.3"
   }
 }
