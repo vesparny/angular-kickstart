@@ -49,14 +49,18 @@ module.exports = function(grunt) {
 			options: {
 				livereload: true
 			},
-			gruntfile: {
+			buildFiles: {
 				files: '<%= config.buildFiles %>',
 				tasks: ['newer:jshint:buildFiles'],
 				options: {
 					livereload: false
 				}
 			},
-			buildFiles: {
+			buildConf: {
+				files: '<%= config.buildConf %>',
+				tasks: ['build']
+			},
+			gruntfile: {
 				files: 'Gruntfile.js',
 				tasks: ['newer:jshint:gruntfile'],
 				options: {

@@ -3,7 +3,8 @@
 module.exports = {
 	buildDir: 'build/tmp',
 	distDir: 'build/dist',
-	buildFiles: ['build/**/*.js', '!build/tmp/**', '!build/dist/**'],
+	buildFiles: ['build/**/*.js', '!build/tmp/**', '!build/dist/**', '!build/*.config.js'],
+	buildConf: ['build/*.config.js'],
 	banner: '/* <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd")  %> */\n',
 	proxy: {
 		context: '/api',
