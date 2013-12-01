@@ -9,7 +9,7 @@
     "angular-route": "~1.2.0",
     "angular-animate": "~1.2.0",
     "angular-resource": "~1.2.0",
-    "angular-loading-bar": "~0.0.5",
+    "angular-loading-bar": "~0.1.0",
     "alertify": "~0.3.10",
     "lodash": "~2.2.1",
     "foundation": "~5.0.2",

@@ -11,41 +11,54 @@
     <% }); %>
     </head>
 <body >
-<div class="container menu">
-    <div class="btn-group btn-group-justified">
-        <a  ng-class="{ active: isActive('/home')}" href="/" class="btn btn-primary btn-lg">
-            <i class="fa fa-home"></i> <span>Home</span>
-        </a>
-        <a ng-class="{ active: isActive('/notes')}" href="/notes" class="btn btn-primary btn-lg">
-            <i class="fa fa-pencil"></i> <span>Notes example</span>
-        </a>
-    </div>
+
+<header class="row">
+<div class="large-4 columns">
+  <span class="title">ng-kickstart</span>
+  <span app-version></span>
 </div>
-<div class="container panel" ng-view></div>
-<footer class="footer">
-    <div class="container">
-        <div class="footer-inner">
-            <ul class="social">
-                <li><a target="_blank" href="http://gplus.to/vesparny"><i class="icon-google-plus-sign"></i></a></li>
-                <li><a target="_blank" href="http://twitter.com/vesparny"><i class="icon-twitter-sign"></i></a></li>
-                <li><a target="_blank" href="http://www.linkedin.com/in/alessandroarnodo"><i
-                        class="icon-linkedin-sign"></i></a>
-                </li>
-                <li><a target="_blank" href="https://github.com/vesparny/angularjs-silex-single-page-app"><i
-                        class="icon-github-sign"></i></a></li>
-            </ul>
-            <p>
-                (c) 2013 Alessandro Arnodo.
-                <a href="http://github.com/veaparny/silex-angularjs">Fork this</a>
-                <br>
-                based on
-                <a href="http://www.angularjs.org">AngularJS</a>,
-                <a href="http://bootswatch.com">Bootswatch</a> and
-                <a href="http://silex.sensiolabs.org">Silex php microframework</a>
-            </p>
+<div class="large-8 columns">
+  <dl class="sub-nav right">
+    <dd ng-class="{ active: isActive('/')}"><a href="/">
+            <i class="fa fa-home"></i> <span>Home</span>
+        </a></dd>
+        <dd ng-class="{ active: isActive('/docs')}"><a ng-class="{ active: isActive('/docs')}" href="/docs">
+            <i class="fa fa-book"></i> <span>Docs</span>
+        </a></dd>
+    <dd ng-class="{ active: isActive('/notes')}"><a ng-class="{ active: isActive('/notes')}" href="/notes">
+            <i class="fa fa-pencil"></i> <span>Notes example</span>
+        </a></dd>
+  </dl>
+</div>
+</header>
+
+<div class="row">
+	<div class="large-12 columns" ng-view></div>
+</div>
+<footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>&copy; 2013
+                <a href="http://alessandro.arnodo.net">Alessandro Arnodo.</a>
         </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+                <li><a target="_blank" href="http://twitter.com/vesparny"><i class="fa fa-twitter"></i></a></li>
+                <li><a target="_blank" href="https://plus.google.com/+AlessandroArnodo"><i class="fa fa-google-plus"></i></a></li>
+                <li><a target="_blank" href="http://www.linkedin.com/in/alessandroarnodo"><i
+                        class="fa fa-linkedin"></i></a>
+                </li>
+                <li><a target="_blank" href="https://github.com/vesparny/ng-kickstart"><i
+                        class="fa fa-github"></i></a></li>
+
+          </ul>
+        </div>
+      </div>
     </div>
-</footer>
+  </footer>
+
 <% js.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script>
 <% }); %>

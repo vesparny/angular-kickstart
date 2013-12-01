@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 			},
 			html: {
 				files: ['<%= config.webappFiles.html %>'],
-				tasks: ['newer:tpl:build']
+				tasks: ['tpl:build']
 			},
 			templates: {
 				files: [
