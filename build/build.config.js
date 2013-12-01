@@ -34,10 +34,10 @@ module.exports = {
 			'webapp/vendor/alertify/alertify.js'
 		],
 		css: [
+			'webapp/vendor/foundation/css/normalize.css',
 			'webapp/vendor/angular-loading-bar/build/loading-bar.min.css',
 			'webapp/vendor/alertify/themes/alertify.core.css',
 			'webapp/vendor/alertify/themes/alertify.default.css'
 		]
 	}
 };
-
