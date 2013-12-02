@@ -88,3 +88,43 @@ transition-delay: .5s;
 		text-align:center;
     margin: 0 auto;
 }
+
+
+
+
+.inline-list > li {
+	display: inline-block;
+	float:none;
+}
+
+.vcenter {
+	display: table;
+}
+
+.vcenter div{
+	display: table-cell;
+  vertical-align: middle;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+}
+
+header.row {
+	margin-top:30px;
+	margin-bottom: 50px;
+}
+header .title {
+	@include font-size(40px);
+	font-weight:bold;
+	display:inline;
+}
+
+header .sub-nav dd {
+	@include font-size(20px);
+}
+
+img {
+	max-width: 60%;
+	margin: 15px;
+}

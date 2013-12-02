@@ -14,7 +14,7 @@
 
 <header class="row">
 <div class="large-4 columns">
-  <span class="title">ng-kickstart</span>
+  <h1 class="title">ng-kickstart</h1>
   <span app-version></span>
 </div>
 <div class="large-8 columns">
@@ -58,7 +58,9 @@
       </div>
     </div>
   </footer>
-
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
 <% js.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script>
 <% }); %>

@@ -19,6 +19,7 @@ angular.module('app', [
 	'ngAnimate',
 	'chieffancypants.loadingBar',
 	'common.directives.appVersion',
+	'common.directives.plusOne',
 	'common.interceptors.http'
 ]).config(function myAppConfig($provide, $routeProvider, $locationProvider, $httpProvider) {
 	$locationProvider.html5Mode(true);
