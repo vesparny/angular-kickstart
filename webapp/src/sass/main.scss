@@ -128,3 +128,11 @@ img {
 	max-width: 60%;
 	margin: 15px;
 }
+
+.social {
+	@include font-size(30px);
+}
+
+.me {
+	margin-top:10px
+}
