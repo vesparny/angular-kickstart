@@ -1,13 +1,20 @@
-window.bootstrap = function() {
+window.app = window.app || {};
+
+app.bootstrap = function() {
 	angular.bootstrap(document, ['app']);
 };
 
-window.init = function() {
-	window.bootstrap();
+app.init = function() {
+	app.bootstrap();
+};
+
+app.config = {
+	apiUrl: 'api/v1',
+	version: "0.0.1"
 };
 
 angular.element(document).ready(function() {
-	window.init();
+	app.init();
 });
 
 angular.module('app', [
@@ -15,6 +22,7 @@ angular.module('app', [
 	'templates.common',
 	'app.home',
 	'app.notes',
+	'app.docs',
 	'ngRoute',
 	'ngAnimate',
 	'chieffancypants.loadingBar',
@@ -26,11 +34,8 @@ angular.module('app', [
 	$routeProvider.otherwise({
 		redirectTo: '/'
 	});
-}).run(function run($rootScope) {
-	$rootScope.config = {
-		"apiUrl": 'api/v1'
-	};
-	$rootScope.version = "0.0.1";
+}).run(function run($rootScope, $window) {
+	$rootScope.config = $window.app.config;
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
 	$scope.title = "ng-kickstart | easy AngularJS development";
 	$scope.isActive = function(viewLocation) {

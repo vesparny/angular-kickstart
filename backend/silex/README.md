@@ -8,9 +8,9 @@ From this folder run the following commands to install the php and bower depende
 
 You need at least php **5.4.*** with **SQLite extension** enabled and **Composer**
     
-    composer install 
-    sqlite3 app.db < resources/sql/schema.sql
-    php -S 0:9001 -t web/
+    $ composer install 
+    $ sqlite3 app.db < resources/sql/schema.sql
+    $ php -S 0:9001 -t web/
     
 Your api is now available at http://localhost:9001.
 

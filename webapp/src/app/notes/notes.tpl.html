@@ -1,14 +1,12 @@
-<div class="jumbotron ng-scope notes">
+<div class="notes">
     <form ng-submit="notesCtrl.addNote(notesCtrl.newNote)" novalidate name="addForm">
-        <div class="form-group" ng-class="{'has-error': addForm.newNote.$invalid && !addForm.newNote.$pristine}">
-            <input type="text" ng-model="notesCtrl.newNote" name="newNote" class="form-control addNote" required autofocus
+        <div class="" ng-class="{'has-error': addForm.newNote.$invalid && !addForm.newNote.$pristine}">
+            <input type="text" ng-model="notesCtrl.newNote" name="newNote" class="" required autofocus
                    placeholder="Write a new note and press enter :)" maxlength="100">
         </div>
     </form>
-    <form ng-repeat="note in notesCtrl.notes" class="form-inline nList" novalidate ng-submit="notesCtrl.updateNote(note)">
-        <div class="form-group">
-           <input class="form-control" ng-model="note.note" ng-blur="showRemove = false" ng-focus="showRemove = true"/>
-        </div>
-        <i class="icon-remove-sign" ng-show="showRemove" ng-mousedown="notesCtrl.deleteNote($index, note.id)"></i>
+    <form ng-repeat="note in notesCtrl.notes" class="" novalidate ng-submit="notesCtrl.updateNote(note)">
+           <input type="text" class="" ng-model="note.note"/>
+        <i class="fa fa-home" ng-click="notesCtrl.deleteNote($index, note.id)"></i>
     </form>
 </div>
