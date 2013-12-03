@@ -69,7 +69,17 @@ module.exports = function(grunt) {
 			},
 			jssrc: {
 				files: '<%= config.webappFiles.js %>',
-				tasks: ['newer:jshint:src', 'newer:copy:webappJs']
+				tasks: ['newer:jshint:src', 'copy:webappJs', 'tpl:build'],
+				options: {
+					event: ['added', 'changed'],
+				}
+			},
+			jssrcDeleted: {
+				files: '<%= config.webappFiles.js %>',
+				tasks: ['build'],
+				options: {
+					event: ['deleted'],
+				}
 			},
 			assets: {
 				files: '<%= config.webappFiles.assets %>',
