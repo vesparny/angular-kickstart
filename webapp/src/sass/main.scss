@@ -31,27 +31,6 @@ h1 {
     border-top: 1px solid #DDD;
 }
 
-.social {
-    float: right;
-    margin: 0;
-    list-style: none;
-}
-
-.social li {
-    float: left;
-    margin-left: 20px;
-}
-
-.social li a {
-    font-size: 40px;
-    text-decoration: none;
-}
-
-.social li a:hover {
-    color:#a9a9a9;
-
-}
-
 .panel.ng-enter {
     -webkit-transition: .5s linear all; /* Safari/Chrome */
     -moz-transition: .5s linear all; /* Firefox */
@@ -129,7 +108,7 @@ img {
 	margin: 15px;
 }
 
-.social {
+.social i {
 	@include font-size(30px);
 }
 

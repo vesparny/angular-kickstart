@@ -32,7 +32,7 @@ angular.module('app', [
 	};
 	$rootScope.version = "0.0.1";
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
-	$scope.title = "ng-kickstart";
+	$scope.title = "ng-kickstart | easy AngularJS development";
 	$scope.isActive = function(viewLocation) {
 		return (viewLocation === $location.path());
 	};
