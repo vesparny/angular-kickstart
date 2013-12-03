@@ -1,0 +1,78 @@
+<div class="row">
+<div class="large-3 columns panel">
+<ul class="side-nav">
+	<li><a href="#ww">What and Why</a></li>
+  <li><a href="#gt">Getting started</a></li>
+    <li><a href="#bs">Project structure</a></li>
+  <li><a href="#bs">The build system</a></li>
+    <li><a href="#bs">Relevant files</a></li>
+
+  <li><a href="#">Contributing</a></li>
+</ul>
+</div>
+<div class="large-9 columns">
+<h3 id="w">What and Why</h3>
+<p>
+
+	<code>ng-kickstart</code> is an opinionated kickstart for single page application development in AngularJS. It make you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task.
+	I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+</p>
+<h2 id="gt">Getting started</h2>
+<p>
+	I assume that you have Node.js and SASS installed.
+	You need karma and bower.
+</p>
+
+<pre><code>
+$ sudo npm -g install grunt-cli karma bower
+</code></pre>
+
+<p>
+After that install <code>ng-kickstart</code>
+</p>
+
+<pre><code>
+$ git clone git://github.com/vesparny/ng-kickstart yourProjectName
+$ cd yourProjectName
+$ npm install
+$ bower install
+$ grunt serve
+</code></pre>
+
+<p>
+You are now ready to go, your applcation is avalable at <code>http://127.0.0.1:9000</code>.
+Every request to <code>/api</code> will be proxied to <code>http://127.0.0.1:9001/api</code>.
+</p>
+<p>
+In the <strong>/backend/silex</strong> folder, you can find an example REST api written with Silex PHP micro-framework. Refer to the README.md present in that folder and launch the api.
+Then go to <code>http://127.0.0.1:9000/notes</code>. Enjoy.
+</p>
+<p>
+<h2 id="gt">The build system</h2>
+<pre><code>ng-boilerplate/
+  |- grunt-tasks/
+  |- karma/
+  |- src/
+  |  |- app/
+  |  |  |- &lt;app logic&gt;
+  |  |- assets/
+  |  |  |- &lt;static files&gt;
+  |  |- common/
+  |  |  |- &lt;reusable code&gt;
+  |  |- less/
+  |  |  |- main.less
+  |- vendor/
+  |  |- angular-bootstrap/
+  |  |- bootstrap/
+  |  |- placeholders/
+  |- .bowerrc
+  |- bower.json
+  |- build.config.js
+  |- Gruntfile.js
+  |- module.prefix
+  |- module.suffix
+  |- package.json
+</code></pre>
+
+</p>
+</div>

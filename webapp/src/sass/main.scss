@@ -116,3 +116,43 @@ img {
 .me {
 	margin-top:10px
 }
+
+.reveal-animation.ng-enter {
+  -webkit-animation: enter_sequence .5s linear; /* Safari/Chrome */
+  animation: enter_sequence .5s linear; /* IE10+ and Future Browsers */
+}
+@-webkit-keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+
+input.noteInput {
+	padding: 30px;
+	font-size: 25px;
+	margin: 30px 0 60px 0;
+}
+
+.alertify-logs {
+	width: 120px;
+}
+
+pre {
+	background: #e7ecef;
+	border: 1px solid #ced7d6;
+	word-wrap: break-word;
+	padding: 12px;
+	color: #001c20;
+	font-size: 13px;
+	margin-bottom: 1.25rem;
+}
+
+pre code {
+	color: inherit;
+	font-weight: normal;
+	font-size: 1.1em;
+}

@@ -23,6 +23,7 @@ module.exports = {
 		templatesApp: ['webapp/src/app/**/*.tpl.html'],
 		templatesCommon: ['webapp/src/common/**/*.tpl.html'],
 		sass: 'webapp/src/sass/main.scss',
+		sassFiles: ['webapp/src/sass/**/*.scss'],
 		html: 'webapp/index.tpl.html'
 	},
 	vendorFiles: {

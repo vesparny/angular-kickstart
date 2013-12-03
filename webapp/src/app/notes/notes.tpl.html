@@ -1,12 +1,23 @@
+<div class="panel text-center"><h3><code>A simple demo application, tied to your real backend.</code></h3></div>
 <div class="notes">
-    <form ng-submit="notesCtrl.addNote(notesCtrl.newNote)" novalidate name="addForm">
-        <div class="" ng-class="{'has-error': addForm.newNote.$invalid && !addForm.newNote.$pristine}">
-            <input type="text" ng-model="notesCtrl.newNote" name="newNote" class="" required autofocus
-                   placeholder="Write a new note and press enter :)" maxlength="100">
-        </div>
-    </form>
-    <form ng-repeat="note in notesCtrl.notes" class="" novalidate ng-submit="notesCtrl.updateNote(note)">
-           <input type="text" class="" ng-model="note.note"/>
-        <i class="fa fa-home" ng-click="notesCtrl.deleteNote($index, note.id)"></i>
-    </form>
-</div>
+	<form ng-submit="notesCtrl.addNote(notesCtrl.newNote)" novalidate name="addForm">
+		<div class="row">
+			<small class="error" ng-show="addForm.newNote.$invalid && !addForm.newNote.$pristine">Please fill the input</small>
+			<input type="text" ng-model="notesCtrl.newNote" name="newNote"  required autofocus
+			placeholder="Write a new note and hit enter..." maxlength="100" class="noteInput">
+
+		</div>
+	</form>
+	<form ng-repeat="note in notesCtrl.notes" class="" novalidate ng-submit="notesCtrl.updateNote(note)">
+		<div class="row">
+			<div class="large-8 columns large-centered">
+				<div class="row collapse">
+					<div class="small-11 columns">
+						<input type="text" class="" ng-model="note.note">
+					</div>
+					<div class="small-1 columns">
+						<a ng-click="notesCtrl.deleteNote($index, note.id)" class="button postfix"><i class="fa fa-minus-circle" ></i></a>
+					</div>
+				</div></div></div>
+			</form>
+		</div>
