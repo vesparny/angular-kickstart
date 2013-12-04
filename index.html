@@ -1,82 +1,9 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Ng-kickstart by vesparny</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!doctype html><html lang="en" ng-controller="AppCtrl"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><title ng-bind="title"></title><meta name="description" content="ng-kickstart - Speed up your AngularJS development whith a fantastic build system."><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@vesparny"><meta name="twitter:title" content="ng-kickstart"><meta name="twitter:description" content="ng-kickstart - Speed up your AngularJS development whith a fantastic build system."><meta name="twitter:creator" content="@vesparny"><meta name="twitter:image:src" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846"><meta property="og:title" content="ng-kickstart"><meta property="og:type" content="website"><meta property="og:url" content="http://bit.ly/ng-kickstart"><meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846"><meta property="og:description" content="ng-kickstart - Speed up your AngularJS development whith a fantastic build system."><link rel="icon" href="assets/favicon.ico"><link rel="stylesheet" type="text/css" href="assets/css/eedd2e49.0.0.1.style.css"></head><body><header class="row"><div class="large-4 columns"><h1 class="title"><a href="http://vesparny.github.io/ng-kickstart/">ng-kickstart</a></h1><span app-version=""></span></div><div class="large-8 columns"><dl class="sub-nav right"><dd ng-class="{ active: isActive('/')}"><a href="/"><i class="fa fa-home"></i> <span>Home</span></a></dd><dd ng-class="{ active: isActive('/gettingStarted')}"><a href="/gettingStarted"><i class="fa fa-book"></i> <span>Getting started</span></a></dd><dd ng-class="{ active: isActive('/notes')}"><a href="/notes"><i class="fa fa-pencil"></i> <span>Notes example</span></a></dd></dl></div></header><div class="row"><div class="large-12 columns reveal-animation ng-view"></div></div><footer class="row"><div class="large-12 columns"><hr><div class="row"><div class="me large-6 columns"><p>&copy; 2013 - <a href="http://alessandro.arnodo.net">Alessandro Arnodo.</a> <a href="https://twitter.com/vesparny" class="twitter-follow-button" data-show-count="false">Follow @vesparny</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p></div><div class="social large-6 columns"><ul class="inline-list right"><li><a target="_blank" href="http://twitter.com/vesparny"><i class="fa fa-twitter"></i></a></li><li><a target="_blank" href="https://plus.google.com/+AlessandroArnodo"><i class="fa fa-google-plus"></i></a></li><li><a target="_blank" href="http://www.linkedin.com/in/alessandroarnodo"><i class="fa fa-linkedin"></i></a></li><li><a target="_blank" href="https://github.com/vesparny/ng-kickstart"><i class="fa fa-github"></i></a></li></ul></div></div></div></footer><script type="text/javascript" src="https://apis.google.com/js/plusone.js">{ "parsetags": "explicit" }</script><script type="text/javascript">var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38292505-5']);
+  _gaq.push(['_trackPageview']);
 
-  </head>
-  <body>
-
-      <header>
-        <h1>Ng-kickstart</h1>
-        <p>Angular.js starter kit</p>
-      </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/vesparny/ng-kickstart" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/vesparny/ng-kickstart/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/vesparny/ng-kickstart/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/vesparny">vesparny</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
-</html>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();</script><script type="text/javascript" src="assets/js/ca8efe8f.0.0.1.vendor.js"></script><script type="text/javascript" src="assets/js/c6296852.0.0.1.app.js"></script></body></html>
