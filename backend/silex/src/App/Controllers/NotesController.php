@@ -46,11 +46,8 @@ class NotesController
 
     public function getDataFromRequest(Request $request)
     {
-        $payload = json_decode($request->getContent());
-
-        $note = array(
-            "note" => $payload->note,
+        return $note = array(
+            "note" => $request->request->get("note")
         );
-        return $note;
     }
 }

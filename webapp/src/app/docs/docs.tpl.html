@@ -1,26 +1,16 @@
-<div class="row">
-<div class="large-3 columns panel">
-<ul class="side-nav">
-	<li><a href="#ww">What and Why</a></li>
-  <li><a href="#gt">Getting started</a></li>
-    <li><a href="#bs">Project structure</a></li>
-  <li><a href="#bs">The build system</a></li>
-    <li><a href="#bs">Relevant files</a></li>
-
-  <li><a href="#">Contributing</a></li>
-</ul>
-</div>
-<div class="large-9 columns">
-<h3 id="w">What and Why</h3>
+<p class="panel">
+<strong>Note that this is only a getting started guide, for more detailed information about the buid system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank">documentation on the github project</a>.</strong>
+</p>
+<h3>What and Why</h3>
 <p>
 
-	<code>ng-kickstart</code> is an opinionated kickstart for single page application development in AngularJS 1.2 . It make you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task.
+	<code>ng-kickstart</code> is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task.
 	I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
 </p>
-<h2 id="gt">Getting started</h2>
+<h3>Getting started</h3>
 <p>
-	I assume that you have Node.js and SASS installed.
-	You need karma and bower.
+	I assume that you have <strong>Node.js and SASS</strong> installed.
+	You also need <strong>karma and bower</strong>.
 </p>
 
 <pre><code>
@@ -45,34 +35,23 @@ Every request to <code>/api</code> will be proxied to <code>http://127.0.0.1:900
 </p>
 <p>
 In the <strong>/backend/silex</strong> folder, you can find an example REST api written with Silex PHP micro-framework. Refer to the README.md present in that folder and launch the api.
-Then go to <code>http://127.0.0.1:9000/notes</code>. Enjoy.
+Then go to <code>http://127.0.0.1:9000/notes</code>.
+
+You are now ready to start coding, every file you add, edit or delete into the <strong>/webapp</strong> folder, will be handled by the build system.
 </p>
 <p>
-<h2 id="gt">The build system</h2>
-<pre><code>ng-boilerplate/
-  |- grunt-tasks/
-  |- karma/
-  |- src/
-  |  |- app/
-  |  |  |- &lt;app logic&gt;
-  |  |- assets/
-  |  |  |- &lt;static files&gt;
-  |  |- common/
-  |  |  |- &lt;reusable code&gt;
-  |  |- less/
-  |  |  |- main.less
-  |- vendor/
-  |  |- angular-bootstrap/
-  |  |- bootstrap/
-  |  |- placeholders/
-  |- .bowerrc
-  |- bower.json
-  |- build.config.js
-  |- Gruntfile.js
-  |- module.prefix
-  |- module.suffix
-  |- package.json
+When you are ready to build a production release there is a task for that.
+</p>
+
+<pre><code>
+$ grunt dist
 </code></pre>
 
+<p>
+After the task has finished you can find an optimized version of your project into the <strong>/build/dist</strong> folder.
+</p>
+<hr/>
+<p class="text-center">
+<strong>Inspired by ng-boilerplate, yeoman and so many other beautiful projects.</strong>
 </p>
 </div>
