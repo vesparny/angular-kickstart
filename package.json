@@ -37,7 +37,6 @@
     "grunt-html2js": "~0.2.2",
     "grunt-ngmin": "0.0.3",
     "lodash": "~2.4.0",
-    "moment": "~2.4.0",
     "grunt-conventional-changelog": "~1.0.0",
     "grunt-connect-proxy": "~0.1.6",
     "karma-script-launcher": "~0.1.0",
