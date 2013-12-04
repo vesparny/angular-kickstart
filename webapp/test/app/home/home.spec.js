@@ -6,6 +6,6 @@ describe('home', function() {
 	}));
 
 	it('should have a dummy test', function() {
-		expect(scope.version).toBe("0.0.1");
+		expect(scope.config.version).toBe("0.0.1");
 	});
 });
