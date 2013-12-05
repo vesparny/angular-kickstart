@@ -7,13 +7,8 @@ var _ = require('lodash'),
 
 
 module.exports = function(grunt) {
-	grunt.log.write('%s - Loading external tasks...', moment().format());
-
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
-
-	grunt.log.writeln('done');
-
 	grunt.loadTasks('./build/buildfiles/tasks');
 	grunt.initConfig(_.extend({
 		config: config,
