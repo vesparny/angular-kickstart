@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
   Note = mongoose.model('Note'),
-  _ = require('underscore');
+  _ = require('lodash');
 
 
 exports.create = function(req, res, next) {
