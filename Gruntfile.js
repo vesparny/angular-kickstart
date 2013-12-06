@@ -1,7 +1,6 @@
 'use strict';
 
 var _ = require('lodash'),
-	moment = require('moment'),
 	config = require('./build/build.config'),
 	externalTasks = require('./build/buildfiles/external-tasks');
 
