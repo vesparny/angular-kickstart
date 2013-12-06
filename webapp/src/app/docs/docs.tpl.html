@@ -1,57 +1,63 @@
 <p class="panel">
-<strong>Note that this is only a getting started guide, for more detailed information about the build system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank">documentation on the github project</a>.</strong>
+    <strong>Note that this is only a getting started guide, for more detailed information about the build system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank">documentation on the github project</a>.</strong>
 </p>
 <h3>What and Why</h3>
 <p>
 
-	<code>ng-kickstart</code> is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task.
-	I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+    <code>ng-kickstart</code>is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
 </p>
 <h3>Getting started</h3>
 <p>
-	Assume that you have <strong>Node.js and SASS</strong> installed.
-	You also need <strong>karma and bower</strong>.
+    Assume that you have
+    <strong>Node.js and SASS</strong>installed. You also need
+    <strong>karma and bower</strong>.
 </p>
 
-<pre><code>
-$ sudo npm -g install grunt-cli karma bower
-</code></pre>
+<pre>
+    <code>
+        $ sudo npm -g install grunt-cli karma bower
+    </code>
+</pre>
 
 <p>
-After that, install <code>ng-kickstart</code>
+    After that, install
+    <code>ng-kickstart</code>
 </p>
 
-<pre><code>
-$ git clone git://github.com/vesparny/ng-kickstart yourProjectName
-$ cd yourProjectName
-$ npm install
-$ bower install
-$ grunt serve
-</code></pre>
+<pre>
+    <code>
+        $ git clone git://github.com/vesparny/ng-kickstart yourProjectName $ cd yourProjectName $ npm install $ bower install $ grunt serve
+    </code>
+</pre>
 
 <p>
-You are now ready to go, your applcation is avalable at <code>http://127.0.0.1:9000</code>.
-Every request to <code>/api</code> will be proxied to <code>http://127.0.0.1:9001/api</code>.
+    You are now ready to go, your applcation is avalable at
+    <code>http://127.0.0.1:9000</code>. Every request to
+    <code>/api</code>will be proxied to
+    <code>http://127.0.0.1:9001/api</code>.
 </p>
 <p>
-In the <strong>/backend/silex</strong> folder, you can find an example REST api written with Silex PHP micro-framework. Refer to the README.md present in that folder and launch the api.
-Then go to <code>http://127.0.0.1:9000/notes</code>.
-
-You are now ready to start coding, every file you add, edit or delete into the <strong>/webapp</strong> folder, will be handled by the build system.
+    In the
+    <strong>/backend/silex</strong>folder, you can find an example REST api written with Silex PHP micro-framework. Refer to the README.md present in that folder and launch the api. Then go to
+    <code>http://127.0.0.1:9000/notes</code>. You are now ready to start coding, every file you add, edit or delete into the
+    <strong>/webapp</strong>folder, will be handled by the build system.
 </p>
 <p>
-When you are ready to build a production release there is a task for that.
+    When you are ready to build a production release there is a task for that.
 </p>
 
-<pre><code>
-$ grunt dist
-</code></pre>
+<pre>
+    <code>
+        $ grunt dist
+    </code>
+</pre>
 
 <p>
-After the task has finished you can find an optimized version of your project into the <strong>/build/dist</strong> folder.
+    After the task has finished you can find an optimized version of your project into the
+    <strong>/build/dist</strong>folder.
 </p>
 <hr/>
 <p class="text-center">
-<strong>Inspired by ng-boilerplate, yeoman and so many other beautiful projects.</strong>
+    <strong>Inspired by ng-boilerplate, yeoman and so many other beautiful projects.</strong>
 </p>
 </div>
