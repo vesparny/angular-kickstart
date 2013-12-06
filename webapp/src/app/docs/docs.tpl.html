@@ -1,46 +1,51 @@
 <p class="panel">
-    <strong>Note that this is only a getting started guide, for more detailed information about the build system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank">documentation on the github project</a>.</strong>
+    <strong>Note that this is only a getting started guide, for more detailed information about the build system, the available tasks, the configuration of the build or anything else, please refer to the <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank">documentation</a> on the GitHub project.</strong>
 </p>
 <h3>What and Why</h3>
 <p>
 
-    <code>ng-kickstart</code>is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+    <code>ng-kickstart</code> is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
 </p>
 <h3>Getting started</h3>
 <p>
-    Assume that you have
-    <strong>Node.js and SASS</strong>installed. You also need
-    <strong>karma and bower</strong>.
+ 	Install
+    <strong><a href="https://github.com/joyent/node/wiki/installation" target="_blank">node.js</a></strong>. Then
+    <strong>sass, karma and bower</strong> if you haven't yet.
 </p>
 
 <pre>
     <code>
-        $ sudo npm -g install grunt-cli karma bower
+    $ gem install sass
+    $ sudo npm -g install grunt-cli karma bower
     </code>
 </pre>
 
 <p>
     After that, install
-    <code>ng-kickstart</code>
+    <code>ng-kickstart</code> download the <a href="https://github.com/vesparny/ng-kickstart/archive/v0.0.1-beta.zip">latest</a> release (or clone the master branch if want to run the development version).
+    Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 </p>
 
 <pre>
     <code>
-        $ git clone git://github.com/vesparny/ng-kickstart yourProjectName $ cd yourProjectName $ npm install $ bower install $ grunt serve
+    $ npm install
+    $ bower install
+    $ grunt serve
     </code>
 </pre>
 
 <p>
-    You are now ready to go, your applcation is avalable at
+    You are now ready to go, your applcation is available at
     <code>http://127.0.0.1:9000</code>. Every request to
-    <code>/api</code>will be proxied to
+    <code>/api</code> will be proxied to
     <code>http://127.0.0.1:9001/api</code>.
 </p>
 <p>
     In the
-    <strong>/backend/silex</strong>folder, you can find an example REST api written with Silex PHP micro-framework. Refer to the README.md present in that folder and launch the api. Then go to
+    <strong>/backend</strong> folder, you can find two examples of RESTFul backend.
+     One using <strong> Silex PHP micro-framework + SQLite</strong> and another using <strong>expressjs + MongoDB</strong>. Refer to the README.md to launch the desired backend (or run your own). Then go to
     <code>http://127.0.0.1:9000/notes</code>. You are now ready to start coding, every file you add, edit or delete into the
-    <strong>/webapp</strong>folder, will be handled by the build system.
+    <strong>/webapp</strong> folder, will be handled by the build system.
 </p>
 <p>
     When you are ready to build a production release there is a task for that.
@@ -48,13 +53,18 @@
 
 <pre>
     <code>
-        $ grunt dist
+    $ grunt dist
     </code>
 </pre>
 
 <p>
     After the task has finished you can find an optimized version of your project into the
-    <strong>/build/dist</strong>folder.
+    <strong>/build/dist</strong> folder.
+</p>
+<p class="text-center">
+    <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank" class="button expand">
+            <i class="fa fa-share"></i>&nbsp;&nbsp;Full documentation on GitHub
+        </a>
 </p>
 <hr/>
 <p class="text-center">
