@@ -136,6 +136,7 @@ module.exports = function(grunt) {
 					livereload: false,
 					middleware: function(connect, options) {
 						return [
+							proxySnippet,
 							html5ModeMiddleware(grunt.config('config.distDir')),
 							connect.static(options.base),
 							connect.directory(options.base)
