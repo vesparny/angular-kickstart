@@ -68,9 +68,6 @@ transition-delay: .5s;
     margin: 0 auto;
 }
 
-
-
-
 .inline-list > li {
 	display: inline-block;
 	float:none;
@@ -93,6 +90,7 @@ header.row {
 	margin-top:30px;
 	margin-bottom: 50px;
 }
+
 header .title {
 	@include font-size(40px);
 	font-weight:bold;
