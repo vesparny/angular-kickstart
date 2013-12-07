@@ -48,7 +48,9 @@ module.exports = {
             'webapp/vendor/angular-resource/angular-resource.js',
             'webapp/vendor/angular-animate/angular-animate.js',
             'webapp/vendor/angular-loading-bar/build/loading-bar.js',
-            'webapp/vendor/alertify/alertify.js'
+            'webapp/vendor/alertify/alertify.js',
+            'webapp/vendor/lodash/dist/lodash.js'
+
         ],
         css: [
             'webapp/vendor/foundation/css/normalize.css',

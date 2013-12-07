@@ -1,23 +1,28 @@
 <!doctype html>
 <html lang="en" ng-controller="AppCtrl">
 <head>
+	<base href="/ng-kickstart/" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title ng-bind="title"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title ng-bind="title"></title>
-    <meta name="keywords" content="AngularJS,ngKickstart,grunt,bower" />
-    <meta name="description" content="ngKickstart - Speed up your AngularJS development whith a great build system.">
+    <meta name="keywords" content="AngularJS,ng-kickstart,grunt,bower" />
+    <meta name="description" content="ng-kickstart - Speed up your AngularJS development whith a great build system.">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@vesparny">
-    <meta name="twitter:title" content="ngKickstart">
-    <meta name="twitter:description" content="ngKickstart - Speed up your AngularJS development whith a great build system.">
+    <meta name="twitter:title" content="ng-kickstart">
+    <meta name="twitter:description" content="ng-kickstart - Speed up your AngularJS development whith a great build system.">
     <meta name="twitter:creator" content="@vesparny">
     <meta name="twitter:image:src" content="https://assets.github.com/images/modules/logos_page/Octocat.png">
-    <meta property="og:title" content="ngKickstart">
+    <meta property="og:title" content="ng-kickstart">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://bit.ly/ngKickstart">
+    <meta property="og:url" content="http://bit.ly/ng-kickstart">
     <meta property="og:image" content="https://assets.github.com/images/modules/logos_page/Octocat.png">
-    <meta property="og:description" content="ngKickstart - Speed up your AngularJS development whith a great build system.">
+    <meta property="og:description" content="ng-kickstart - Speed up your AngularJS development whith a great build system.">
     <link rel="icon" href="assets/favicon.ico" />
     <% css.forEach( function ( file ) { %>
         <link rel="stylesheet" type="text/css" href="<%= file %>" />
@@ -27,7 +32,7 @@
 <body>
     <header class="row">
         <div class="large-4 small-12 columns left">
-            <h1 class="title"><a href="home">ngKickstart</a>
+            <h1 class="title"><a href="home">ng-kickstart</a>
             </h1>
             <span app-version></span>
         </div>
@@ -86,7 +91,7 @@
                         <li><a target="_blank" href="http://www.linkedin.com/in/alessandroarnodo"><i
                         class="fa fa-linkedin"></i></a>
                         </li>
-                        <li><a target="_blank" href="https://github.com/vesparny/ngKickstart"><i
+                        <li><a target="_blank" href="https://github.com/vesparny/ng-kickstart"><i
                         class="fa fa-github"></i></a>
                         </li>
                     </ul>
@@ -98,6 +103,18 @@
         "parsetags": "explicit"
     }
     </script>
+    <script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-38292505-5']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
     <% js.forEach( function ( file ) { %>
         <script type="text/javascript" src="<%= file %>"></script>
         <% }); %>

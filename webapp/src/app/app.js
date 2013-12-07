@@ -46,7 +46,7 @@ angular.module('app', [
 		$window.scrollTo(0, 0);
 	});
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
-	$scope.title = "ngKickstart - Speed up your AngularJS development whith a great build system.";
+	$scope.title = "ng-kickstart - Speed up your AngularJS development whith a great build system.";
 	$scope.isActive = function(viewLocation) {
 		return (viewLocation === $location.path());
 	};

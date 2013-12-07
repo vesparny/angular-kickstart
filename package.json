@@ -1,18 +1,18 @@
 {
   "author": "Alessandro Arnodo",
-  "name": "ngKickstart",
+  "name": "ng-kickstart",
   "email": "alessandro@arnodo.net",
   "url": "http://alessandro.arnodo.net",
   "version": "0.0.1",
-  "homepage": "https://github.com/vesparny/ngKickstart",
+  "homepage": "https://github.com/vesparny/ng-kickstart",
   "licenses": {
     "type": "MIT",
-    "url": "https://raw.github.com/vesparny/ngKickstart/master/LICENSE"
+    "url": "https://raw.github.com/vesparny/ng-kickstart/master/LICENSE"
   },
-  "bugs": "https://github.com/vesparny/ngKickstart/issues",
+  "bugs": "https://github.com/vesparny/ng-kickstart/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:vesparny/ngKickstart.git"
+    "url": "git@github.com:vesparny/ng-kickstart.git"
   },
   "dependencies": {},
   "devDependencies": {

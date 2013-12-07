@@ -1,14 +1,14 @@
-# [ngKickstart](vesparny.github.io/ngKickstart/) 
-[![Dev dependency status](https://david-dm.org/vesparny/ngKickstart/dev-status.png)](https://david-dm.org/vesparny/ngKickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ngKickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# [ng-kickstart](vesparny.github.io/ng-kickstart/) 
+[![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-**Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ngKickstart will take care of the rest.**
+**Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ng-kickstart will take care of the rest.**
 ***
 
-#### See a [demo](vesparny.github.io/ngKickstart/).
+#### See a [demo](vesparny.github.io/ng-kickstart/).
 
 ##What and Why
 
-ngKickstart is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+ng-kickstart is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
 
 ##Getting started
 
@@ -17,7 +17,7 @@ Install **node.js**. Then **sass**, **karma** and **bower** if you haven't yet.
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
     
-After that, install ngKickstart downloading the [latest release](https://github.com/vesparny/ngKickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
+After that, install ng-kickstart downloading the [latest release](https://github.com/vesparny/ng-kickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 
     $ npm install
     $ bower install
@@ -41,7 +41,7 @@ After the task has finished you can find an optimized version of your project in
 At a high level, the structure looks roughly like this:
 
 ```
-ngKickstart/
+ng-kickstart/
 ├── backend
 │   ├── expressjs
 │   └── silex
@@ -119,7 +119,7 @@ ngKickstart/
 
 ### The Build System
 
-There are some `tasks` available in the `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize with grunt, but you don't have to getting started with ngKickstart.
+There are some `tasks` available in the `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize with grunt, but you don't have to getting started with ng-kickstart.
 
 Below a description of every available task.
 
