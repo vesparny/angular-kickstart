@@ -4,6 +4,7 @@
 
 * javascript files continuous linting.
 * sass continuous compiling.
+* unit test ready and configured.
 * html templates converted into strings and attached to javascript files (to avoid one http call for every template).
 * proxy every request to `/api` (configurable of course) to your backend listening on another port.
 * livereload

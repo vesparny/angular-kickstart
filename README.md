@@ -106,17 +106,15 @@ ngKickstart/
                                
 ```
 
-- `backend/` - Fully working RESTful backend.
-- `build/` - Build files and configuration, the most important files to note are 	`build.config.js` and `karma.config.unit.js`. These files are the heart of 	the build system, and they are well commented so take a look to have more 	informations.
-- `webapp` the source code of your application, take a look at the modules into 	this 	folder, you should structure your application following those	conventions, 	but you can choose another convention as well
+- `backend/` - Fully working RESTful backend, available in 2 versions.
+- `build/` - Build files and configuration, the most important files to note are `build.config.js` and `karma.config.unit.js`. These files are the heart of the build system, and they are well commented so take a look to have more informations.
+- `webapp/` the source code of your application, take a look at the modules into this folder, you should structure your application following those conventions, but you can choose another convention as well
 - `.bowerrc` - the Bower configuration file. This tells Bower to install
   components into the `webapp/vendor/` directory.
 - `.jshintrc` - JSHint configuration.
 - `Gruntfile.js` - see "The Build System" below.
-- `bower.json` - this is our project configuration for Bower and it contains the
-  list of Bower dependencies we need.
-- `build.config.js` - our customizable build settings; see "The Build System"
-  below.
+- `bower.json` - It contains the list of Bower dependencies.
+- `build.config.js` - our customizable build settings; see "The Build System" below.
 - `package.json` - node.js dependencies.
 
 ### The Build System
@@ -125,13 +123,14 @@ There are some `tasks` available in the `Gruntfile.js`. Every task is defined in
 
 Below a description of every available task.
 
-* **grunt serve** - When this task runs, the build system will create a version 	of 	the application under the `build/tmp/` folder. The build will take care 	of 	creating an index.html with every js and css (generated from sass) 	loaded. 	every request to `/api` will be proxied to your backend listening 	to port 	9001 by default. Every time you change a file into the `webapp/` 	folder, the 	build recompile every file, and your browser will reload 	autogically showing 	you your changes.
-* **grunt dist** - This task will run jshint and unit tests under the 	`webapp/test/` folder (thanks to `karma runner`), create a fully optimized 	version 	of your code 	under the `build/dist/` folder. This version 	consists in 	concatenate, minify 	and compress js and css files, 	optimize images, and 	put every template 	into a js file loaded by the 	application.
+* **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with every js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening 	to port 9001 by default. Every time you change a file into the `webapp/` 	folder, the build recompile every file, and your browser will reload 	autogically showing 	you your changes.
+* **grunt dist** - This task will run jshint and unit tests under the `webapp/test/` folder (thanks to `karma runner`), create a fully optimized version of your code under the `build/dist/` folder. The optimization consists in concatenate, minify and compress js and css files, 	optimize images, and 	put every template into a js file loaded by the 	application.
 
 ### Features
 
 * javascript files continuous linting.
 * sass continuous compiling.
+* unit test ready and configured.
 * html templates converted into strings and attached to javascript files (to avoid one http call for every template).
 * proxy every request to `/api` (configurable of course) to your backend listening on another port.
 * livereload
