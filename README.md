@@ -154,7 +154,7 @@ PR and issues reporting are always welcome :)
 
 ### License
 
-See LICENSE.md file
+See LICENSE file
 
 ### Changelog
 
