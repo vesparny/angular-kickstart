@@ -46,12 +46,5 @@ module.exports = function(grunt) {
 		'configureProxies',
 		'connect:dist:keepalive'
 	]);
-
-	grunt.registerTask('travis', [
-		'jshint',
-		'build',
-		'karma:unit'
-	]);
-
 	grunt.registerTask('default', 'serve');
 };
