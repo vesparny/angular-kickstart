@@ -1,5 +1,5 @@
 # [ngKickstart](vesparny.github.io/ngKickstart/) 
-[![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Dev dependency status](https://david-dm.org/vesparny/ngKickstart/dev-status.png)](https://david-dm.org/vesparny/ngKickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ngKickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 **Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ngKickstart will take care of the rest.**
 ***
