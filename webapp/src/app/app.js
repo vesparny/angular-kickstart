@@ -42,7 +42,7 @@ angular.module('app', [
 	});
 }).run(function run($rootScope, $window) {
 	$rootScope.config = $window.app.config;
-	$rootScope.$on('$routeChangeStart', function(next, current) {
+	$rootScope.$on('$routeChangeSuccess', function(next, current) {
 		$window.scrollTo(0, 0);
 	});
 }).controller('AppCtrl', function AppCtrl($scope, $location) {

@@ -47,5 +47,11 @@ module.exports = function(grunt) {
 		'connect:dist:keepalive'
 	]);
 
+	grunt.registerTask('travis', [
+		'jshint',
+		'build',
+		'karma:unit'
+	]);
+
 	grunt.registerTask('default', 'serve');
 };
