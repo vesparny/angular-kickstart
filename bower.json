@@ -1,21 +1,21 @@
 {
-  "name": "ng-kickstart",
-  "version": "0.0.1",
-  "devDependencies": {
-    "angular-mocks": "~1.2.4"
-  },
-  "dependencies": {
-    "angular": "~1.2.4",
-    "angular-route": "~1.2.4",
-    "angular-animate": "~1.2.4",
-    "angular-resource": "~1.2.4",
-    "angular-loading-bar": "~0.1.0",
-    "alertify": "~0.3.10",
-    "lodash": "~2.2.1",
-    "foundation": "~5.0.2",
-    "font-awesome": "~4.0.3"
-  },
-	  "resolutions": {
-	  "angular": "1.2.4"
+	"name": "ng-kickstart",
+	"version": "0.0.1",
+	"devDependencies": {
+		"angular-mocks": "~1.2.4"
+	},
+	"dependencies": {
+		"angular": "~1.2.4",
+		"angular-route": "~1.2.4",
+		"angular-animate": "~1.2.4",
+		"angular-resource": "~1.2.4",
+		"angular-loading-bar": "~0.1.0",
+		"alertify": "~0.3.10",
+		"lodash": "~2.2.1",
+		"foundation": "~5.0.2",
+		"font-awesome": "~4.0.3"
+	},
+	"resolutions": {
+		"angular": "1.2.4"
 	}
 }
