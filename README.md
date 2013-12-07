@@ -1,10 +1,10 @@
-# [ng-kickstart](vesparny.github.io/ng-kickstart/) 
+# [ng-kickstart](http://vesparny.github.io/ng-kickstart/) 
 [![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 **Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ng-kickstart will take care of the rest.**
 ***
 
-#### See a [demo](vesparny.github.io/ng-kickstart/).
+#### See a [demo](http://vesparny.github.io/ng-kickstart/).
 
 ##What and Why
 
