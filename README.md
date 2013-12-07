@@ -4,16 +4,20 @@
 **Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ngKickstart will take care of the rest.**
 ***
 
+#### See a [demo](vesparny.github.io/ngKickstart/).
+
 ##What and Why
+
 ngKickstart is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
 
 ##Getting started
+
 Install **node.js**. Then **sass**, **karma** and **bower** if you haven't yet.
 
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
     
-After that, install ngKickstart download the [latest release](https://github.com/vesparny/ngKickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
+After that, install ngKickstart downloading the [latest release](https://github.com/vesparny/ngKickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 
     $ npm install
     $ bower install
@@ -124,16 +128,23 @@ Below a description of every available task.
 * **grunt serve** - When this task runs, the build system will create a version 	of 	the application under the `build/tmp/` folder. The build will take care 	of 	creating an index.html with every js and css (generated from sass) 	loaded. 	every request to `/api` will be proxied to your backend listening 	to port 	9001 by default. Every time you change a file into the `webapp/` 	folder, the 	build recompile every file, and your browser will reload 	autogically showing 	you your changes.
 * **grunt dist** - This task will run jshint and unit tests under the 	`webapp/test/` folder (thanks to `karma runner`), create a fully optimized 	version 	of your code 	under the `build/dist/` folder. This version 	consists in 	concatenate, minify 	and compress js and css files, 	optimize images, and 	put every template 	into a js file loaded by the 	application.
 
-
 ### Features
 
 * javascript files continuous linting.
-* sass continuous compile.
-* html templates converted into javascript files (to avoid one http call for every template).
-* proxy every request to your backend.
+* sass continuous compiling.
+* html templates converted into strings and attached to javascript files (to avoid one http call for every template).
+* proxy every request to `/api` (configurable of course) to your backend listening on another port.
 * livereload
 * static resources minification and optimization for production
+* html5mode enabled by default (and fully handled by the build connect middleware)
 
+**See also the CHANGELOG.md file**
+
+
+### TODO
+
+* E2E tests with protractor
+* ...
 
 ### Contributing
 
@@ -141,7 +152,12 @@ PR and issues reporting are always welcome :)
 
 ### License
 
-See license file
+See LICENSE.md file
+
+### Changelog
+
+See CHANGELOG.md file
+
 
 
 
