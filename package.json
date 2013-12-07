@@ -53,6 +53,6 @@
     "node": ">=0.10.x"
   },
   "scripts": {
-    "test": "grunt karma:unit"
+    "test": "grunt dist"
   }
 }
