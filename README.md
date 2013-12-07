@@ -1,4 +1,8 @@
-# [ng-kickstart](http://vesparny.github.io/ng-kickstart/) 
+# [ng-kickstart](http://vesparny.github.io/ng-kickstart/)
+
+**Brought to you by [Alessandro Arnodo](http://alessandro.arnodo.net) [[@vesparny](https://twitter.com/vesparny)]**
+
+
 [![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 **Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ng-kickstart will take care of the rest.**
@@ -30,7 +34,6 @@ In the `/backend` folder, you can find two examples of **RESTFul backend**. One 
 
 When you are ready to build a production release there is a task for that.
 
-    
     $ grunt dist
     
 After the task has finished you can find an optimized version of your project into the `/build/dist` folder.
