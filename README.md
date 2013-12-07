@@ -1,5 +1,148 @@
-# Silex Simple REST
-[![Build Status](https://secure.travis-ci.org/vesparny/ng-kickstart.png)](http://travis-ci.org/vesparny/ng-kickstart) [![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# [ngKickstart](vesparny.github.io/ngKickstart/) 
+[![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+**Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ngKickstart will take care of the rest.**
+***
+
+##What and Why
+ngKickstart is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+
+##Getting started
+Install **node.js**. Then **sass**, **karma** and **bower** if you haven't yet.
+
+    $ gem install sass
+    $ sudo npm -g install grunt-cli karma bower
+    
+After that, install ngKickstart download the [latest release](https://github.com/vesparny/ngKickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
+
+    $ npm install
+    $ bower install
+    $ grunt serve
+    
+You are now ready to go, your applcation is available at **http://127.0.0.1:9000**. Every request to /api will be proxied to **http://127.0.0.1:9001/api**.
+
+In the `/backend` folder, you can find two examples of **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md into its folder to launch the desired backend (or run your own). Then go to http://127.0.0.1:9000/notes. You are now ready to start coding.
+**Every file you add, edit or delete into the `/webapp` folder, will be handled by the build system**.
+
+When you are ready to build a production release there is a task for that.
+
+    
+    $ grunt dist
+    
+After the task has finished you can find an optimized version of your project into the `/build/dist` folder.
+
+
+##Directory Structure
+
+At a high level, the structure looks roughly like this:
+
+```
+ngKickstart/
+├── backend
+│   ├── expressjs
+│   └── silex
+├── build
+│   ├── buildfiles
+│   │   ├── tasks
+│   │   │   └── tpl.js
+│   │   ├── utils
+│   │   │   └── grunt-connect-html5Mode.js
+│   │   ├── external-tasks.js
+│   │   ├── module.prefix
+│   │   └── module.suffix
+│   ├── build.config.js
+│   └── karma.config.unit.js
+├── webapp
+│   ├── src
+│   │   ├── app
+│   │   │   ├── docs
+│   │   │   │   ├── docs.js
+│   │   │   │   └── docs.tpl.html
+│   │   │   ├── home
+│   │   │   │   ├── home.js
+│   │   │   │   └── home.tpl.html
+│   │   │   ├── notes
+│   │   │   │   ├── notes.js
+│   │   │   │   ├── notes.tpl.html
+│   │   │   │   └── notesService.js
+│   │   │   └── app.js
+│   │   ├── assets
+│   │   │   ├── fonts
+│   │   │   │   ├── FontAwesome.otf
+│   │   │   │   ├── fontawesome-webfont.eot
+│   │   │   │   ├── fontawesome-webfont.svg
+│   │   │   │   ├── fontawesome-webfont.ttf
+│   │   │   │   └── fontawesome-webfont.woff
+│   │   │   ├── img
+│   │   │   │   ├── angular-logo.png
+│   │   │   │   ├── bower-logo.png
+│   │   │   │   └── grunt-logo.png
+│   │   │   └── favicon.ico
+│   │   ├── common
+│   │   │   ├── directives
+│   │   │   │   ├── appVersion.js
+│   │   │   │   └── plusOne.js
+│   │   │   └── interceptors
+│   │   │       └── http.js
+│   │   └── sass
+│   │       ├── app
+│   │       │   └── _foundation-custom-vars.scss
+│   │       └── main.scss
+│   ├── test
+│   │   └── app
+│   │       └── home
+│   │           └── home.spec.js
+│   ├── vendor
+│   └── index.tpl.html
+├── .bowerrc
+├── .jshintrc
+├── Gruntfile.js
+├── bower.json
+└── package.json
+                               
+```
+
+- `backend/` - Fully working RESTful backend.
+- `build/` - Build files and configuration, the most important files to note are 	`build.config.js` and `karma.config.unit.js`. These files are the heart of 	the build system, and they are well commented so take a look to have more 	informations.
+- `webapp` the source code of your application, take a look at the modules into 	this 	folder, you should structure your application following those	conventions, 	but you can choose another convention as well
+- `.bowerrc` - the Bower configuration file. This tells Bower to install
+  components into the `webapp/vendor/` directory.
+- `.jshintrc` - JSHint configuration.
+- `Gruntfile.js` - see "The Build System" below.
+- `bower.json` - this is our project configuration for Bower and it contains the
+  list of Bower dependencies we need.
+- `build.config.js` - our customizable build settings; see "The Build System"
+  below.
+- `package.json` - node.js dependencies.
+
+### The Build System
+
+There are some `tasks` available in the `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize with grunt, but you don't have to getting started with ngKickstart.
+
+Below a description of every available task.
+
+* **grunt serve** - When this task runs, the build system will create a version 	of 	the application under the `build/tmp/` folder. The build will take care 	of 	creating an index.html with every js and css (generated from sass) 	loaded. 	every request to `/api` will be proxied to your backend listening 	to port 	9001 by default. Every time you change a file into the `webapp/` 	folder, the 	build recompile every file, and your browser will reload 	autogically showing 	you your changes.
+* **grunt dist** - This task will run jshint and unit tests under the 	`webapp/test/` folder (thanks to `karma runner`), create a fully optimized 	version 	of your code 	under the `build/dist/` folder. This version 	consists in 	concatenate, minify 	and compress js and css files, 	optimize images, and 	put every template 	into a js file loaded by the 	application.
+
+
+### Features
+
+* javascript files continuous linting.
+* sass continuous compile.
+* html templates converted into javascript files (to avoid one http call for every template).
+* proxy every request to your backend.
+* livereload
+* static resources minification and optimization for production
+
+
+### Contributing
+
+PR and issues reporting are always welcome :)
+
+### License
+
+See license file
+
 
 
 
