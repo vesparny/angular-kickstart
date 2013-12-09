@@ -12,7 +12,7 @@
 
 ##What and Why
 
-ng-kickstart is an opinionated kickstart for single page application development in AngularJS 1.2 . It makes you development easy, keeps the structure of the project consistent and allows you to create a fully optimized production release whith a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application keeping an organized file structure, and in the meantime that allows me to develop on a index.html file generated at build time, tied to my real backend.
+ng-kickstart is an opinionated kickstart for single page application development in AngularJS 1.2. It makes your development easy, keeps the structure of the project consistent and allows you to create a fully-optimized production release with a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application while keeping an organized file structure; and in the meantime that allowed me to develop on an index.html file generated at build time, tied to my real backend.
 
 ##Getting started
 
@@ -21,7 +21,7 @@ Install **node.js**. Then **sass**, **karma** and **bower** if you haven't yet.
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
     
-After that, install ng-kickstart downloading the [latest release](https://github.com/vesparny/ng-kickstart/releases) (or clone the master branch if want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
+After that, install ng-kickstart downloading the [latest release](https://github.com/vesparny/ng-kickstart/releases) (or clone the master branch if you want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 
     $ npm install
     $ bower install
@@ -29,14 +29,15 @@ After that, install ng-kickstart downloading the [latest release](https://github
     
 You are now ready to go, your applcation is available at **http://127.0.0.1:9000**. Every request to /api will be proxied to **http://127.0.0.1:9001/api**.
 
-In the `/backend` folder, you can find two examples of **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md into its folder to launch the desired backend (or run your own). Then go to http://127.0.0.1:9000/notes. You are now ready to start coding.
-**Every file you add, edit or delete into the `/webapp` folder, will be handled by the build system**.
+In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to http://127.0.0.1:9000/notes. You are now ready to start coding.
 
-When you are ready to build a production release there is a task for that.
+**Every file you add, edit or delete into the `/webapp` folder will be handled by the build system**.
+
+When you are ready to build a production release there is a task for that:
 
     $ grunt dist
     
-After the task has finished you can find an optimized version of your project into the `/build/dist` folder.
+After the task has finished you can find an optimized version of your project inside the `/build/dist` folder.
 
 
 ##Directory Structure
@@ -110,38 +111,36 @@ ng-kickstart/
 ```
 
 - `backend/` - Fully working RESTful backend, available in 2 versions.
-- `build/` - Build files and configuration, the most important files to note are `build.config.js` and `karma.config.unit.js`. These files are the heart of the build system, and they are well commented so take a look to have more informations.
-- `webapp/` the source code of your application, take a look at the modules into this folder, you should structure your application following those conventions, but you can choose another convention as well
-- `.bowerrc` - the Bower configuration file. This tells Bower to install
-  components into the `webapp/vendor/` directory.
+- `build/` - Build files and configuration, the most important files to note are `build.config.js` and `karma.config.unit.js`. These files are the heart of the build system, and they are well commented so take a look for more information.
+- `webapp/` the source code of your application, take a look at the modules in this folder, you should structure your application following those conventions, but you can choose another convention as well.
+- `.bowerrc` - the Bower configuration file. This tells Bower to install components in the `webapp/vendor/` directory.
 - `.jshintrc` - JSHint configuration.
-- `Gruntfile.js` - see "The Build System" below.
+- `Gruntfile.js` - see [The Build System](#thebuildsystem) below.
 - `bower.json` - It contains the list of Bower dependencies.
 - `build.config.js` - our customizable build settings; see "The Build System" below.
 - `package.json` - node.js dependencies.
 
-### The Build System
+### <a name="thebuildsystem"></a>The Build System
 
-There are some `tasks` available in the `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize with grunt, but you don't have to getting started with ng-kickstart.
+There are some `tasks` available in `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize yourself with grunt, but you don't have to in order to be getting started with ng-kickstart.
 
-Below a description of every available task.
+A description of every available task:
 
-* **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with every js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening 	to port 9001 by default. Every time you change a file into the `webapp/` 	folder, the build recompile every file, and your browser will reload 	autogically showing 	you your changes.
-* **grunt dist** - This task will run jshint and unit tests under the `webapp/test/` folder (thanks to `karma runner`), create a fully optimized version of your code under the `build/dist/` folder. The optimization consists in concatenate, minify and compress js and css files, 	optimize images, and 	put every template into a js file loaded by the 	application.
+* **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening to port 9001 by default. Every time you change a file into the `webapp/` folder, the build recompiles every file, and your browser will reload automagically showing you your changes.
+* **grunt dist** - This task will run jshint and unit tests under the `webapp/test/` folder (thanks to `karma runner`), and create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files, optimize images, and put every template into a js file loaded by the application.
 
 ### Features
 
-* javascript files continuous linting.
+* javascript file continuous linting.
 * sass continuous compiling.
 * unit test ready and configured.
 * html templates converted into strings and attached to javascript files (to avoid one http call for every template).
 * proxy every request to `/api` (configurable of course) to your backend listening on another port.
-* livereload
-* static resources minification and optimization for production
-* html5mode enabled by default (and fully handled by the build connect middleware)
+* livereload.
+* static resources minification and optimization for production.
+* html5mode enabled by default (and fully handled by the build connect middleware).
 
 **See also the CHANGELOG.md file**
-
 
 ### TODO
 
@@ -159,9 +158,3 @@ See LICENSE file
 ### Changelog
 
 See CHANGELOG.md file
-
-
-
-
-
-
