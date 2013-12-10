@@ -7,7 +7,7 @@ angular.module('app.notes', [
 		templateUrl: 'app/notes/notes.tpl.html',
 		resolve: {
 			notesList: function(NotesService) {
-				return NotesService.query();
+				return NotesService.query().$promise;
 			}
 		}
 	});
