@@ -7,7 +7,7 @@
     <form ng-submit="notesCtrl.addNote(notesCtrl.newNote)" novalidate name="addForm">
         <div class="row">
             <div class="large-12 columns">
-                <small class="error" ng-show="addForm.newNote.$invalid && !addForm.newNote.$pristine">Please fill and submit the form for woking example</small>
+                <small class="error" ng-show="addForm.newNote.$invalid && !addForm.newNote.$pristine">Please fill and submit the form for working example</small>
                 <input type="text" ng-model="notesCtrl.newNote" name="newNote" required placeholder="Write a new note and hit enter..." maxlength="100" class="noteInput">
             </div>
         </div>
