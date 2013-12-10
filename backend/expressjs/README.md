@@ -11,7 +11,7 @@ From this folder run the following commands to install the application and run i
     $ npm install 
     $ node server.js
     
-Your api is now available at http://localhost:9001.
+Your api is now available at http://localhost:8001.
 
 Under the **config/** folder you can change parameters such as http port or MongoDb connection Url.
 

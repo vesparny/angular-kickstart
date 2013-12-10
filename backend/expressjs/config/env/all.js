@@ -3,6 +3,6 @@ rootPath = path.normalize(__dirname + '/../..');
 
 module.exports = {
 	root: rootPath,
-	port: process.env.PORT || 9001,
+	port: process.env.PORT || 8001,
     db: process.env.MONGOHQ_URL
 }
