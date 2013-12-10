@@ -29,13 +29,7 @@ angular.module('app', [
 	'common.directives.appVersion',
 	'common.directives.plusOne',
 	'common.interceptors.http'
-]).config(function myAppConfig($provide, $routeProvider, $locationProvider, $httpProvider) {
-	/*/
-	$provide.decorator('$sniffer', function($delegate) {
-		$delegate.history = false;
-		return $delegate;
-	});
-	*/
+]).config(function myAppConfig($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$routeProvider.otherwise({
 		redirectTo: '/home'
@@ -43,10 +37,10 @@ angular.module('app', [
 }).run(function run($rootScope, $window) {
 	$rootScope.config = $window.app.config;
 	$rootScope.$on('$routeChangeSuccess', function(next, current) {
+		console.log($window);
 		$window.scrollTo(0, 0);
 	});
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
-	$scope.title = "ng-kickstart - Speed up your AngularJS development whith a great build system.";
 	$scope.isActive = function(viewLocation) {
 		return (viewLocation === $location.path());
 	};
