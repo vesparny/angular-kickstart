@@ -15,13 +15,13 @@ module.exports = {
     proxy: {
         context: '/api',
         host: 'localhost',
-        port: 9001
+        port: 8001
     },
     /*
 	 * connect configurations used during development.
 	 */
     connect: {
-        port: 9000,
+        port: 8000,
         livereload: 35729,
         hostname: 'localhost'
     },

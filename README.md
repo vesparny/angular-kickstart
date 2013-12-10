@@ -27,7 +27,7 @@ After that, install ng-kickstart downloading the [latest release](https://github
     $ bower install
     $ grunt serve
     
-You are now ready to go, your applcation is available at **http://127.0.0.1:9000**. Every request to /api will be proxied to **http://127.0.0.1:9001/api**.
+You are now ready to go, your applcation is available at **http://127.0.0.1:8000**. Every request to /api will be proxied to **http://127.0.0.1:8001/api**.
 
 In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to http://127.0.0.1:9000/notes. You are now ready to start coding.
 
@@ -126,7 +126,7 @@ There are some `tasks` available in `Gruntfile.js`. Every task is defined in `bu
 
 A description of every available task:
 
-* **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening to port 9001 by default. Every time you change a file into the `webapp/` folder, the build recompiles every file, and your browser will reload automagically showing you your changes.
+* **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening to port 8001 by default. Every time you change a file into the `webapp/` folder, the build recompiles every file, and your browser will reload automagically showing you your changes.
 * **grunt dist** - This task will run jshint and unit tests under the `webapp/test/` folder (thanks to `karma runner`), and create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files, optimize images, and put every template into a js file loaded by the application.
 
 ### Features
