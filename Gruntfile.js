@@ -46,5 +46,8 @@ module.exports = function(grunt) {
 		'configureProxies',
 		'connect:dist:keepalive'
 	]);
+
+	grunt.registerTask('unit', 'karma:unit');
+
 	grunt.registerTask('default', 'serve');
 };

@@ -37,7 +37,8 @@
 
 <p>
     You are now ready to go, your applcation is available at
-    <code>http://127.0.0.1:8000</code>. Every request to
+    <code>http://127.0.0.1:8000</code>.
+    Every request to
     <code>/api</code> will be proxied to
     <code>http://127.0.0.1:8001/api</code>.
 </p>
@@ -46,7 +47,7 @@
     <strong>/backend</strong> folder, you can find two examples of RESTFul backend.
      One using <strong> Silex PHP micro-framework + SQLite</strong> and another using <strong>expressjs + MongoDB</strong>. Refer to the README.md into its folder to launch the desired backend (or run your own). Then go to
     <code>http://127.0.0.1:8000/notes</code>. You are now ready to start coding, every file you add, edit or delete into the
-    <strong>/twebapp</strong> folder, will be handled by the build system.
+    <strong>/webapp</strong> folder, will be handled by the build system.
 </p>
 <p>
     When you are ready to build a production release there is a task for that.
@@ -62,11 +63,23 @@
     After the task has finished you can find an optimized version of your project in the
     <strong>/build/dist</strong> folder.
 </p>
+
+<p>
+    There is also a task for execute unit tests located inside the <strong>/webapp/test</strong> folder.
+</p>
+
+<pre>
+    <code>
+    $ grunt unit
+    </code>
+</pre>
+
 <p class="text-center">
     <a href="https://github.com/vesparny/ng-kickstart/#readme" target="_blank" class="button expand">
             <i class="fa fa-share"></i>&nbsp;&nbsp;Full documentation on GitHub
         </a>
 </p>
+
 <hr/>
 <p class="text-center">
     <strong>Inspired by ng-boilerplate, yeoman and so many other beautiful projects.</strong>

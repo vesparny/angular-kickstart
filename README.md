@@ -128,6 +128,8 @@ A description of every available task:
 
 * **grunt serve** - When this task runs, the build system will create a version of the application under the `build/tmp/` folder. The build will take care of creating an index.html with js and css (generated from sass) loaded. Every request to `/api` will be proxied to your backend listening to port 8001 by default. Every time you change a file into the `webapp/` folder, the build recompiles every file, and your browser will reload automagically showing you your changes.
 * **grunt dist** - This task will run jshint and unit tests under the `webapp/test/` folder (thanks to `karma runner`), and create a fully-optimized version of your code under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files, optimize images, and put every template into a js file loaded by the application.
+* **grunt unit** - Just run unit tests.
+
 
 ### Features
 
