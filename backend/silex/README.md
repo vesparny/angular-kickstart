@@ -22,9 +22,3 @@ Some tests were written, and all CRUD operations are fully tested :)
 From this folder run the following command to run tests.
     
     vendor/bin/phpunit 
-
-
-
-
-
-
