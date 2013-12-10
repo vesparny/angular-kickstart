@@ -16,7 +16,7 @@ ng-kickstart is an opinionated kickstart for single page application development
 
 ##Getting started
 
-Install **node.js**. Then **sass**, **karma** and **bower** if you haven't yet.
+Install **node.js**. Then **sass**, **grunt-cli** **karma** and **bower** if you haven't yet.
 
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
