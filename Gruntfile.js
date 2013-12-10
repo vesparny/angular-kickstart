@@ -7,8 +7,8 @@ var _ = require('lodash'),
 
 module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
-	require('time-grunt')(grunt);
 	grunt.loadTasks('./build/buildfiles/tasks');
+	require('time-grunt')(grunt);
 	grunt.initConfig(_.extend({
 		config: config,
 		pkg: grunt.file.readJSON('package.json')
