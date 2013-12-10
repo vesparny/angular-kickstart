@@ -133,6 +133,7 @@ A description of every available task:
 
 ### Features
 
+* 3 simple task: grunt serve, grunt dist, grunt unit
 * JavaScript file continuous linting.
 * SASS continuous compiling.
 * Unit testing ready and configured.
