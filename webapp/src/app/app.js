@@ -10,7 +10,7 @@ app.init = function() {
 
 app.config = {
 	apiUrl: 'api/v1',
-	version: "0.0.1"
+	version: "0.0.2"
 };
 
 angular.element(document).ready(function() {
@@ -37,7 +37,6 @@ angular.module('app', [
 }).run(function run($rootScope, $window) {
 	$rootScope.config = $window.app.config;
 	$rootScope.$on('$routeChangeSuccess', function(next, current) {
-		console.log($window);
 		$window.scrollTo(0, 0);
 	});
 }).controller('AppCtrl', function AppCtrl($scope, $location) {
