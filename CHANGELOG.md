@@ -1,3 +1,14 @@
+# 0.0.2 (2013-12-11)
+
+## Features
+
+* grunt unit task
+
+## Bug fixes
+
+* docs improvement
+
+
 # 0.0.1 (2013-12-07)
 
 ## Features
@@ -10,3 +21,4 @@
 * livereload
 * static resources minification and optimization for production
 * html5mode enabled by default (and fully handled by the build connect middleware)
+
