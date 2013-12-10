@@ -131,13 +131,13 @@ A description of every available task:
 
 ### Features
 
-* javascript file continuous linting.
-* sass continuous compiling.
-* unit test ready and configured.
-* html templates converted into strings and attached to javascript files (to avoid one http call for every template).
-* proxy every request to `/api` (configurable of course) to your backend listening on another port.
-* livereload.
-* static resources minification and optimization for production.
+* JavaScript file continuous linting.
+* SASS continuous compiling.
+* Unit testing ready and configured.
+* HTML templates converted into strings and attached to javascript files (to avoid one http call for every template).
+* Proxy every request to `/api` (configurable of course) to your backend listening on another port.
+* Livereload.
+* Static resources minification and optimization for production.
 * html5mode enabled by default (and fully handled by the build connect middleware).
 
 **See also the CHANGELOG.md file**
@@ -158,3 +158,10 @@ See LICENSE file
 ### Changelog
 
 See CHANGELOG.md file
+
+### Thank you, community!
+
+All this wouldn't have been possible without these great contributors and everybody who comes with new ideas and suggestions.
+
+* [Mitch Pirtle](https://github.com/spacemonkey)
+* [Peter Renström](https://github.com/renstrom)
