@@ -29,7 +29,7 @@ After that, install ng-kickstart downloading the [latest release](https://github
     
 You are now ready to go, your applcation is available at **http://127.0.0.1:8000**. Every request to /api will be proxied to **http://127.0.0.1:8001/api**.
 
-In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to http://127.0.0.1:9000/notes. You are now ready to start coding.
+In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to **http://127.0.0.1:8000/notes**. You are now ready to start coding.
 
 **Every file you add, edit or delete into the `/webapp` folder will be handled by the build system**.
 
