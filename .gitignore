@@ -11,17 +11,6 @@ webapp/vendor
 # logs
 npm-debug.log
 
-# build artifacts
-bin
-
-# os artifacts
-.DS_Store
-
 # build
-build/tmp
+webapp/tmp
 build/dist
-
-#backend
-backend/**/vendor
-backend/**/app.db
-

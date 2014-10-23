@@ -10,7 +10,7 @@ app.init = function() {
 
 app.config = {
 	apiUrl: 'api/v1',
-	version: "0.0.2"
+	version: "0.0.3"
 };
 
 angular.element(document).ready(function() {
@@ -18,25 +18,22 @@ angular.element(document).ready(function() {
 });
 
 angular.module('app', [
-	'templates.app',
-	'templates.common',
+	'templates',
 	'app.home',
 	'app.notes',
 	'app.docs',
-	'ngRoute',
+	'ui.router',
 	'ngAnimate',
 	'chieffancypants.loadingBar',
 	'common.directives.appVersion',
 	'common.directives.plusOne',
 	'common.interceptors.http'
-]).config(function myAppConfig($routeProvider, $locationProvider) {
-	$locationProvider.html5Mode(true);
-	$routeProvider.otherwise({
-		redirectTo: '/home'
-	});
+]).config(function myAppConfig($stateProvider, $urlRouterProvider, $logProvider) {
+	$urlRouterProvider.otherwise("/");
+	$logProvider.debugEnabled(true);
 }).run(function run($rootScope, $window) {
 	$rootScope.config = $window.app.config;
-	$rootScope.$on('$routeChangeSuccess', function(next, current) {
+	$rootScope.$on('$stateChangeSuccess', function(next, current) {
 		$window.scrollTo(0, 0);
 	});
 }).controller('AppCtrl', function AppCtrl($scope, $location) {

@@ -1,9 +1,16 @@
 angular.module('app.home', [
-	'ngRoute'
-]).config(function config($routeProvider) {
-	$routeProvider.when('/home', {
-		controller: 'HomeCtrl',
-		templateUrl: 'app/home/home.tpl.html'
-	});
+		'ui.router'
+]).config(function config($stateProvider) {
+		$stateProvider
+				.state({
+						name: "home",
+						url: "/",
+						templateUrl: "app/home/ome.tpl.html",
+						controller: "HomeCtrl",
+						data: {
+								pageTitle: "Home"
+						}
+				});
 }).
-controller('HomeCtrl', function() {});
+controller('HomeCtrl', function() {
+});
