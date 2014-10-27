@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-controller="MainCtrl">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ng-kickstart - Speed up your AngularJS development whith a great build system.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title ng-bind="title"></title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="keywords" content="AngularJS, ng-kickstart, gulp, bower" />
+
+  <!-- build:css assets/css/main.css -->
+  <link rel="stylesheet" type="text/css" href="vendor/pure/pure.css" />
+  <link rel="stylesheet" type="text/css" href="tmp/main.css" />
+  <!-- endbuild -->
+
+</head>
+
+<body>
+  <div class="container">
+    <header ui-view="header"></header>
+    <div ui-view class="content"></div>
+    <footer ui-view="footer"></footer>
+  </div>
+  
+  <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+    {
+      "parsetags": "explicit"
+    }
+  </script>
+
+  <!-- build:js assets/js/vendor.js -->
+  <script type="text/javascript" src="vendor/angular/angular.js"></script>
+  <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js assets/js/main.js -->
+  <script type="text/javascript" src="src/app/app.js"></script>
+
+  <script type="text/javascript" src="src/app/docs/docs.js"></script>
+  <script type="text/javascript" src="src/app/home/home.js"></script>
+
+  <script type="text/javascript" src="src/common/directives/version.js"></script>
+  <script type="text/javascript" src="src/common/directives/gplus.js"></script>
+  <script type="text/javascript" src="src/common/interceptors/httpInterceptor.js"></script>
+  <script type="text/javascript" src="src/common/services/dataService.js"></script>
+  <script type="text/javascript" src="src/common/filters/uppercase.js"></script>
+
+  <script type="text/javascript" src="src/common/header.js"></script>
+  <script type="text/javascript" src="src/common/footer.js"></script>
+
+  <script type="text/javascript" src="tmp/templates.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

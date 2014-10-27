@@ -5,7 +5,7 @@ exports.config = {
   },
 
   specs: [
-    "wepapp/test/e2e/**/*.scenario.js"
+    'wepapp/test/e2e/**/*.scenario.js'
   ],
 
   capabilities: {

@@ -4,19 +4,28 @@ var config = require('./build/build.config.js');
 var karmaConfig = require('./build/karma.config.js');
 var protractorConfig = require('./build/protractor.config.js');
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
-var pagespeed = require('psi');
 var reload = browserSync.reload;
 var pkg = require('./package');
-var moment = require("moment");
 var karma = require('karma').server;
+var del = require('del');
 var _ = require('lodash');
 var fs = require('fs');
 var url = require('url');
 var webdriverStandalone = require('gulp-protractor').webdriver_standalone;
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
+
+var banner = ['/**',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @link <%= pkg.homepage %>',
+  ' * @license <%= pkg.license %>',
+  ' */',
+  ''
+].join('\n');
+
 // Run e2e tests using protractor.
 // Make sure server task is running.
 gulp.task('protractor', ['webdriver:update'], function() {
@@ -74,332 +83,94 @@ gulp.task('images', function() {
     }));
 });
 
-
-gulp.task('copy', ['copy:root', 'copy:assets']);
-gulp.task('generated', ['html2js', 'scss']);
-
-// Copy All Files At The Root Level (app)
-gulp.task('copy:root', function() {
-  return gulp.src([
-      'webapp/*.*',
-      '!webapp/*.html'
-    ], {
-      dot: true
-    })
-    .pipe(gulp.dest(config.distDir))
-    .pipe(plugins.size({
-      title: 'copy:root'
-    }));
-});
-
-// Copy All Files At The Root Level (app)
-gulp.task('copy:assets', function() {
-  return gulp.src(['webapp/assets/**', '!webapp/assets/images'])
-    .pipe(gulp.dest(config.distDir + "/assets"))
-    .pipe(plugins.size({
-      title: 'copy:assets'
-    }));
-});
-
-
-gulp.task('html2js', function() {
-  return gulp.src('webapp/src/**/*.tpl.html')
-    .pipe(plugins.ngHtml2js({
-      moduleName: "templates",
-      prefix: "app/"
+gulp.task('templates', function() {
+  return gulp.src(config.tpl)
+    .pipe($.html2js({
+      outputModuleName: 'templates',
+      base: 'client',
+      useStrict: true
     }))
-    .pipe(plugins.concat("templates.js"))
-    .pipe(gulp.dest("webapp/tmp"));
-});
-
-
-
-gulp.task('html', function() {
-  return gulp.src('webapp/*.html')
-    .pipe(plugins.useref.assets())
-    .pipe(plugins.if(/main.js/, plugins.ngAnnotate()))
-    .pipe(plugins.if('*.js', plugins.uglify({
-      mangle: false
-    })))
-    .pipe(plugins.if('*.css', plugins.csso()))
-
-  .pipe(plugins.rev())
-    .pipe(plugins.header(config.banner, {
-      version: pkg.version,
-      name: pkg.name,
-      date: moment().format("YYYY-MM-DD")
-    }))
-    .pipe(plugins.useref.restore())
-    .pipe(plugins.useref())
-    .pipe(plugins.if('*.html', plugins.minifyHtml({
-      empty: true
-    })))
-    .pipe(plugins.revReplace())
-    .pipe(gulp.dest('build/dist'))
-    .pipe(plugins.size({
-      title: 'html'
+    .pipe($.concat('templates.js'))
+    .pipe(gulp.dest(config.tmp))
+    .pipe($.size({
+      title: 'templates'
     }));
 });
 
 gulp.task('scss', function() {
-  return gulp.src(['webapp/src/scss/main.scss'])
-    .pipe(plugins.rubySass({
-      style: 'expanded',
-      precision: 10
+  return gulp.src(config.mainScss)
+    .pipe($.sass({
+      errLogToConsole: true
     }))
-    .on('error', console.error.bind(console))
-    .pipe(gulp.dest('webapp/tmp'))
-    .pipe(plugins.size({
+    .on('error', $.notify.onError())
+    .pipe(gulp.dest(config.tmp))
+    .pipe($.size({
       title: 'scss'
     }));
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', ['templates', 'scss'], function() {
   browserSync({
     notify: false,
-    server: {
-      baseDir: ['webapp']
-    }
+    server: ['build', 'client']
   });
-  gulp.watch(['webapp/**/*.html'], reload);
-  gulp.watch(['webapp/src/scss**/*.scss'], ['scss']);
-  gulp.watch(['webapp/src/**/*.js'], ['jshint']);
-  gulp.watch(['webapp/assets/**/*'], reload);
+
+  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/images/**/*'], reload);
 });
 
-// Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function() {
+
+gulp.task('build', ['clean'], function(cb) {
+  runSequence(['scss', 'copy', 'templates'], 'html', cb);
+});
+
+gulp.task('serve:dist', function() {
   browserSync({
     notify: false,
-    server: {
-      baseDir: 'build/dist',
-      middleware: function(req, res, next) {
-        var indexFile = "index.html";
-        var rootDir = 'build/dist';
-        var path = url.parse(req.url).pathname;
-
-        fs.readFile('./' + rootDir + path, function(err, buffer) {
-          if (!err) {
-            return next();
-          }
-
-          fs.readFile('./' + rootDir + '/' + indexFile, function(err, buffer) {
-            if (err) {
-              return next(err);
-            }
-
-            var resp = {
-              headers: {
-                'Content-Type': 'text/html'
-              },
-              body: buffer
-            };
-            res.writeHead(200, resp.headers);
-            res.end(resp.body);
-          });
-        });
-
-      }
-    }
+    server: [config.dist]
   });
 });
 
 
-/*
-// Update/install webdriver.
-gulp.task('webdriver:update', webdriverUpdate);
+gulp.task('html', function() {
+  var assets = $.useref.assets({
+    searchPath: '{build,client}'
+  });
 
-// Run webdriver standalone server indefinitely.
-// Usually not required.
-gulp.task('webdriver:standalone', ['webdriver:update'], webdriverStandalone);
-
-// Run unit tests using karma.
-gulp.task('karma', function () {
-	return gulp.src(files.test.unit)
-		.pipe(karma({
-			configFile: 'karma.conf.js',
-			action: 'run'
-		}))
-		.on('error', function (e) {
-			throw e
-		});
-});
-
-// Run e2e tests using protractor.
-// Make sure server task is running.
-gulp.task('protractor', ['webdriver:update'], function () {
-	return gulp.src(files.test.e2e)
-		.pipe(protractor({
-			configFile: 'protractor.conf.js',
-		}))
-		.on('error', function (e) {
-			throw e
-		});
-});
-
-gulp.task('test', ['karma', 'protractor']);
-*/
-
-// Clean Output Directory
-gulp.task('clean', function() {
-  return gulp.src('build/dist', {
-      read: false
-    }) // much faster
-    .pipe(plugins.rimraf());
-});
-
-
-
-
-gulp.task('default', ['clean'], function(cb) {
-  runSequence('generated', ['copy', 'jshint', 'images', 'html'], cb);
-});
-
-/*
-.pipe(concat("ng-quick-date.js"))   // Combine into 1 file
-	.pipe(gulp.dest("dist"))            // Write non-minified to disk
-	.pipe(uglify())                     // Minify
-	.pipe(rename({extname: ".min.js"})) // Rename to ng-quick-date.min.js
-	.pipe(gulp.dest("dist"))
- */
-/*
-
-grunt.registerTask('unit', 'karma:unit');
-
-grunt.registerTask('default', 'serve');
-*/
-* *
-var gulp = require('gulp'),
-  $ = require('gulp-load-plugins')(),
-  del = require('del'),
-  browserSync = require('browser-sync'),
-  reload = browserSync.reload,
-  buildFolder = 'presentation',
-  assetsFolder = 'assets',
-  srcPaths = {
-    scss: assetsFolder + '/styles/main.scss',
-    theme: assetsFolder + '/theme/*.scss',
-    css: assetsFolder + '/styles/main.css',
-    scripts: assetsFolder + '/scripts/{,*/}*.js',
-    images: assetsFolder + '/images/*.*'
-  };
-
-gulp.task('clean', function(cb) {
-  del([buildFolder], cb);
-});
-
-gulp.task('styles', function() {
-  gulp.src(srcPaths.scss)
-    .pipe($.sass({
-      errLogToConsole: true
-    }))
-    .pipe($.autoprefixer('last 2 version'))
-    .pipe(gulp.dest(assetsFolder + '/styles'))
-    .pipe(reload({
-      stream: true
-    }));
-});
-
-gulp.task('theme', function() {
-  gulp.src(srcPaths.theme)
-    .pipe($.sass({
-      errLogToConsole: true
-    }))
-    .pipe($.autoprefixer('last 2 version'))
-    .pipe(gulp.dest(assetsFolder + '/theme'))
-    .pipe(reload({
-      stream: true
-    }));
-});
-
-gulp.task('scripts', function() {
-  gulp.src([srcPaths.scripts, 'gulpfile.js', '!assets/scripts/vendor/*.js'])
-    .pipe($.jshint('.jshintrc'))
-    .pipe($.jshint.reporter(require('jshint-stylish')));
-});
-
-gulp.task('fonts', function() {
-  gulp.src('theme/fonts/*.*')
-    .pipe(gulp.dest('presentation/theme/fonts'));
-});
-
-gulp.task('images', function() {
-  gulp.src('assets/images/*.*')
-    .pipe(gulp.dest('presentation/assets/images'));
-});
-
-gulp.task('themeMove', function() {
-  gulp.src('assets/theme/**/*.*')
-    .pipe(gulp.dest('presentation/assets/theme'));
-});
-
-gulp.task('prepare', ['styles', 'scripts'], function() {
-  var assets = $.useref.assets();
-
-  gulp.src('*.html')
+  return gulp.src(config.index)
     .pipe(assets)
-    .pipe($.if('*.js', $.ngAnnotate()))
-    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('**/*main.js', $.ngAnnotate()))
+    .pipe($.if('*.js', $.uglify({
+      mangle: false
+    })))
     .pipe($.if('*.css', $.csso()))
+    .pipe($.if(['**/*main.js', '**/*main.css'], $.header(banner, {
+      pkg: pkg
+    })))
+    .pipe($.rev())
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe(gulp.dest(buildFolder));
+    .pipe($.revReplace())
+    .pipe($.if('*.html', $.minifyHtml({
+      empty: true
+    })))
+    .pipe(gulp.dest(config.dist))
+    .pipe($.size({
+      title: 'html'
+    }));
 });
 
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: './'
-    }
-  });
+gulp.task('copy', function() {
+  return gulp.src([
+      'client/assets/*'
+    ], {
+      dot: true
+    }).pipe(gulp.dest(config.dist + '/assets'))
+    .pipe($.size({
+      title: 'copy'
+    }));
 });
 
-gulp.task('bump', function() {
-  gulp.src(['./bower.json', './package.json', './bower-dist.json'])
-    .pipe($.bump())
-    .pipe(gulp.dest('./'));
-});
-
-gulp.task('tag', ['bump'], function() {
-  var version = require('./bower.json').version;
-  $.git.tag('v' + version, function(err) {
-    if (err) {
-      throw err;
-    } else {
-      console.log('tag created');
-    }
-  });
-});
-
-gulp.task('bowerDist', function() {
-  gulp.src('bower-dist.json')
-    .pipe($.rename('bower.json'))
-    .pipe(gulp.dest('presentation'));
-});
-
-gulp.task('push', ['tag'], function() {
-  $.git.push('bower', 'master', {
-    args: ' --tags --dry-run'
-  }, function(err) {
-    if (err) {
-      throw err;
-    } else {
-      console.log('pushed to repo');
-    }
-  });
-});
-
-gulp.task('build', ['clean'], function() {
-  gulp.start(['prepare', 'images', 'fonts', 'themeMove']);
-});
-
-gulp.task('bower', ['build'], function() {
-  gulp.start(['tag', 'push']);
-});
-
-gulp.task('watch', function() {
-  gulp.start(['browserSync', 'styles', 'theme', 'scripts']);
-  gulp.watch(srcPaths.scss, ['styles']);
-  gulp.watch(srcPaths.theme, ['theme']);
-  gulp.watch(srcPaths.scripts, ['scripts', browserSync.reload]);
-});
+gulp.task('clean', del.bind(null, [config.dist, config.tmp]));

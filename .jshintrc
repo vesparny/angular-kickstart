@@ -10,5 +10,6 @@
 	"newcap": true,
 	"trailing": true,
 	"quotmark": "single",
-	"strict": true
+	"strict": true,
+	"globals"   : {}
 }
