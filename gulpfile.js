@@ -1,4 +1,7 @@
 'use strict';
+https://github.com/StarterSquad/ngseed
+https://github.com/driftyco/gulp-angular-seed
+vimeo tj
 
 var config = require('./build/build.config.js');
 var karmaConfig = require('./build/karma.config.js');
