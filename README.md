@@ -1,7 +1,7 @@
 # [ng-kickstart](http://vesparny.github.io/ng-kickstart/)
 
 **Brought to you by [Alessandro Arnodo](http://alessandro.arnodo.net) [[@vesparny](https://twitter.com/vesparny)]**
-
+http://selenium.googlecode.com/git/docs/api/javascript/index.html
 
 [![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
@@ -20,13 +20,13 @@ Install **node.js**. Then **sass**, **grunt-cli** **karma** and **bower** if you
 
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
-    
+
 After that, install ng-kickstart downloading the [latest release](https://github.com/vesparny/ng-kickstart/releases) (or clone the master branch if you want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 
     $ npm install
     $ bower install
     $ grunt serve
-    
+
 You are now ready to go, your applcation is available at **http://127.0.0.1:8000**. Every request to /api will be proxied to **http://127.0.0.1:8001/api**.
 
 In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to **http://127.0.0.1:8000/notes**. You are now ready to start coding.
@@ -36,7 +36,7 @@ In the `/backend` folder, you can find two examples of a **RESTFul backend**. On
 When you are ready to build a production release there is a task for that:
 
     $ grunt dist
-    
+
 After the task has finished you can find an optimized version of your project inside the `/build/dist` folder.
 
 
@@ -107,7 +107,7 @@ ng-kickstart/
 ├── Gruntfile.js
 ├── bower.json
 └── package.json
-                               
+
 ```
 
 - `backend/` - Fully working RESTful backend, available in 2 versions.
