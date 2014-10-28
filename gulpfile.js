@@ -138,7 +138,7 @@ gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
 
 //lint files
 gulp.task('jshint', function() {
-  return gulp.src([config.js, 'gulpfile.js', config.jsTestUnit, config.jsTestE2e])
+  return gulp.src(config.js)
     .pipe(reload({
       stream: true,
       once: true
@@ -195,7 +195,7 @@ gulp.task('serve', ['build'], function() {
 
   gulp.watch(config.html, reload);
   gulp.watch(config.scss, ['scss', reload]);
-  gulp.watch([config.js, 'gulpfile.js', config.jsTestUnit, config.jsTestE2e], ['jshint']);
+  gulp.watch(config.js, ['jshint']);
   gulp.watch(config.tpl, ['templates', reload]);
   gulp.watch(config.assets, reload);
 });

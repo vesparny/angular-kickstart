@@ -9,9 +9,12 @@ module.exports = {
   tpl: 'client/src/**/*.tpl.html',
   mainScss: 'client/src/scss/main.scss',
   scss: 'client/src/scss/**/*.scss',
-  js: 'client/src/**/*.js',
-  jsTestUnit: 'client/test/unit/**/*.js',
-  jsTestE2e: 'client/test/e2e/**/*.js',
+  js: [
+    'client/src/**/*.js',
+    '!client/src/vendor/**/*.js',
+    'client/test/unit/**/*.js',
+    'client/test/e2e/**/*.js'
+  ],
   index: 'client/index.html',
   assets: 'client/assets/**',
   images: 'client/assets/images/**/*',

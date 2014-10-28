@@ -14,7 +14,7 @@
   function MainCtrl($log) {
     $log.debug('MainCtrl laoded!');
   }
-
+  
   function run($log) {
     $log.debug('App is running!');
   }
