@@ -12,5 +12,11 @@ webapp/vendor
 npm-debug.log
 
 # build
-webapp/tmp
+build/tmp
 build/dist
+
+#test
+client/test/screenshots/*
+!client/test/screenshots/README.md
+client/test/unit-results/*
+!client/test/unit-results/README.md
