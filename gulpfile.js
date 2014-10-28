@@ -1,7 +1,8 @@
 'use strict';
-https://github.com/StarterSquad/ngseed
-https://github.com/driftyco/gulp-angular-seed
-vimeo tj
+//https://github.com/StarterSquad/ngseed/blob/develop/Gulpfile.js
+//https://github.com/google/web-starter-kit/blob/master/gulpfile.js
+//https://github.com/Granze/applause/blob/master/package.json
+//https://github.com/samora/ng-launchpad/blob/master/Gulpfile.js
 
 var config = require('./build/build.config.js');
 var karmaConfig = require('./build/karma.config.js');
@@ -15,44 +16,32 @@ var pkg = require('./package');
 var karma = require('karma').server;
 var del = require('del');
 var _ = require('lodash');
-var fs = require('fs');
-var url = require('url');
+/* jshint camelcase:false*/
 var webdriverStandalone = require('gulp-protractor').webdriver_standalone;
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
 
-var banner = ['/**',
-  ' * <%= pkg.name %> - <%= pkg.description %>',
-  ' * @version v<%= pkg.version %>',
-  ' * @link <%= pkg.homepage %>',
-  ' * @license <%= pkg.license %>',
-  ' */',
-  ''
-].join('\n');
-
 // Run e2e tests using protractor.
 // Make sure server task is running.
-gulp.task('protractor', ['webdriver:update'], function() {
-  return gulp.src("webapp/test/e2e/**/*.scenario.js")
-    .pipe(plugins.protractor.protractor({
-      configFile: "build/protractor.config.js"
+gulp.task('e2e', ['webdriver:update'], function() {
+  return gulp.src(protractorConfig.config.specs)
+    .pipe($.protractor.protractor({
+      configFile: 'build/protractor.config.js'
     }))
     .on('error', function(e) {
-      throw e
+      throw e;
     });
 });
 
 gulp.task('webdriver:update', webdriverUpdate);
 
-// Run webdriver standalone server indefinitely.
-// Usually not required.
-gulp.task('webdriver:standalone', ['webdriver:update'], webdriverStandalone);
+
 /**
  * Run test once and exit
  */
-gulp.task('test:unit', ["generated"], function(done) {
+gulp.task('unit', ['build'], function(cb) {
   karma.start(_.assign({}, karmaConfig, {
     singleRun: true
-  }), done);
+  }), cb);
 });
 
 /**
@@ -61,33 +50,24 @@ gulp.task('test:unit', ["generated"], function(done) {
 gulp.task('tdd', function(done) {
   karma.start(karmaConfig, done);
 });
-// Lint JavaScript
-gulp.task('jshint', function() {
-  return gulp.src("webapp/src/**/*.js")
-    .pipe(reload({
-      stream: true,
-      once: true
-    }))
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.if(!browserSync.active, plugins.jshint.reporter('fail')));
-});
+
 
 // Optimize Images
 gulp.task('images', function() {
-  return gulp.src('webapp/assets/images/**')
-    .pipe(plugins.cache(plugins.imagemin({
+  return gulp.src(config.images)
+    .pipe($.imagemin({
       progressive: true,
       interlaced: true
-    })))
-    .pipe(gulp.dest('build/dist/assets/images'))
-    .pipe(plugins.size({
+    }))
+    .pipe(gulp.dest(config.dist + '/assets/images'))
+    .pipe($.size({
       title: 'images'
     }));
 });
 
 gulp.task('templates', function() {
   return gulp.src(config.tpl)
+    .pipe($.changed(config.tmp))
     .pipe($.html2js({
       outputModuleName: 'templates',
       base: 'client',
@@ -105,31 +85,36 @@ gulp.task('scss', function() {
     .pipe($.sass({
       errLogToConsole: true
     }))
-    .on('error', $.notify.onError())
     .pipe(gulp.dest(config.tmp))
     .pipe($.size({
       title: 'scss'
     }));
 });
 
-gulp.task('serve', ['templates', 'scss'], function() {
+gulp.task('serve', ['build'], function() {
   browserSync({
     notify: false,
+    logPrefix: pkg.name,
     server: ['build', 'client']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/images/**/*'], reload);
+
+  gulp.watch(config.html, reload);
+  gulp.watch(config.scss, ['scss', reload]);
+  gulp.watch([config.js, 'gulpfile.js'], ['jshint']);
+  gulp.watch(config.tpl, ['templates', reload]);
+  gulp.watch(config.assets, reload);
 });
 
+gulp.task('build:dist', ['clean'], function(cb) {
+  runSequence(['jshint', 'build', 'copy', 'images'], 'html', cb);
+});
 
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['scss', 'copy', 'templates'], 'html', cb);
+  runSequence(['scss', 'templates'], cb);
 });
 
-gulp.task('serve:dist', function() {
+gulp.task('serve:dist', ['build:dist'], function() {
   browserSync({
     notify: false,
     server: [config.dist]
@@ -144,12 +129,13 @@ gulp.task('html', function() {
 
   return gulp.src(config.index)
     .pipe(assets)
+    .pipe($.sourcemaps.init())
     .pipe($.if('**/*main.js', $.ngAnnotate()))
     .pipe($.if('*.js', $.uglify({
-      mangle: false
+      mangle: false,
     })))
     .pipe($.if('*.css', $.csso()))
-    .pipe($.if(['**/*main.js', '**/*main.css'], $.header(banner, {
+    .pipe($.if(['**/*main.js', '**/*main.css'], $.header(config.banner, {
       pkg: pkg
     })))
     .pipe($.rev())
@@ -159,6 +145,7 @@ gulp.task('html', function() {
     .pipe($.if('*.html', $.minifyHtml({
       empty: true
     })))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'html'
@@ -166,9 +153,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('copy', function() {
-  return gulp.src([
-      'client/assets/*'
-    ], {
+  return gulp.src(config.assets, {
       dot: true
     }).pipe(gulp.dest(config.dist + '/assets'))
     .pipe($.size({
@@ -177,3 +162,16 @@ gulp.task('copy', function() {
 });
 
 gulp.task('clean', del.bind(null, [config.dist, config.tmp]));
+
+gulp.task('default', ['serve']);
+
+gulp.task('jshint', function() {
+  return gulp.src([config.js, 'gulpfile.js'])
+    .pipe(reload({
+      stream: true,
+      once: true
+    }))
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'))
+    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+});

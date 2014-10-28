@@ -212,7 +212,6 @@ module.run(["$templateCache", function($templateCache) {
     "          <iframe class=\"github-btn\" src=\"http://ghbtns.com/github-btn.html?user=vesparny&amp;repo=ng-kickstart&amp;type=fork&amp;count=true\" allowtransparency=\"true\" frameborder=\"0\" scrolling=\"0\" width=\"85px\" height=\"20px\"></iframe>\n" +
     "        </li>\n" +
     "        <li class=\"tweet-btn\">\n" +
-    "\n" +
     "          <iframe allowtransparency=\"true\" frameborder=\"0\" scrolling=\"no\" src=\"https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fbit.ly%2Fng-kickstart&amp;counturl=http%3A%2F%2Fvesparny.github.io%2Fng-kickstart&amp;text=Try%20ng-kickstart%20-%20Speed%20up%20your%20AngularJS%20development&amp;hashtags=angularjs, gruntjs, foundationzurb, bower&amp;via=vesparny&amp;related=vesparny\"\n" +
     "          style=\"width:130px; height:20px;\"></iframe>\n" +
     "        </li>\n" +
@@ -225,7 +224,7 @@ module.run(["$templateCache", function($templateCache) {
     "    <div class=\"row\">\n" +
     "      <div class=\"large-4 columns\">\n" +
     "        <div class=\"text-center\">\n" +
-    "          <img src=\"assets/img/angular-logo.png\">\n" +
+    "          <img src=\"assets/images/angular-logo.png\">\n" +
     "        </div>\n" +
     "        <h4>AngularJS</h4>\n" +
     "        <p>The best JavaScript framework out there will power up your awesome app.\n" +
@@ -234,7 +233,7 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "      <div class=\"large-4 columns\">\n" +
     "        <div class=\"text-center\">\n" +
-    "          <img src=\"assets/img/grunt-logo.png\">\n" +
+    "          <img src=\"assets/images/grunt-logo.png\">\n" +
     "        </div>\n" +
     "        <h3>Grunt</h3>\n" +
     "        <p>A smart and scalable <a href=\"http://gruntjs.com\" target=\"_blank\">grunt</a> based build system will take care of your development workflow, as well as the optimization process for production release. <a ng-href=\"gettingStarted\">Read more...</a>\n" +
@@ -243,7 +242,7 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "      <div class=\"large-4 columns\">\n" +
     "        <div class=\"text-center\">\n" +
-    "          <img src=\"assets/img/bower-logo.png\">\n" +
+    "          <img src=\"assets/images/bower-logo.png\">\n" +
     "        </div>\n" +
     "        <h3>Bower</h3>\n" +
     "        <p><a href=\"http://bower.io\" target=\"_blank\">Bower</a> will handle your front-end dependencies.</p>\n" +

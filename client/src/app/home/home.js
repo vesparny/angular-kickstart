@@ -25,7 +25,7 @@
             controller: 'HomeCtrl as home',
             resolve: {
               data: function(DataService){
-                return DataService.get('data.json');
+                return DataService.get();
               }
             }
           }

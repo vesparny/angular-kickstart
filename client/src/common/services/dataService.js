@@ -4,7 +4,7 @@
   function dataService() {
     return {
       get: function(url) {
-        return [];
+        return ['some', 'data'];
       }
     };
   }
