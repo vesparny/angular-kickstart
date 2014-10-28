@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  function gplus() {
+  function gplus($window) {
     return {
       link: function(scope, element, attrs) {
-        gapi.plusone.render(element[0], {
+        $window.gapi.plus.render(element[0], {
           'size': 'medium',
           'href': 'http://bit.ly/ng-kickstart'
         });

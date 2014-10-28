@@ -1,0 +1,60 @@
+//@import 'normalize';
+
+/* Fonts
+   ========================================================================== */
+
+/* Defaults
+   ========================================================================== */
+
+html {
+  @include font-size($base-root-size);
+  line-height: 1.5;
+}
+::-moz-selection {
+
+  @include selection();
+}
+::selection {
+
+  @include selection();
+}
+::-webkit-input-placeholder {
+
+  @include placeholder();
+}
+::-moz-placeholder {
+
+  @include placeholder();
+}
+:-ms-input-placeholder {
+  @include placeholder();
+
+}
+img.pure-img {
+  vertical-align: middle;
+  max-width: 60%;
+  display: inline;
+
+}
+code {
+  color: $red;
+
+}
+h3 {
+  font-weight: normal;
+  @include font-size(22);
+
+}
+.pure-menu.pure-menu-horizontal {
+  background: $silver;
+
+}
+a {
+  color: $blue;
+  text-decoration: none;
+  line-height: inherit;
+}
+a:focus,
+a:hover {
+  color: darken($blue, 9);
+}

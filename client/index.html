@@ -13,19 +13,23 @@
   <meta name="keywords" content="AngularJS, ng-kickstart, gulp, bower" />
 
   <!-- build:css assets/css/main.css -->
-  <link rel="stylesheet" type="text/css" href="vendor/pure/pure.css" />
+  <link rel="stylesheet" type="text/css" href="src/vendor/pure/pure.css" />
+  <link rel="stylesheet" type="text/css" href="src/vendor/pure/grids-responsive.css" />
   <link rel="stylesheet" type="text/css" href="tmp/main.css" />
   <!-- endbuild -->
+
+
 
 </head>
 
 <body>
   <div class="container">
     <header ui-view="header"></header>
-    <div ui-view class="content"></div>
+    <div ui-view class="l-page island"></div>
     <footer ui-view="footer"></footer>
   </div>
 
+  <script src="http://platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
     {
       "parsetags": "explicit"
@@ -33,8 +37,8 @@
   </script>
 
   <!-- build:js assets/js/vendor.js -->
-  <script type="text/javascript" src="vendor/angular/angular.js"></script>
-  <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="src/vendor/angular/angular.js"></script>
+  <script type="text/javascript" src="src/vendor/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endbuild -->
 
   <!-- build:js assets/js/main.js -->
