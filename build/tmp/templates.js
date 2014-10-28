@@ -233,7 +233,7 @@ module.run(["$templateCache", function($templateCache) {
     "\n" +
     "      <div class=\"large-4 columns\">\n" +
     "        <div class=\"text-center\">\n" +
-    "          <img src=\"assets/images/grunt-logo.png\">\n" +
+    "          <img src=\"assets/images/gulp-logo.png\">\n" +
     "        </div>\n" +
     "        <h3>Grunt</h3>\n" +
     "        <p>A smart and scalable <a href=\"http://gruntjs.com\" target=\"_blank\">grunt</a> based build system will take care of your development workflow, as well as the optimization process for production release. <a ng-href=\"gettingStarted\">Read more...</a>\n" +
