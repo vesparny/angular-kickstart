@@ -71,7 +71,7 @@ gulp.task('scss', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['jshint', 'build', 'copy', 'images'], 'html', cb);
+  runSequence(['jshint', 'build', 'copy', 'copy:assets', 'images'], 'html', cb);
 });
 
 //build files for development
@@ -111,10 +111,23 @@ gulp.task('html', function() {
 });
 
 //copy assets in dist folder
-gulp.task('copy', function() {
-  return gulp.src(config.assets, {
+gulp.task('copy:assets', function() {
+  return gulp.src(  config.assets, {
       dot: true
     }).pipe(gulp.dest(config.dist + '/assets'))
+    .pipe($.size({
+      title: 'copy:assets'
+    }));
+});
+
+//copy assets in dist folder
+gulp.task('copy', function() {
+  return gulp.src([
+      config.base + '/*',
+      '!' + config.base + '/*.html',
+      '!' + config.base + '/src',
+      '!' + config.base + '/test'
+    ]).pipe(gulp.dest(config.dist))
     .pipe($.size({
       title: 'copy'
     }));
