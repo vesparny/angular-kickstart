@@ -3,9 +3,8 @@
 var baseDir = 'client';
 
 module.exports = {
-  /*
-    This is the list of file patterns to load into the browser during testing.
-   */
+
+  //This is the list of file patterns to load into the browser during testing.
   files: [
     baseDir + '/vendor/angular/angular.js',
     baseDir + '/vendor/angular-mocks/angular-mocks.js',
@@ -14,6 +13,8 @@ module.exports = {
     'build/tmp/*.js',
     baseDir + '/test/unit/**/*.spec.js'
   ],
+
+  //used framework
   frameworks: ['jasmine'],
 
   plugins: [
@@ -32,10 +33,6 @@ module.exports = {
 
   reporters: ['mocha', 'html', 'coverage'],
 
-  junitReporter: {
-    outputFile: baseDir + '/test/unit-results/xml/junit-results.xml'
-  },
-
   coverageReporter: {
     type: 'html',
     dir: baseDir + '/test/unit-results/coverage',
@@ -45,17 +42,12 @@ module.exports = {
   htmlReporter: {
     outputDir: baseDir + '//test/unit-results/html'
   },
-  /*
-   * On which port should the browser connect, on which port is the test runner
-   * operating, and what is the URL path for the browser to use.
-   */
+
   logLevel: 'info',
 
   urlRoot: '/__test/',
 
-  /*
-  which Browser to use
-  */
+  //used browsers (overriddeng in some gulp task)
   browsers: ['Chrome'],
 
 };

@@ -1,5 +1,6 @@
 'use strict';
 
+//basic configuration object used by gulp tasks
 module.exports = {
   port: 3000,
   tmp: 'build/tmp',
@@ -9,6 +10,8 @@ module.exports = {
   mainScss: 'client/src/scss/main.scss',
   scss: 'client/src/scss/**/*.scss',
   js: 'client/src/**/*.js',
+  jsTestUnit: 'client/test/unit/**/*.js',
+  jsTestE2e: 'client/test/e2e/**/*.js',
   index: 'client/index.html',
   assets: 'client/assets/**',
   images: 'client/assets/images/**/*',

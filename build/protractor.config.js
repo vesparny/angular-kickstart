@@ -1,6 +1,7 @@
 'use strict';
 
 var baseDir = 'client';
+//this is the port the application is running on
 var port =  3000;
 
 exports.config = {
