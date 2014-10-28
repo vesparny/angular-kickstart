@@ -1,27 +1,49 @@
 'use strict';
 
-module.exports = {
+var baseDir = 'client';
 
+module.exports = {
   /*
-   * This is the list of file patterns to load into the browser during testing.
+    This is the list of file patterns to load into the browser during testing.
    */
   files: [
-    'webapp/vendor/angular/angular.js',
-    'webapp/vendor/angular-mocks/angular-mocks.js',
-    'webapp/vendor/angular-ui-router/release/angular-ui-router.js',
-    'webapp/vendor/angular-animate/angular-animate.js',
-    'webapp/vendor/angular-loading-bar/build/loading-bar.js',
-    'webapp/vendor/alertify/alertify.js',
-    'webapp/src/**/*.js',
-    'webapp/tmp/*.js',
-    'webapp/test/unit/**/*.spec.js'
+    baseDir + '/vendor/angular/angular.js',
+    baseDir + '/vendor/angular-mocks/angular-mocks.js',
+    baseDir + '/vendor/angular-ui-router/release/angular-ui-router.js',
+    baseDir + '/src/**/*.js',
+    'build/tmp/*.js',
+    baseDir + '/test/unit/**/*.spec.js'
   ],
   frameworks: ['jasmine'],
-  /*
-   * How to report, by default.
-   */
-  reporters: ['mocha'],
 
+  plugins: [
+    'karma-chrome-launcher',
+    'karma-jasmine',
+    'karma-coverage',
+    'karma-html-reporter',
+    'karma-mocha-reporter',
+    'karma-coverage-reporter'
+  ],
+
+  preprocessors: {
+    '**/client/src/**/*.js': 'coverage'
+  },
+
+  reporters: ['mocha', 'html', 'coverage'],
+
+  junitReporter: {
+    outputFile: baseDir + '/test/unit-results/xml/junit-results.xml'
+  },
+
+  coverageReporter: {
+    type: 'html',
+    dir: baseDir + '/test/unit-results/coverage',
+    file: 'coverage.html'
+  },
+
+  htmlReporter: {
+    outputDir: baseDir + '//test/unit-results/html'
+  },
   /*
    * On which port should the browser connect, on which port is the test runner
    * operating, and what is the URL path for the browser to use.
@@ -30,13 +52,9 @@ module.exports = {
 
   urlRoot: '/__test/',
 
-  /**
-   * Disable file watching by default.
-   */
-
   /*
-     which Browser to use
-     */
+  which Browser to use
+  */
   browsers: ['Chrome'],
 
 };

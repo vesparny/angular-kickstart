@@ -1,3 +1,8 @@
+'use strict';
+
+var baseDir = 'client';
+var port =  3000;
+
 exports.config = {
   jasmineNodeOpts: {
     showColors: true,
@@ -5,13 +10,12 @@ exports.config = {
   },
 
   specs: [
-    'wepapp/test/e2e/**/*.scenario.js'
+    baseDir + '/test/e2e/**/*.scenario.js'
   ],
 
   capabilities: {
     'browserName': 'chrome'
   },
-  seleniumServerJar: './../node_modules/protractor/selenium/selenium-server-standalone-2.39.0.jar',
-
-  baseUrl: 'http://172.18.174.95:3000'
+  seleniumArgs: ['-browserTimeout=60'],
+  baseUrl: 'http://127.0.0.1:'+port
 };
