@@ -47,8 +47,16 @@ gulp.task('unit', ['build'], function(cb) {
 /**
  * Watch for file changes and re-run tests on each change
  */
-gulp.task('tdd', function(done) {
-  karma.start(karmaConfig, done);
+gulp.task('unit:tdd', function(cb) {
+  karma.start(_.assign({}, karmaConfig, {
+    singleRun: false,
+    action:'watch',
+    browsers: ['PhantomJS']
+  }), cb);
+});
+
+gulp.task('tdd', function(cb) {
+  runSequence(['serve', 'unit:tdd']);
 });
 
 

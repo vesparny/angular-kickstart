@@ -18,6 +18,7 @@ module.exports = {
 
   plugins: [
     'karma-chrome-launcher',
+    'karma-phantomjs-launcher',
     'karma-jasmine',
     'karma-coverage',
     'karma-html-reporter',
