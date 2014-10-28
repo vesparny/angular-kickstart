@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  describe('home', function() {
+  describe('HomeCtrl', function() {
     var rootScope;
     var fakeData = ['some', 'data'];
     var ctrl;
@@ -23,7 +23,7 @@
       expect(ctrl).not.toEqual(null);
     });
 
-    it('should have data into scope', function() {
+    it('should have "data" into its $scope', function() {
       expect(scope.home.data[0]).toEqual('some');
       expect(scope.home.data[1]).toEqual('data');
       expect(scope.home.data.length).toEqual(2);
