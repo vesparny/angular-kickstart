@@ -1,7 +1,8 @@
 'use strict';
+var fs =   require('fs');
 
 exports.takeScreenshot = function(browser, filename) {
   browser.takeScreenshot().then(function(png) {
-    require('fs').writeFileSync('./client/test/screenshots/' + filename + '.png', png, 'base64');
+  fs.writeFileSync('./client/test/screenshots/' + filename + '.png', png, 'base64');
   });
 };
