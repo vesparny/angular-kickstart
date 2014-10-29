@@ -19,15 +19,6 @@ var webdriverUpdate = require('gulp-protractor').webdriver_update;
 //update webdriver if necessary, this task will be used by e2e task
 gulp.task('webdriver:update', webdriverUpdate);
 
-// run unit tests and watch files
-gulp.task('unit:tdd', function(cb) {
-  karma.start(_.assign({}, karmaConfig, {
-    singleRun: false,
-    action: 'watch',
-    browsers: ['PhantomJS']
-  }), cb);
-});
-
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
   return gulp.src(config.images)
@@ -166,6 +157,23 @@ gulp.task('serve:dist', ['build:dist'], function() {
 gulp.task('unit', ['build'], function(cb) {
   karma.start(_.assign({}, karmaConfig, {
     singleRun: true
+  }), cb);
+});
+
+// run unit tests and watch files
+gulp.task('unit:tdd', function(cb) {
+  karma.start(_.assign({}, karmaConfig, {
+    singleRun: false,
+    action: 'watch',
+    browsers: ['PhantomJS']
+  }), cb);
+});
+
+// run unit tests with travis CI
+gulp.task('unit:tdd', function(cb) {
+  karma.start(_.assign({}, karmaConfig, {
+    singleRun: true,
+    browsers: ['PhantomJS']
   }), cb);
 });
 
