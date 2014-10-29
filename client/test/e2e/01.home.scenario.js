@@ -22,8 +22,8 @@
     });
 
     it('should navigate to the docs page when clicking', function() {
-      element(by.css('a[ui-sref="root.docs"]')).click();
-      expect(ptor.getCurrentUrl()).toMatch(/\/docs/);
+      element(by.css('a[ui-sref="root.getting-started"]')).click();
+      expect(ptor.getCurrentUrl()).toMatch(/\/getting-started/);
     });
 
   });

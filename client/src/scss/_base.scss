@@ -66,4 +66,22 @@ a {
 a:focus,
 a:hover {
   color: darken($blue, 9);
+
+}
+
+a.pure-button:focus,
+a.pure-button:hover {
+  color: #fff;
+}
+
+pre {
+  code {
+    color: $black;
+    background-color: $silver;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $gray;
+    display: block;
+    padding: 0.5em;
+  }
 }

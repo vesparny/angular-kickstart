@@ -22,7 +22,7 @@
   angular.module('app', [
       'ui.router',
       'home',
-      'docs',
+      'getting-started',
       'common.header',
       'common.footer',
       'common.services.data',

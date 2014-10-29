@@ -3,8 +3,8 @@
 
   function config($stateProvider) {
     $stateProvider
-      .state('docs', {
-        url: 'docs',
+      .state('getting-started', {
+        url: 'getting-started',
         abstract: true,
         views: {
           'header': {
@@ -17,23 +17,23 @@
           }
         }
       })
-      .state('root.docs', {
-        url: '/docs',
+      .state('root.getting-started', {
+        url: '/getting-started',
         views: {
           '@': {
-            templateUrl: 'src/app/docs/docs.tpl.html',
+            templateUrl: 'src/app/getting-started/getting-started.tpl.html',
             controller: 'DocsCtrl as docs'
           }
         }
       });
   }
 
-  function docsCtrl($log, $scope) {
+  function gettingStartedCtrl($log, $scope) {
     /*jshint validthis:true */
     var docs = this;
   }
 
-  angular.module('docs', [])
+  angular.module('getting-started', [])
     .config(config)
-    .controller('DocsCtrl', docsCtrl);
+    .controller('GettingStartedCtrl', gettingStartedCtrl);
 })();

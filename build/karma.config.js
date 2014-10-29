@@ -6,9 +6,9 @@ module.exports = {
 
   //This is the list of file patterns to load into the browser during testing.
   files: [
-    baseDir + '/vendor/angular/angular.js',
-    baseDir + '/vendor/angular-mocks/angular-mocks.js',
-    baseDir + '/vendor/angular-ui-router/release/angular-ui-router.js',
+    baseDir + '/src/vendor/angular/angular.js',
+    baseDir + '/src/vendor/angular-mocks/angular-mocks.js',
+    baseDir + '/src/vendor/angular-ui-router/release/angular-ui-router.js',
     baseDir + '/src/**/*.js',
     'build/tmp/*.js',
     baseDir + '/test/unit/**/*.spec.js'
