@@ -47,7 +47,8 @@ This task will lint your code, optimize css js and images files, run unit tests.
 * HTML templates converted into strings and attached to a single javascript file (to avoid one http call for each template).
 * Livereload provided by [browsersync](http://www.browsersync.io/).
 * angular module dependencies automatically injected using [ng-annotate](https://github.com/olov/ng-annotate).
-* Static resources minification and optimization for production.
+* Static resources minification and optimization for production.*
+* sourcemaps generated and embedded js and css files during the production optimization.
 
 ### Directory Structure
 
