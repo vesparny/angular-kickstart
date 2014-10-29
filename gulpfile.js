@@ -49,14 +49,15 @@ gulp.task('templates', function() {
 });
 
 //generate css files from scss sources
-gulp.task('scss', function() {
+gulp.task('sass', function() {
   return gulp.src(config.mainScss)
-    .pipe($.sass({
-      errLogToConsole: true
-    }))
+    .pipe($.rubySass())
+    .on('error', function(err) {
+      console.log(err.message);
+    })
     .pipe(gulp.dest(config.tmp))
     .pipe($.size({
-      title: 'scss'
+      title: 'sass'
     }));
 });
 
@@ -67,7 +68,7 @@ gulp.task('build:dist', ['clean'], function(cb) {
 
 //build files for development
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['scss', 'templates'], cb);
+  runSequence(['sass', 'templates'], cb);
 });
 
 //generate a minified css files, 2 js file, change theirs name to be unique, and generate sourcemaps
@@ -103,7 +104,7 @@ gulp.task('html', function() {
 
 //copy assets in dist folder
 gulp.task('copy:assets', function() {
-  return gulp.src(  config.assets, {
+  return gulp.src(config.assets, {
       dot: true
     }).pipe(gulp.dest(config.dist + '/assets'))
     .pipe($.size({
@@ -202,7 +203,7 @@ gulp.task('serve', ['build'], function() {
   });
 
   gulp.watch(config.html, reload);
-  gulp.watch(config.scss, ['scss', reload]);
+  gulp.watch(config.scss, ['sass', reload]);
   gulp.watch(config.js, ['jshint']);
   gulp.watch(config.tpl, ['templates', reload]);
   gulp.watch(config.assets, reload);
