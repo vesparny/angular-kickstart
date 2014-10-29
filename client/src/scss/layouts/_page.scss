@@ -1,0 +1,5 @@
+.l-page {
+  .pure-g > div {
+    @include box-sizing();
+  }
+}

@@ -1,0 +1,23 @@
+%center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+%text-center {
+  text-align:center;
+}
+
+%clearfix {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+.text-center{
+  @extend %text-center;
+}

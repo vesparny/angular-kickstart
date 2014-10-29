@@ -1,18 +1,21 @@
-# [ng-kickstart](http://vesparny.github.io/ng-kickstart/)
+# [angular-kickstart](http://vesparny.github.io/angular-kickstart/)
+rename to angular-kickstart bitly
+
+[![Build Status](https://secure.travis-ci.org/vesparny/angular-kickstart.png)](http://travis-ci.org/vesparny/angular-kickstart)
 
 **Brought to you by [Alessandro Arnodo](http://alessandro.arnodo.net) [[@vesparny](https://twitter.com/vesparny)]**
+http://selenium.googlecode.com/git/docs/api/javascript/index.html
 
+[![Dev dependency status](https://david-dm.org/vesparny/angular-kickstart/dev-status.png)](https://david-dm.org/vesparny/angular-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/angular-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-[![Dev dependency status](https://david-dm.org/vesparny/ng-kickstart/dev-status.png)](https://david-dm.org/vesparny/ng-kickstart#info=devDependencies "Dependency status") [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vesparny/ng-kickstart/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-**Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, ng-kickstart will take care of the rest.**
+**Speed up your [AngularJS 1.2](http://angularjs.org) development with a complete and scalable build system that scaffolds the project for you. Just focus on your app, angular-kickstart will take care of the rest.**
 ***
 
-#### See a [demo](http://vesparny.github.io/ng-kickstart/).
+#### See a [demo](http://vesparny.github.io/angular-kickstart/).
 
 ##What and Why
 
-ng-kickstart is an opinionated kickstart for single page application development in AngularJS 1.2. It makes your development easy, keeps the structure of the project consistent and allows you to create a fully-optimized production release with a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application while keeping an organized file structure; and in the meantime that allowed me to develop on an index.html file generated at build time, tied to my real backend.
+angular-kickstart is an opinionated kickstart for single page application development in AngularJS 1.2. It makes your development easy, keeps the structure of the project consistent and allows you to create a fully-optimized production release with a single grunt task. I decided to build this tool because of the lack of a build system that let me develop a single page application while keeping an organized file structure; and in the meantime that allowed me to develop on an index.html file generated at build time, tied to my real backend.
 
 ##Getting started
 
@@ -20,13 +23,13 @@ Install **node.js**. Then **sass**, **grunt-cli** **karma** and **bower** if you
 
     $ gem install sass
     $ sudo npm -g install grunt-cli karma bower
-    
-After that, install ng-kickstart downloading the [latest release](https://github.com/vesparny/ng-kickstart/releases) (or clone the master branch if you want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
+
+After that, install angular-kickstart downloading the [latest release](https://github.com/vesparny/angular-kickstart/releases) (or clone the master branch if you want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
 
     $ npm install
     $ bower install
     $ grunt serve
-    
+
 You are now ready to go, your applcation is available at **http://127.0.0.1:8000**. Every request to /api will be proxied to **http://127.0.0.1:8001/api**.
 
 In the `/backend` folder, you can find two examples of a **RESTFul backend**. One using **Silex PHP micro-framework + SQLite** and another using **expressjs + MongoDB**. Refer to the README.md in each folder to launch the desired backend (or run your own). Then go to **http://127.0.0.1:8000/notes**. You are now ready to start coding.
@@ -36,7 +39,7 @@ In the `/backend` folder, you can find two examples of a **RESTFul backend**. On
 When you are ready to build a production release there is a task for that:
 
     $ grunt dist
-    
+
 After the task has finished you can find an optimized version of your project inside the `/build/dist` folder.
 
 
@@ -45,7 +48,7 @@ After the task has finished you can find an optimized version of your project in
 At a high level, the structure looks roughly like this:
 
 ```
-ng-kickstart/
+angular-kickstart/
 ├── backend
 │   ├── expressjs
 │   └── silex
@@ -107,7 +110,7 @@ ng-kickstart/
 ├── Gruntfile.js
 ├── bower.json
 └── package.json
-                               
+
 ```
 
 - `backend/` - Fully working RESTful backend, available in 2 versions.
@@ -122,7 +125,7 @@ ng-kickstart/
 
 ### <a name="thebuildsystem"></a>The Build System
 
-There are some `tasks` available in `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize yourself with grunt, but you don't have to in order to be getting started with ng-kickstart.
+There are some `tasks` available in `Gruntfile.js`. Every task is defined in `build/external-tasks.js`. You can dig into the file to familiarize yourself with grunt, but you don't have to in order to be getting started with angular-kickstart.
 
 A description of every available task:
 

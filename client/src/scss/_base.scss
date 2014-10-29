@@ -1,0 +1,87 @@
+//@import 'normalize';
+
+/* Fonts
+   ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class *= "pure-u"] {
+  font-family: 'Open Sans', sans-serif;
+
+}
+/* Defaults
+   ========================================================================== */
+
+html {
+  @include font-size($base-root-size);
+  line-height: 1.5;
+}
+::-moz-selection {
+
+  @include selection();
+}
+::selection {
+
+  @include selection();
+}
+::-webkit-input-placeholder {
+
+  @include placeholder();
+}
+::-moz-placeholder {
+
+  @include placeholder();
+}
+:-ms-input-placeholder {
+  @include placeholder();
+
+}
+img.pure-img {
+  vertical-align: middle;
+  max-width: 60%;
+  display: inline;
+
+}
+code {
+  color: $red;
+
+}
+h3 {
+  font-weight: normal;
+  @include font-size(22);
+
+}
+.pure-menu.pure-menu-horizontal {
+  background: $silver;
+
+}
+a {
+  color: $blue;
+  text-decoration: none;
+  line-height: inherit;
+}
+a:focus,
+a:hover {
+  color: darken($blue, 9);
+
+}
+
+a.pure-button:focus,
+a.pure-button:hover {
+  color: #fff;
+}
+
+pre {
+  code {
+    color: $black;
+    background-color: $silver;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $gray;
+    display: block;
+    padding: 0.5em;
+  }
+}
