@@ -171,7 +171,7 @@ gulp.task('unit:tdd', function(cb) {
 });
 
 // run unit tests with travis CI
-gulp.task('travis', function(cb) {
+gulp.task('travis', ['build'], function(cb) {
   karma.start(_.assign({}, karmaConfig, {
     singleRun: true,
     browsers: ['PhantomJS']
