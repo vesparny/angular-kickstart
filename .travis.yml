@@ -9,4 +9,4 @@ before_install:
   - 'bower install'
 branches:
   only:
-    - gulp
+    - master
