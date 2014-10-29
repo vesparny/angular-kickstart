@@ -2,7 +2,16 @@
 
 /* Fonts
    ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class *= "pure-u"] {
+  font-family: 'Open Sans', sans-serif;
 
+}
 /* Defaults
    ========================================================================== */
 

@@ -14,7 +14,7 @@
   function MainCtrl($log) {
     $log.debug('MainCtrl laoded!');
   }
-  
+
   function run($log) {
     $log.debug('App is running!');
   }
@@ -27,7 +27,6 @@
       'common.footer',
       'common.services.data',
       'common.directives.version',
-      'common.directives.gplus',
       'common.filters.uppercase',
       'common.interceptors.http',
       'templates'

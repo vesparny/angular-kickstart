@@ -6,5 +6,9 @@
   >li {
     display: inline-block;
     margin-left: 1em;
+    a.tweet {
+      position:relative;
+      top:-3px;
+    }
   }
 }

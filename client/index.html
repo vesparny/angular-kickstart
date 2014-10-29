@@ -17,24 +17,14 @@
   <link rel="stylesheet" type="text/css" href="src/vendor/pure/grids-responsive.css" />
   <link rel="stylesheet" type="text/css" href="tmp/main.css" />
   <!-- endbuild -->
-
-
-
 </head>
 
 <body>
-  <div class="container">
+  <div>
     <header ui-view="header"></header>
     <div ui-view class="l-page island"></div>
     <footer ui-view="footer"></footer>
   </div>
-
-  <script src="http://platform.twitter.com/widgets.js"></script>
-  <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-    {
-      "parsetags": "explicit"
-    }
-  </script>
 
   <!-- build:js assets/js/vendor.js -->
   <script type="text/javascript" src="src/vendor/angular/angular.js"></script>
@@ -48,7 +38,6 @@
   <script type="text/javascript" src="src/app/home/home.js"></script>
 
   <script type="text/javascript" src="src/common/directives/version.js"></script>
-  <script type="text/javascript" src="src/common/directives/gplus.js"></script>
   <script type="text/javascript" src="src/common/interceptors/httpInterceptor.js"></script>
   <script type="text/javascript" src="src/common/services/dataService.js"></script>
   <script type="text/javascript" src="src/common/filters/uppercase.js"></script>
