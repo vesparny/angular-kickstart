@@ -1,17 +1,27 @@
+# 1.0.0 (2014-10-29)
+
+### Features
+
+* transition to gulpjs
+* removed backend stuff
+* e2e testing support with protractor
+* using purecss + SMACSS
+* following AngularJS styleguide by todd motto
+
 # 0.0.2 (2013-12-11)
 
-## Features
+### Features
 
 * grunt unit task
 
-## Bug fixes
+### Bug fixes
 
 * docs improvement
 
 
 # 0.0.1 (2013-12-07)
 
-## Features
+### Features
 
 * javascript files continuous linting.
 * sass continuous compiling.
