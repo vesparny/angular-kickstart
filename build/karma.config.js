@@ -23,8 +23,7 @@ module.exports = {
     'karma-jasmine',
     'karma-coverage',
     'karma-html-reporter',
-    'karma-mocha-reporter',
-    'karma-coverage-reporter'
+    'karma-mocha-reporter'
   ],
 
   preprocessors: {

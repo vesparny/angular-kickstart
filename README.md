@@ -1,5 +1,7 @@
 # [ng-kickstart](http://vesparny.github.io/ng-kickstart/)
 
+[![Build Status](https://secure.travis-ci.org/vesparny/ng-kickstart.png)](http://travis-ci.org/vesparny/ng-kickstart)
+
 **Brought to you by [Alessandro Arnodo](http://alessandro.arnodo.net) [[@vesparny](https://twitter.com/vesparny)]**
 http://selenium.googlecode.com/git/docs/api/javascript/index.html
 
