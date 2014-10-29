@@ -1,5 +1,5 @@
 {
-  "name": "ng-kickstart",
+  "name": "angular-kickstart",
   "version": "1.0.0",
   "dependencies": {
     "normalize-css": "~3.0.2",
