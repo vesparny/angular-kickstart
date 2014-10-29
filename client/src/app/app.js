@@ -34,5 +34,5 @@
     .config(config)
     .run(run)
     .controller('MainCtrl', MainCtrl)
-    .value('version', '1.0.0');
+    .value('version', '1.0.1');
 })();

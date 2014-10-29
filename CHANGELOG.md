@@ -1,3 +1,9 @@
+# 1.0.1 (2014-10-30)
+
+### Bug fixes
+
+* docs improvement
+
 # 1.0.0 (2014-10-29)
 
 ### Features
@@ -31,4 +37,3 @@
 * livereload
 * static resources minification and optimization for production
 * html5mode enabled by default (and fully handled by the build connect middleware)
-
