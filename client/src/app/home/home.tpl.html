@@ -1,6 +1,6 @@
 <div class="pure-g">
   <div class="island3 pure-u-1 pure-u-lg-2-3">
-    <h3>Speed up your <strong>AngularJS 1.2</strong> development with a complete and scalable build system that scaffolds the project for you. Just focus on your app,
+    <h3>Speed up your <strong>AngularJS</strong> development with a complete and scalable build system that scaffolds the project for you. Just focus on writing code and tests,
                 <code>angular-kickstart</code> will take care of the rest.</h3>
   </div>
   <div class="island3 pure-u-1 pure-u-lg-1-3">
@@ -21,7 +21,8 @@
       <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=vesparny&amp;repo=angular-kickstart&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px"></iframe>
     </li>
     <li class="tweet-btn">
-      <a class="tweet" href="https://twitter.com/intent/tweet?via=vesparny&related=vesparny&text=Speed up your AngularJS development whith a great build system.&url=http://bit.ly/angular-kickstart&hashtags=AngularJS,sass,gulpjs,bower">Tweet</a>
+      <a class="tweet" href="https://twitter.com/intent/tweet?via=vesparny&related=vesparny&text=angular-kickstart - speed up your @angularjs development and testing with a great @gulpjs build system.
+&url=http://bit.ly/angular-kickstart&hashtags=AngularJS,sass,gulpjs,bower">Tweet</a>
     </li>
   </ul>
 </div>
@@ -41,8 +42,8 @@
     <div class="text-center">
       <img class="pure-img" src="assets/images/gulp-logo.png">
     </div>
-    <h3>Grunt</h3>
-    <p>A smart and scalable <a href="http://gruntjs.com" target="_blank">grunt</a> based build system will take care of your development workflow, as well as the optimization process for production release. <a ng-href="gettingStarted">Read more...</a>
+    <h3>Gulpjs</h3>
+    <p>A smart and scalable <a href="http://gulpjs.com" target="_blank">gulpjs</a> based build system will take care of your development and testing workflow, as well as the optimization process for production release. <a href ui-sref="root.getting-started">Read more...</a>
     </p>
   </div>
 
@@ -58,47 +59,41 @@
 
 <div class="pure-g island">
   <div class="pure-u-1 pure-u-lg-1-3 island">
-    <h4>Sass + Zurb Foundation</h4>
-    <p><a href="http://sass-lang.com/" target="_blank">Sass</a> is the most mature, stable, and powerful professional grade CSS extension language. Write your CSS in a modular way, the build system will compile your .scss files into a single css files. It
-      should be easy to integrate less, stylus or any other preprocessor if you prefer. <a href="http://foundation.zurb.com/" target="_blank">Zurb Foundation</a> is the default CSS framework.</p>
+    <h4>Sass + SMACSS</h4>
+    <p><a href="http://sass-lang.com/" target="_blank">Sass</a> is the most mature, stable, and powerful professional grade CSS extension language. The project is structured following the <a href="http://smacss.com/" target="_blank">SMACSS</a> architecture.
+      Write your CSS in a modular and scalable way, the build system will compile your <code>.scss</code> files into a single css files. It should be easy to integrate less, stylus or any other preprocessor if you prefer. <a href="http://purecss.io/" target="_blank">Pure</a> is the default CSS framework, by you can easily plug your own.</p>
   </div>
-
-
-  <div class="pure-u-1 pure-u-lg-1-3 island">
-    <h4>API Proxy</h4>
-    <p>If you are developing a single page application tied to a
-      <code>real backend</code>, angular-kickstart will proxy every request to your backend listening on another port. You can configure this of course. <a ng-href="gettingStarted">Read more...</a>
-    </p>
-  </div>
-
 
   <div class="pure-u-1 pure-u-lg-1-3 island">
     <h4>Modular Structure</h4>
-    <p>Instead of angular-seed monolithic files structure, angular-kickstart comes with a
-      <code>by-feature/files organization</code>, keeping your code organized, especially if you are working on a large code base. If you don't like it, just use your preferred structure, and the build system will still work. <a ng-href="gettingStarted">Read more...</a>
+    <p>angular-kickstart comes with a
+      <code>by-feature</code> files organization, keeping your code organized, especially if you are working on a large code-base. If you don't like it, just use your preferred structure, and the build system will still work. The code is written following <a href="https://github.com/toddmotto/angularjs-styleguide" target="_blank">best practices</a> that make you able to write consistent code. <a href ui-sref="root.getting-started">Read more...</a>
     </p>
   </div>
 
+  <div class="pure-u-1 pure-u-lg-1-3 island">
+    <h4>Keep Your Code Reusable</h4>
+    <p>Every general purpose directive, service or filter, should be placed into the  <code>common</code> directory, in this way you can copy and paste the directory into another project, require the module you need, and you are ready to go with your new project.
+    </p>
+  </div>
 </div>
 
 <div class="pure-g">
   <div class="pure-u-1 pure-u-lg-1-3 island">
-    <h4>Keep Your Code Reusable</h4>
-    <p>Every general purpose directive, service or filter, should be placed into a common directory, in this way you can copy and paste the directory into another project, require the module you need, and you are ready to go with your new project.
-    </p>
-  </div>
-
-
-  <div class="pure-u-1 pure-u-lg-1-3 island">
-    <h4>Unit Testing</h4>
-    <p>The build system comes with a special task for running tests by using <a href="http://karma-runner.github.io/" target="_blank">Karma Test Runner</a>. Every time you make a production release, unit tests will be run for you.
+    <h4>Unit testing</h4>
+    <p>The build system comes with a special task for running tests by using <a href="http://karma-runner.github.io/" target="_blank">Karma Test Runner</a>.
     </p>
   </div>
 
   <div class="pure-u-1 pure-u-lg-1-3 island">
-    <h4>RESTFul Backend Included</h4>
-    <p>angular-kickstart ships with a working
-      <code>REST api</code> written in 2 versions: One using <strong>Silex PHP micro-framework + SQLite</strong> and another using <strong>expressjs + MongoDB</strong> See the <a ng-href="gettingStarted">getting started section</a> for more information.
-      It would be awesome to have more working examples with other technologies. Please feel free to code, hack and <a href="https://github.com/vesparny/angular-kickstart/blob/master/CONTRIBUTING.md">send PR</a>.</p>
+    <h4>e2e testing</h4>
+    <p>end-to-end testing support is provided by the build system. Tests can be executed using <a href="http://angular.github.io/protractor/" target="_blank">protractor</a>.</p>
+  </div>
+
+  <div class="pure-u-1 pure-u-lg-1-3 island">
+    <h4>Build for production with ease</h4>
+    <p>If you are developing a single page application tied to a
+      <code>real backend</code>, angular-kickstart will proxy every request to your backend listening on another port. You can configure this of course. <a ng-href="gettingStarted">Read more...</a>
+    </p>
   </div>
 </div>

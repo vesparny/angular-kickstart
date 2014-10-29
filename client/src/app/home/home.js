@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  /**
+   * @name  config
+   * @description config block
+   */
   function config($stateProvider) {
     $stateProvider
       .state('root', {
@@ -24,7 +28,7 @@
             templateUrl: 'src/app/home/home.tpl.html',
             controller: 'HomeCtrl as home',
             resolve: {
-              data: function(DataService){
+              data: function(DataService) {
                 return DataService.get();
               }
             }
@@ -33,7 +37,11 @@
       });
   }
 
-  function homeCtrl(data) {
+  /**
+   * @name  HomeCtrl
+   * @description Controller
+   */
+  function HomeCtrl(data) {
     /*jshint validthis:true */
     var home = this;
     this.data = data.data;
@@ -41,5 +49,5 @@
 
   angular.module('home', [])
     .config(config)
-    .controller('HomeCtrl', homeCtrl);
+    .controller('HomeCtrl', HomeCtrl);
 })();

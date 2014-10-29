@@ -19,6 +19,23 @@ var webdriverUpdate = require('gulp-protractor').webdriver_update;
 //update webdriver if necessary, this task will be used by e2e task
 gulp.task('webdriver:update', webdriverUpdate);
 
+// run unit tests and watch files
+gulp.task('tdd', function(cb) {
+  karma.start(_.assign({}, karmaConfig, {
+    singleRun: false,
+    action: 'watch',
+    browsers: ['PhantomJS']
+  }), cb);
+});
+
+// run unit tests with travis CI
+gulp.task('travis', ['build'], function(cb) {
+  karma.start(_.assign({}, karmaConfig, {
+    singleRun: true,
+    browsers: ['PhantomJS']
+  }), cb);
+});
+
 // optimize images and put them in the dist folder
 gulp.task('images', function() {
   return gulp.src(config.images)
@@ -63,7 +80,7 @@ gulp.task('sass', function() {
 
 //build files for creating a dist release
 gulp.task('build:dist', ['clean'], function(cb) {
-  runSequence(['jshint', 'build', 'copy', 'copy:assets', 'images'], 'html', cb);
+  runSequence(['jshint', 'build', 'copy', 'copy:assets', 'images', 'test:unit'], 'html', cb);
 });
 
 //build files for development
@@ -146,40 +163,15 @@ gulp.task('jshint', function() {
 //default task
 gulp.task('default', ['serve']); //
 
-//run the app packed in the dist folder
-gulp.task('serve:dist', ['build:dist'], function() {
-  browserSync({
-    notify: false,
-    server: [config.dist]
-  });
-});
-
 //run unit tests and exit
-gulp.task('unit', ['build'], function(cb) {
+gulp.task('test:unit', ['build'], function(cb) {
   karma.start(_.assign({}, karmaConfig, {
     singleRun: true
   }), cb);
 });
 
-// run unit tests and watch files
-gulp.task('unit:tdd', function(cb) {
-  karma.start(_.assign({}, karmaConfig, {
-    singleRun: false,
-    action: 'watch',
-    browsers: ['PhantomJS']
-  }), cb);
-});
-
-// run unit tests with travis CI
-gulp.task('travis', ['build'], function(cb) {
-  karma.start(_.assign({}, karmaConfig, {
-    singleRun: true,
-    browsers: ['PhantomJS']
-  }), cb);
-});
-
 // Run e2e tests using protractor, make sure serve task is running.
-gulp.task('e2e', ['webdriver:update'], function() {
+gulp.task('test:e2e', ['webdriver:update'], function() {
   return gulp.src(protractorConfig.config.specs)
     .pipe($.protractor.protractor({
       configFile: 'build/protractor.config.js'
@@ -190,8 +182,8 @@ gulp.task('e2e', ['webdriver:update'], function() {
 });
 
 //run the server,  watch for file changes and redo tests.
-gulp.task('tdd', function(cb) {
-  runSequence(['serve', 'unit:tdd']);
+gulp.task('serve:tdd', function(cb) {
+  runSequence(['serve', 'tdd']);
 });
 
 //run the server after having built generated files, and watch for changes
@@ -207,4 +199,12 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(config.js, ['jshint']);
   gulp.watch(config.tpl, ['templates', reload]);
   gulp.watch(config.assets, reload);
+});
+
+//run the app packed in the dist folder
+gulp.task('serve:dist', ['build:dist'], function() {
+  browserSync({
+    notify: false,
+    server: [config.dist]
+  });
 });

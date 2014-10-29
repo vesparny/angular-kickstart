@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  /**
+   * @name  config
+   * @description config block
+   */
   function config($stateProvider) {
     $stateProvider
       .state('getting-started', {
@@ -28,12 +32,16 @@
       });
   }
 
-  function gettingStartedCtrl($log, $scope) {
+  /**
+   * @name  gettingStartedCtrl
+   * @description Controller
+   */
+  function GettingStartedCtrl($log, $scope) {
     /*jshint validthis:true */
     var docs = this;
   }
 
   angular.module('getting-started', [])
     .config(config)
-    .controller('GettingStartedCtrl', gettingStartedCtrl);
+    .controller('GettingStartedCtrl', GettingStartedCtrl);
 })();

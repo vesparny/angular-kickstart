@@ -2,7 +2,7 @@
   list-style: none;
   @extend %text-center;
   @include box-reset();
-  padding: 2em 0;
+  padding: 0 0 2em 0;
   >li {
     display: inline-block;
     margin-left: 1em;
