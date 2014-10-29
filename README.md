@@ -1,4 +1,5 @@
 # [ng-kickstart](http://vesparny.github.io/ng-kickstart/)
+rename to angular-kickstart bitly
 
 [![Build Status](https://secure.travis-ci.org/vesparny/ng-kickstart.png)](http://travis-ci.org/vesparny/ng-kickstart)
 
