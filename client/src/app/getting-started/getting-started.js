@@ -26,7 +26,7 @@
         views: {
           '@': {
             templateUrl: 'src/app/getting-started/getting-started.tpl.html',
-            controller: 'DocsCtrl as docs'
+            controller: 'GettingStartedCtrl as docs'
           }
         }
       });
