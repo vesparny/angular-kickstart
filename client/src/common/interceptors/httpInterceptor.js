@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function httpInterceptor($q, $log, $injector) {
+  function httpInterceptor($q, $log) {
     return {
       request: function(config) {
         return config;
@@ -16,9 +16,6 @@
       },
       responseError: function(rejection) {
         $log.debug(rejection);
-        $injector.invoke(function(Utils) {
-          Utils.alertError(rejection.data);
-        });
         return $q.reject(rejection);
       }
     };

@@ -13,7 +13,7 @@
 
 ### What and Why
 
-angular-kickstart is an opinionated kickstart for single page application development with AngularJS. It makes your development and testing easy, keeps the structure of the project consistent and allows you to create a fully optimized production release withe ease. After having developed a lot of AngularJS projects I decided to collect here what I've learnt.
+angular-kickstart is an opinionated kickstart for single page application development with AngularJS. It makes your development and testing easy, keeps the structure of the project consistent and allows you to create a fully optimized production release with ease. After having developed a lot of AngularJS projects I decided to collect here what I've learnt.
 
 ### Getting started
 
