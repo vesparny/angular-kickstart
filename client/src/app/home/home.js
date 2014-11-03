@@ -7,20 +7,6 @@
    */
   function config($stateProvider) {
     $stateProvider
-      .state('root', {
-        url: '',
-        abstract: true,
-        views: {
-          'header': {
-            templateUrl: 'src/common/header.tpl.html',
-            controller: 'HeaderCtrl'
-          },
-          'footer': {
-            templateUrl: 'src/common/footer.tpl.html',
-            controller: 'FooterCtrl'
-          }
-        }
-      })
       .state('root.home', {
         url: '/',
         views: {
