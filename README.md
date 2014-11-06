@@ -89,7 +89,4 @@ See CHANGELOG.md file
 
 ### Thank you, community!
 
-All this wouldn't have been possible without these great contributors and everybody who comes with new ideas and suggestions.
-
-* [Mitch Pirtle](https://github.com/spacemonkey)
-* [Peter Renström](https://github.com/renstrom)
+All this wouldn't have been possible without these great [contributors](https://github.com/vesparny/angular-kickstart/graphs/contributors) and everybody who comes with new ideas and suggestions.
