@@ -46,7 +46,6 @@ module.exports = {
 
   urlRoot: '/__test/',
 
-  //used browsers (overriddeng in some gulp task)
-  browsers: ['Chrome'],
-
+  //used browsers (overriding in some gulp task)
+  browsers: ['Chrome']
 };
