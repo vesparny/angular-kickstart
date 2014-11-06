@@ -1,3 +1,10 @@
+# 1.0.2 (2014-11-6)
+
+### Bug fixes
+
+* updating dependencies
+* optimizing code base
+
 # 1.0.1 (2014-10-30)
 
 ### Bug fixes
