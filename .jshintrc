@@ -1,15 +1,24 @@
 {
-	"node": true,
-	"browser": true,
-	"bitwise": true,
-	"camelcase": true,
-	"curly": true,
-	"eqeqeq": true,
-	"immed": true,
-	"latedef": true,
-	"newcap": true,
-	"trailing": true,
-	"quotmark": "single",
-	"strict": true,
-	"globals"   : {}
+  "globals": {
+    "angular": false
+  },
+  "node": true,
+  "browser": true,
+  "bitwise": true,
+  "camelcase": true,
+  "curly": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "trailing": true,
+  "quotmark": "single",
+  "strict": true,
+  "multistr": true,
+  "debug": false,
+  "forin": true,
+  "undef": true,
+  "plusplus": true,
+  "eqeqeq": true,
+  "validthis": false,
+  "unused": true
 }

@@ -183,7 +183,7 @@ gulp.task('test:e2e', ['webdriver:update'], function() {
 
 //run the server,  watch for file changes and redo tests.
 gulp.task('serve:tdd', function(cb) {
-  runSequence(['serve', 'tdd']);
+  runSequence(['serve', 'tdd'], cb);
 });
 
 //run the server after having built generated files, and watch for changes
