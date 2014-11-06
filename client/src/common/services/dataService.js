@@ -3,7 +3,7 @@
 
   function dataService() {
     return {
-      get: function(url) {
+      get: function() {
         return ['some', 'data'];
       }
     };

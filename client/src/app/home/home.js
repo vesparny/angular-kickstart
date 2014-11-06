@@ -28,9 +28,8 @@
    * @description Controller
    */
   function HomeCtrl(data) {
-    /*jshint validthis:true */
     var home = this;
-    this.data = data.data;
+    home.data = data.data;
   }
 
   angular.module('home', [])

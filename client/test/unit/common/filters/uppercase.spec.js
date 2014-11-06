@@ -1,3 +1,4 @@
+/* jshint undef:false*/
 (function() {
   'use strict';
 
@@ -12,6 +13,5 @@
     it('should create an uppercase string', function() {
       expect(filter('uppercase')('hello')).toEqual('HELLO');
     });
-
   });
 })();

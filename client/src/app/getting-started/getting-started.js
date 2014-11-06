@@ -22,9 +22,11 @@
    * @name  gettingStartedCtrl
    * @description Controller
    */
-  function GettingStartedCtrl($log, $scope) {
-    /*jshint validthis:true */
+  function GettingStartedCtrl($log) {
     var docs = this;
+    docs.someMethos = function () {
+      $log.debug('I\'m a method');
+    };
   }
 
   angular.module('getting-started', [])

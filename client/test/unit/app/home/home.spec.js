@@ -1,3 +1,4 @@
+/* jshint undef:false*/
 (function() {
   'use strict';
 
@@ -28,7 +29,5 @@
       expect(scope.home.data[1]).toEqual('data');
       expect(scope.home.data.length).toEqual(2);
     });
-
-
   });
 })();
