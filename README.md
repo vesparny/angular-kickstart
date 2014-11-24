@@ -66,7 +66,7 @@ There are some `tasks` available in `gulpfile.js`. You can dig into the file to 
 
 A description of every available task:
 
-* **gulp serve** - When this task runs, the build will take care of watching filea. Every time you change a file into the `client/` folder, the build recompiles every file, and your browser will reload automagically showing you changes.
+* **gulp serve** - When this task runs, the build will take care of watching files. Every time you change a file in the `client/` folder, the build recompiles every file, and your browser will reload automagically showing you the changes.
 You just need to add new JavaScript and css files in the `client/index.html` file.
 * **gulp serve:dist** - This task will run jshint and unit tests under the `client/test/unit` folder (thanks to `karma runner`), and create a fully-optimized version of your application under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files, optimize images, and put every template into a js file loaded by the application.
 A code coverage report will be available inside the `client/test/unit-results`.
