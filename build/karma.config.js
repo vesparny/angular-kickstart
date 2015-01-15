@@ -9,7 +9,8 @@ module.exports = {
     baseDir + '/src/vendor/angular/angular.js',
     baseDir + '/src/vendor/angular-mocks/angular-mocks.js',
     baseDir + '/src/vendor/angular-ui-router/release/angular-ui-router.js',
-    baseDir + '/src/**/*.js',
+    baseDir + '/src/app/**/*.js',
+    baseDir + '/src/common/**/*.js',
     'build/tmp/*.js',
     baseDir + '/test/unit/**/*.spec.js'
   ],
@@ -47,5 +48,5 @@ module.exports = {
   urlRoot: '/__test/',
 
   //used browsers (overriding in some gulp task)
-  browsers: ['Chrome']
+  browsers: ['PhantomJS']
 };
