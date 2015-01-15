@@ -1,3 +1,9 @@
+# 1.0.3 (2015-15-01)
+
+### Bug fixes
+
+* fixing issue with karma config about loading wrong files
+
 # 1.0.2 (2014-11-6)
 
 ### Bug fixes
