@@ -4,9 +4,7 @@
 (function() {
   var utils = require('../utils');
   describe('app', function() {
-    var ptor;
     beforeEach(function() {
-      ptor = protractor.getInstance();
       console.info('\nrunning:', jasmine.getEnv().currentSpec.description);
     });
 
@@ -17,13 +15,13 @@
     });
 
     it('should load the homepage', function() {
-      ptor.get('/');
-      expect(ptor.isElementPresent(by.css('body'))).toBe(true);
+      browser.get('/');
+      expect(browser.isElementPresent(by.css('body'))).toBe(true);
     });
 
     it('should navigate to the docs page when clicking', function() {
       element(by.css('a[ui-sref="root.getting-started"]')).click();
-      expect(ptor.getCurrentUrl()).toMatch(/\/getting-started/);
+      expect(browser.getCurrentUrl()).toMatch(/\/getting-started/);
     });
 
   });
