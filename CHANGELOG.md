@@ -1,3 +1,9 @@
+# 1.0.4 (2015-19-01)
+
+### Bug fixes
+
+* fixing issue with protractor
+
 # 1.0.3 (2015-15-01)
 
 ### Bug fixes
