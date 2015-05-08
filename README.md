@@ -17,9 +17,8 @@ angular-kickstart is an opinionated kickstart for single page application develo
 
 ### Getting started
 
-Install **node.js**. Then **sass**, **gulp** and **bower** if you haven't yet.
+Install **node.js**. Then **gulp** and **bower** if you haven't yet.
 
-    $ gem install sass
     $ npm -g install gulp bower
 
 After that, install angular-kickstart downloading the [latest release](https://github.com/vesparny/angular-kickstart/releases) (or clone the master branch if you want to run the development version). Unzip the project and cd into it, then install bower and npm dependencies, and run the application in development mode.
