@@ -68,10 +68,8 @@ gulp.task('templates', function() {
 //generate css files from scss sources
 gulp.task('sass', function() {
   return gulp.src(config.mainScss)
-    .pipe($.rubySass())
-    .on('error', function(err) {
-      console.log(err.message);
-    })
+    .pipe($.sass())
+    .on('error', $.sass.logError)
     .pipe(gulp.dest(config.tmp))
     .pipe($.size({
       title: 'sass'
