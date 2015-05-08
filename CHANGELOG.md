@@ -1,3 +1,9 @@
+# 1.1.0 (2015-08-05)
+
+### Bug fixes
+
+* updating dependencies
+
 # 1.0.4 (2015-19-01)
 
 ### Bug fixes

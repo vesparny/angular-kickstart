@@ -3,7 +3,7 @@
   "name": "angular-kickstart",
   "email": "alessandro@arnodo.net",
   "url": "http://alessandro.arnodo.net",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "homepage": "https://github.com/vesparny/angular-kickstart",
   "description": "Speed up your AngularJS development whith a great build system.",
   "license": "MIT",
