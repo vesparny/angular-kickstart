@@ -3,6 +3,7 @@
 //basic configuration object used by gulp tasks
 module.exports = {
   port: 3000,
+  uiPort: 3001,
   tmp: 'build/tmp',
   dist: 'build/dist',
   base: 'client',

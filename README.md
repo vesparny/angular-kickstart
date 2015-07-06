@@ -69,6 +69,7 @@ A description of every available task:
 You just need to add new JavaScript and css files in the `client/index.html` file.
 * **gulp serve:dist** - This task will run jshint and unit tests under the `client/test/unit` folder (thanks to `karma runner`), and create a fully-optimized version of your application under the `build/dist/` folder. The optimization consists of concatenate, minify and compress js and css files, optimize images, and put every template into a js file loaded by the application.
 A code coverage report will be available inside the `client/test/unit-results`.
+**Note to change browser-sync's server port, change the 'port' and 'uiIPort' settings in build/build.config.js.**
 * **gulp serve:tdd** - Just like `gulp serve` but in continuous unit testing environment.
 * **gulp test:unit** - For running unit tests one time then exit.
 * **gulp test:e2e** - Run end-to-end tests inside the `client/test/e2e` folder with `protractor`. If a test fails, you should find a screenshot of the page inside the `client/test/screenshots` folder.
